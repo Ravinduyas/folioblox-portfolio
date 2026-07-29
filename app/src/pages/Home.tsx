@@ -438,10 +438,10 @@ export default function Home() {
           <Reveal direction="right" className="md:col-span-5">
             <TiltCard intensity={9} lift={20}>
               <img
-                src={IMAGES.artistBooth}
+                src={IMAGES.artistDecks}
                 alt={`${ARTIST.displayName} — portrait`}
                 className="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/50"
-                style={{ objectPosition: "60% 25%" }}
+                style={{ objectPosition: "38% 28%" }}
               />
             </TiltCard>
           </Reveal>

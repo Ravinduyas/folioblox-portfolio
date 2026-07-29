@@ -73,7 +73,6 @@ export default function Press() {
           <>
             <button
               onClick={downloadBio}
-              data-cursor="save"
               className="inline-flex items-center gap-2 rounded-full bg-[#f25c27] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#f25c27]/20 transition-all hover:bg-[#ff6d3a]"
             >
               <Download size={14} />
@@ -81,7 +80,6 @@ export default function Press() {
             </button>
             <button
               onClick={downloadRider}
-              data-cursor="save"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/15"
             >
               <Download size={14} />
@@ -287,7 +285,6 @@ export default function Press() {
                 onClick={item.action}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.96 }}
-                data-cursor="save"
                 className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/5 px-5 py-2.5 text-xs font-medium text-white transition-colors hover:border-[#f25c27]/40 hover:bg-white/10"
               >
                 <Download size={13} />
@@ -357,7 +354,6 @@ export default function Press() {
           action={
             <button
               onClick={downloadRider}
-              data-cursor="save"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition-all hover:border-[#f25c27]/40 hover:bg-white/10"
             >
               <Download size={14} />

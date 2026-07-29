@@ -72,17 +72,24 @@
   }
 }
 
-/* Marquee — the track holds two identical rows, so sliding it half its own
-   width lands the copy exactly where the original started: a seamless loop. */
+/* Marquee — the track repeats its row enough times to overflow the container
+   and slides by exactly one row's width, so the loop resets onto an identical
+   frame. Sliding a fixed fraction instead would leave a gap whenever one row
+   is narrower than the container. Width comes from JS, which measures it. */
 @keyframes marquee-x {
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--marquee-shift)));
   }
 }
 
+/* No --marquee-shift yet means the row has not been measured — stay still
+   rather than animating to a nonsense position. */
 .marquee-track {
-  animation: marquee-x var(--marquee-duration, 32s) linear infinite;
   will-change: transform;
+}
+
+.marquee-track[style*="--marquee-shift"] {
+  animation: marquee-x var(--marquee-duration, 20s) linear infinite;
 }
 
 /* Pause on hover so a link can actually be clicked. */

@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 
-type CursorState = "default" | "link" | "text" | "play" | "save" | "tickets" | "open";
+/**
+ * Labels are reserved for targets that carry no text of their own — a play
+ * tile, a photo you can download. On a button that already says "Tickets" the
+ * label just repeats it and covers the thing being clicked, so those fall back
+ * to the plain `link` ring.
+ */
+type CursorState = "default" | "link" | "text" | "play" | "save" | "open";
 
-/** Ring size + label per state. The dot only shows in the neutral state. */
-const STATES: Record<CursorState, { size: number; label?: string; filled?: boolean }> = {
-  default: { size: 32 },
-  link: { size: 54, filled: true },
+/**
+ * Ring size + label per state. The dot only shows in the neutral state.
+ *
+ * Labelled states use a dark chip rather than an orange one: half these targets
+ * ARE brand-orange buttons (Tickets, Bio, Buy), and an orange ring on an orange
+ * button is invisible. Dark-on-anything reads everywhere — over photography,
+ * over cards, over the orange fills. Sizes are kept close to a button's own
+ * height so the ring annotates the target instead of swallowing it.
+ */
+const STATES: Record<CursorState, { size: number; label?: string; chip?: boolean }> = {
+  default: { size: 30 },
+  link: { size: 42 },
   text: { size: 30 },
-  play: { size: 84, label: "Play", filled: true },
-  save: { size: 78, label: "Save", filled: true },
-  tickets: { size: 82, label: "Tickets", filled: true },
-  open: { size: 74, label: "Open", filled: true },
+  play: { size: 66, label: "Play", chip: true },
+  save: { size: 62, label: "Save", chip: true },
+  open: { size: 60, label: "Open", chip: true },
 };
 
 const INTERACTIVE = 'a, button, [role="button"], summary';
@@ -110,13 +123,19 @@ export default function CustomCursor() {
           height: isTextCaret ? 26 : config.size,
           opacity: visible ? 1 : 0,
           scale: pressed ? 0.86 : 1,
-          borderColor: config.filled ? "rgba(242,92,39,0.85)" : "rgba(255,255,255,0.45)",
+          borderColor: isTextCaret
+            ? "rgba(242,92,39,0.9)"
+            : config.chip
+              ? "rgba(255,255,255,0.28)"
+              : "rgba(255,255,255,0.6)",
           backgroundColor: isTextCaret
             ? "rgba(242,92,39,0.9)"
-            : config.filled
-              ? "rgba(242,92,39,0.14)"
-              : "rgba(242,92,39,0)",
-          backdropFilter: config.label ? "blur(2px)" : "blur(0px)",
+            : config.chip
+              ? "rgba(10,11,13,0.78)"
+              : state === "link"
+                ? "rgba(255,255,255,0.12)"
+                : "rgba(255,255,255,0)",
+          backdropFilter: config.chip ? "blur(3px)" : "blur(0px)",
         }}
         transition={{ type: "spring", stiffness: 320, damping: 24, mass: 0.5 }}
         initial={false}

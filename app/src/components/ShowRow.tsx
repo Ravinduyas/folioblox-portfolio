@@ -1,25 +1,23 @@
 import { Ticket } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Show } from "../types";
-import { usePointerFine } from "../lib/usePointerFine";
 import { formatShowDate } from "../data";
 import { Pill } from "./ui";
 
 export default function ShowRow({ show, past = false }: { show: Show; past?: boolean }) {
   const date = formatShowDate(show.date);
   const reduce = useReducedMotion();
-  const finePointer = usePointerFine();
 
   return (
-    <motion.div
-      whileHover={
-        reduce || past || !finePointer
-          ? undefined
-          : { rotateY: -1.6, rotateX: 1.2, x: 6, scale: 1.012, transition: { duration: 0.35 } }
-      }
-      style={{ transformPerspective: 1100, transformStyle: "preserve-3d" }}
-      className={`grid grid-cols-[auto_1fr] md:grid-cols-[92px_1fr_auto] items-center gap-x-5 gap-y-3 rounded-2xl border border-white/[0.06] bg-[#111214] px-5 py-5 transition-colors ${
-        past ? "opacity-55 hover:opacity-80" : "hover:border-[#f25c27]/25"
+    /*
+     * The row deliberately does NOT move on hover. It used to shift 6px right,
+     * scale and tilt, which slid the Tickets button out from under the pointer
+     * — the cursor ring stayed put while its target walked away. Colour is the
+     * hover cue instead, so what you point at is what you click.
+     */
+    <div
+      className={`grid grid-cols-[auto_1fr] md:grid-cols-[92px_1fr_auto] items-center gap-x-5 gap-y-3 rounded-2xl border border-white/[0.06] bg-[#111214] px-5 py-5 transition-colors duration-300 ${
+        past ? "opacity-55 hover:opacity-80" : "hover:border-[#f25c27]/30 hover:bg-[#15161b]"
       }`}
     >
       {/* Date block */}
@@ -57,9 +55,8 @@ export default function ShowRow({ show, past = false }: { show: Show; past?: boo
             href={show.ticketUrl}
             target="_blank"
             rel="noreferrer"
-            whileHover={reduce ? undefined : { scale: 1.06 }}
-            whileTap={reduce ? undefined : { scale: 0.94 }}
-            data-cursor="tickets"
+            whileHover={reduce ? undefined : { scale: 1.03 }}
+            whileTap={reduce ? undefined : { scale: 0.96 }}
             className="group inline-flex items-center gap-2 rounded-full bg-[#f25c27] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ff6d3a]"
           >
             <Ticket
@@ -74,6 +71,6 @@ export default function ShowRow({ show, past = false }: { show: Show; past?: boo
           </span>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

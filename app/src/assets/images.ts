@@ -21,7 +21,7 @@ import studioVinyl from "./images/site/studio-vinyl.jpg";
 import vinyl from "./images/site/vinyl.jpg";
 import coverTapeDubs from "./images/site/cover-tape-dubs.jpg";
 import coverColdStorage from "./images/site/cover-cold-storage.jpg";
-import artistBooth from "./images/site/artist-booth.jpg";
+import artistDecks from "./images/site/artist-decks.jpg";
 import pressPortrait from "./images/site/press-portrait.jpg";
 import pressGreen from "./images/site/press-green.jpg";
 import crowdConfetti from "./images/site/crowd-confetti.jpg";
@@ -51,7 +51,7 @@ export const IMAGES = {
   vinyl,
   coverTapeDubs,
   coverColdStorage,
-  artistBooth,
+  artistDecks,
 
   /* Press + gallery */
   pressPortrait,
