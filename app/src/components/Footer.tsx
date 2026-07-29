@@ -84,7 +84,7 @@ export default function Footer() {
                   <Link
                     to={item.to}
                     title={item.contents.join(" · ")}
-                    className="group flex items-center gap-2 transition-colors hover:text-[#f25c27]"
+                    className="group flex items-center gap-2 py-1 transition-colors hover:text-[#f25c27]"
                   >
                     <span
                       aria-hidden="true"
@@ -109,7 +109,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="transition-colors hover:text-[#f25c27]"
+                    className="inline-block py-1 transition-colors hover:text-[#f25c27]"
                   >
                     {link.label}
                   </a>

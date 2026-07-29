@@ -1,5 +1,6 @@
 import { PointerEvent, ReactNode, useRef } from "react";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { usePointerFine } from "../../lib/usePointerFine";
 
 const SPRING = { stiffness: 260, damping: 18, mass: 0.5 };
 
@@ -17,11 +18,13 @@ export default function Magnetic({
   className?: string;
 }) {
   const reduce = useReducedMotion();
+  const finePointer = usePointerFine();
   const ref = useRef<HTMLDivElement>(null);
   const x = useSpring(useMotionValue(0), SPRING);
   const y = useSpring(useMotionValue(0), SPRING);
 
-  if (reduce) return <div className={className}>{children}</div>;
+  // On touch this would drag the button out from under the finger mid-tap.
+  if (reduce || !finePointer) return <div className={className}>{children}</div>;
 
   const handleMove = (e: PointerEvent<HTMLDivElement>) => {
     const rect = ref.current?.getBoundingClientRect();

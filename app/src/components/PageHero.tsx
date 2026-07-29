@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import { EASE } from "./motion/Reveal";
+import { usePointerFine } from "../lib/usePointerFine";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -25,6 +26,7 @@ interface PageHeroProps {
   actions?: ReactNode;
   /** Bottom strip above the fold — dates, counts, quick links. */
   meta?: ReactNode;
+  /** Desktop height. Phones get a shorter hero so content starts sooner. */
   height?: number;
 }
 
@@ -56,7 +58,15 @@ export default function PageHero({
   height = 420,
 }: PageHeroProps) {
   const reduce = useReducedMotion();
+  const finePointer = usePointerFine();
   const ref = useRef<HTMLDivElement>(null);
+
+  /**
+   * Scale the hero down on small screens rather than holding a desktop height:
+   * 420px of photo on a 667px phone pushes everything below the fold. Never
+   * taller than 62vh, never shorter than 300px.
+   */
+  const heroHeight = `clamp(300px, 62vh, ${height}px)`;
 
   // Scroll parallax — image drifts slower than the page, copy lifts away.
   const { scrollYProgress } = useScroll({
@@ -87,9 +97,9 @@ export default function PageHero({
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem]">
         <div
           ref={ref}
-          onPointerMove={reduce ? undefined : handleMove}
+          onPointerMove={reduce || !finePointer ? undefined : handleMove}
           className="relative overflow-hidden"
-          style={{ minHeight: `${height}px` }}
+          style={{ minHeight: heroHeight }}
         >
           {image ? (
             <motion.img
@@ -134,7 +144,7 @@ export default function PageHero({
           />
 
           {/* Pointer spotlight */}
-          {!reduce && (
+          {!reduce && finePointer && (
             <motion.div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0"
@@ -158,15 +168,15 @@ export default function PageHero({
             animate={reduce ? undefined : "show"}
             style={
               reduce
-                ? { minHeight: `${height}px` }
+                ? { minHeight: heroHeight }
                 : {
-                    minHeight: `${height}px`,
+                    minHeight: heroHeight,
                     y: contentY,
                     opacity: contentOpacity,
                     transformPerspective: 1200,
                   }
             }
-            className="relative z-10 flex flex-col px-8 py-10 md:px-12 md:py-12 lg:px-16"
+            className="relative z-10 flex flex-col px-6 py-9 sm:px-8 md:px-12 md:py-12 lg:px-16"
           >
             <div className="flex flex-1 flex-col justify-center">
               <motion.p

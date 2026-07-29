@@ -19,12 +19,14 @@ import {
   PRESS_QUOTES,
   RADIO,
   RELEASES,
+  SOCIALS,
   SHORT_BIO,
   formatShowDate,
   latestMixes,
   upcomingShows,
 } from "../data";
 import EmbedPlayer from "../components/EmbedPlayer";
+import Marquee from "../components/Marquee";
 import NewsletterForm from "../components/NewsletterForm";
 import ShowRow from "../components/ShowRow";
 import Reveal, { EASE, RevealGroup } from "../components/motion/Reveal";
@@ -40,6 +42,18 @@ const item = {
   hidden: { opacity: 0, y: 32, rotateX: -14 },
   show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.75, ease: EASE } },
 };
+
+/**
+ * Full-height hero on desktop, but never more than 78vh — a fixed 560px eats
+ * a phone screen whole and pushes "what's new" out of reach.
+ */
+const HERO_H = "clamp(430px, 78vh, 560px)";
+
+/** Streaming platforms for the hero ticker, plus the RA credibility link. */
+const STREAMING = [
+  ...SOCIALS.filter((link) => link.group === "streaming"),
+  { label: "Resident Advisor", href: ARTIST.residentAdvisor },
+];
 
 /**
  * The homepage is a hub, not a destination: who, what's new, what's next —
@@ -68,17 +82,17 @@ export default function Home() {
       {/* ─── HERO ─── */}
       <section className="px-3 pt-3 pb-0 md:px-5">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem]">
-          <div ref={heroRef} className="relative overflow-hidden" style={{ minHeight: "560px" }}>
+          <div ref={heroRef} className="relative overflow-hidden" style={{ minHeight: HERO_H }}>
             <motion.img
-              src={IMAGES.hero}
+              src={IMAGES.heroBooth}
               alt=""
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
               style={
                 reduce
-                  ? { objectPosition: "65% 20%" }
+                  ? { objectPosition: "62% 42%" }
                   : {
-                      objectPosition: "65% 20%",
+                      objectPosition: "62% 42%",
                       y: imageY,
                       scale: imageScale,
                       willChange: "transform",
@@ -119,18 +133,18 @@ export default function Home() {
               animate={reduce ? undefined : "show"}
               style={
                 reduce
-                  ? { minHeight: "560px" }
+                  ? { minHeight: HERO_H }
                   : {
-                      minHeight: "560px",
+                      minHeight: HERO_H,
                       y: contentY,
                       opacity: contentOpacity,
                       transformPerspective: 1200,
                     }
               }
-              className="relative z-10 flex flex-col px-8 py-10 md:px-12 md:py-14 lg:px-16"
+              className="relative z-10 flex flex-col px-6 py-9 sm:px-8 md:px-12 md:py-14 lg:px-16"
             >
               <div className="flex flex-1 items-start justify-between gap-4">
-                <div className="flex flex-col" style={{ maxWidth: "60%" }}>
+                <div className="flex w-full flex-col md:w-auto md:max-w-[60%]">
                   <motion.p
                     variants={reduce ? undefined : item}
                     className="mb-3 font-mono font-semibold uppercase tracking-[0.20em] text-[#f25c27]"
@@ -157,8 +171,7 @@ export default function Home() {
 
                 <motion.div
                   variants={reduce ? undefined : item}
-                  className="hidden flex-col pt-1 md:flex"
-                  style={{ maxWidth: "32%", marginLeft: "auto" }}
+                  className="ml-auto hidden max-w-[32%] flex-col pt-1 md:flex"
                 >
                   <h2
                     className="font-display font-bold leading-snug tracking-tight text-white"
@@ -203,7 +216,7 @@ export default function Home() {
                     })}
                     <Link
                       to="/shows"
-                      className="group inline-flex items-center gap-1.5 font-mono leading-none text-white/50 transition-colors hover:text-white"
+                      className="group inline-flex items-center gap-1.5 py-2 font-mono leading-none text-white/50 transition-colors hover:text-white"
                       style={{ fontSize: "11px" }}
                     >
                       All dates
@@ -218,35 +231,33 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Streaming strip */}
+          {/* Streaming strip — a ticker, so five platforms never stack up on a phone */}
           <div style={{ background: "#0a0b0d" }}>
-            <div className="flex flex-col items-center justify-between gap-6 border-t border-white/[0.06] px-8 py-8 sm:flex-row md:px-12 lg:px-16">
+            <div className="flex flex-col gap-5 border-t border-white/[0.06] py-7 sm:flex-row sm:items-center sm:gap-8">
               <p
-                className="font-mono uppercase leading-[1.9] tracking-[0.14em] text-white/40"
+                className="shrink-0 px-8 font-mono uppercase leading-[1.9] tracking-[0.14em] text-white/40 md:px-12 lg:px-16"
                 style={{ fontSize: "10px" }}
               >
                 Sets, releases &amp; radio
                 <br />
                 <span className="font-bold text-white/65">Everywhere you listen</span>
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-7">
-                {["SoundCloud", "Mixcloud", "Bandcamp", "Spotify", "Resident Advisor"].map(
-                  (platform, i) => (
-                    <motion.span
-                      key={platform}
-                      initial={reduce ? undefined : { opacity: 0, y: 10 }}
-                      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.07, ease: EASE }}
-                      whileHover={reduce ? undefined : { y: -2, color: "#ffffff" }}
-                      className="cursor-default font-display font-semibold text-white/55"
-                      style={{ fontSize: "13px" }}
-                    >
-                      {platform}
-                    </motion.span>
-                  ),
-                )}
-              </div>
+
+              <Marquee speed={30} className="min-w-0 flex-1 sm:pr-8">
+                {STREAMING.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="open"
+                    className="whitespace-nowrap font-display font-semibold text-white/55 transition-colors hover:text-[#f25c27]"
+                    style={{ fontSize: "13px" }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </Marquee>
             </div>
           </div>
         </div>
@@ -264,7 +275,7 @@ export default function Home() {
             </div>
             <Link
               to="/music"
-              className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+              className="group inline-flex items-center gap-1.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
             >
               All music
               <ArrowRight
@@ -360,7 +371,7 @@ export default function Home() {
             action={
               <Link
                 to="/shows"
-                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+                className="group inline-flex items-center gap-1.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
               >
                 All {allUpcoming.length} dates
                 <ArrowRight
@@ -427,7 +438,7 @@ export default function Home() {
           <Reveal direction="right" className="md:col-span-5">
             <TiltCard intensity={9} lift={20}>
               <img
-                src={IMAGES.portrait}
+                src={IMAGES.artistBooth}
                 alt={`${ARTIST.displayName} — portrait`}
                 className="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/50"
                 style={{ objectPosition: "60% 25%" }}
@@ -471,7 +482,7 @@ export default function Home() {
             action={
               <Link
                 to="/press"
-                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+                className="group inline-flex items-center gap-1.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
               >
                 Press kit
                 <ArrowRight

@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import { usePointerFine } from "../../lib/usePointerFine";
 
 interface TiltCardProps {
   children: ReactNode;
@@ -35,6 +36,7 @@ export default function TiltCard({
   perspective = 900,
 }: TiltCardProps) {
   const reduce = useReducedMotion();
+  const finePointer = usePointerFine();
   const ref = useRef<HTMLDivElement>(null);
 
   // Normalised pointer position within the card, 0…1 on both axes.
@@ -51,7 +53,8 @@ export default function TiltCard({
   const glareY = useTransform(py, (v) => `${v * 100}%`);
   const glareBackground = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.9) 0%, rgba(242,92,39,0.35) 35%, transparent 65%)`;
 
-  if (reduce) return <div className={className}>{children}</div>;
+  // Touch has no hover-out, so a tilted card would stay tilted. Render flat.
+  if (reduce || !finePointer) return <div className={className}>{children}</div>;
 
   const handleMove = (e: PointerEvent<HTMLDivElement>) => {
     const rect = ref.current?.getBoundingClientRect();

@@ -28,8 +28,8 @@ export default function Booking() {
         eyebrow="Booking"
         title="Book direct."
         intro={`${ARTIST.displayName} is independent — enquiries go straight to the artist, and answers come back ${ARTIST.responseTime} with availability and a fee.`}
-        image={IMAGES.hero}
-        objectPosition="30% 28%"
+        image={IMAGES.boothPov}
+        objectPosition="45% 35%"
         glow="ellipse 46% 56% at 82% 46%"
         height={360}
         meta={

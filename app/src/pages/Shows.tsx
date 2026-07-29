@@ -27,8 +27,8 @@ export default function Shows() {
           </>
         }
         intro={`${upcoming.length} confirmed dates. Tickets go through the promoter or RA — this page always links to the official source.`}
-        image={IMAGES.hero}
-        objectPosition="60% 18%"
+        image={IMAGES.festival}
+        objectPosition="55% 40%"
         glow="ellipse 55% 62% at 70% 42%"
         actions={
           <a

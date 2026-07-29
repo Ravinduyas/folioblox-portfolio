@@ -45,6 +45,51 @@
   }
 }
 
+@layer base {
+  /*
+   * Grid and flex children default to min-width/min-height: auto, so a long
+   * word, a nowrap run or an intrinsically wide child can push a track wider
+   * than its container — which is how cards ended up 429px wide inside a
+   * 375px phone. Letting them shrink is what makes the layouts hold at every
+   * width; anything that genuinely must not shrink still has `shrink-0`.
+   */
+  .grid > *,
+  .flex > * {
+    min-width: 0;
+  }
+
+  /*
+   * Email addresses have no break opportunities, so bookings@… (265px) forced
+   * the whole document wider than a 768px tablet from inside a 172px footer
+   * column. Let them break mid-string; keep their icon at full size.
+   */
+  a[href^="mailto:"] {
+    overflow-wrap: anywhere;
+  }
+
+  a[href^="mailto:"] > svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Marquee — the track holds two identical rows, so sliding it half its own
+   width lands the copy exactly where the original started: a seamless loop. */
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-x var(--marquee-duration, 32s) linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover so a link can actually be clicked. */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 /* Custom cursor — the class is added by <CustomCursor> only on fine pointers,
    so touch and coarse-pointer devices never lose the native cursor. */
 .has-custom-cursor,

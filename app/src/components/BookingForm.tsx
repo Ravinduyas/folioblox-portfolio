@@ -194,7 +194,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </Field>
       </div>
 
-      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-3"}`}>
+      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2 md:grid-cols-3"}`}>
         <Field label="City / country" required>
           <input
             required
@@ -222,7 +222,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </Field>
       </div>
 
-      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-3"}`}>
+      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2 md:grid-cols-3"}`}>
         <Field label="Set type">
           <select
             value={form.setType}

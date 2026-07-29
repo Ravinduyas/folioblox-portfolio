@@ -1,17 +1,19 @@
 import { Ticket } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Show } from "../types";
+import { usePointerFine } from "../lib/usePointerFine";
 import { formatShowDate } from "../data";
 import { Pill } from "./ui";
 
 export default function ShowRow({ show, past = false }: { show: Show; past?: boolean }) {
   const date = formatShowDate(show.date);
   const reduce = useReducedMotion();
+  const finePointer = usePointerFine();
 
   return (
     <motion.div
       whileHover={
-        reduce || past
+        reduce || past || !finePointer
           ? undefined
           : { rotateY: -1.6, rotateX: 1.2, x: 6, scale: 1.012, transition: { duration: 0.35 } }
       }

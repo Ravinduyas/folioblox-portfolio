@@ -27,8 +27,8 @@ export default function Music() {
           </>
         }
         intro="Sets are hosted where they belong — SoundCloud, Mixcloud and Bandcamp — so they keep working for you in each platform's own discovery. Nothing here is gated. Press play."
-        image={IMAGES.booth}
-        objectPosition="72% 30%"
+        image={IMAGES.lasers}
+        objectPosition="58% 45%"
         glow="ellipse 50% 60% at 78% 32%"
         meta={
           <div className="flex flex-wrap items-end gap-x-9 gap-y-4">
@@ -68,7 +68,7 @@ export default function Music() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`relative rounded-full border px-4 py-1.5 font-mono text-[10px] uppercase tracking-wider transition-colors ${
+                  className={`relative rounded-full border px-4 py-2 font-mono text-[10px] uppercase tracking-wider transition-colors sm:py-1.5 ${
                     filter === f
                       ? "border-[#f25c27] text-[#f25c27]"
                       : "border-white/10 bg-white/[0.03] text-white/45 hover:text-white"

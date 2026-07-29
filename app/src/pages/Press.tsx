@@ -36,7 +36,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 1600);
       }}
-      className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-white/35 transition-colors hover:text-[#f25c27]"
+      className="inline-flex items-center gap-1.5 py-1 font-mono text-[10px] uppercase tracking-wider text-white/35 transition-colors hover:text-[#f25c27]"
     >
       {copied ? <Check size={11} className="text-emerald-400" /> : <Copy size={11} />}
       {copied ? "Copied" : label}
@@ -66,8 +66,8 @@ export default function Press() {
           </>
         }
         intro="Everything on this page is cleared for use in announcements, listings and print. No login, no request form. Credit the photographer where one is named."
-        image={IMAGES.still}
-        objectPosition="70% 40%"
+        image={IMAGES.handsBw}
+        objectPosition="55% 45%"
         glow="ellipse 48% 58% at 80% 30%"
         actions={
           <>

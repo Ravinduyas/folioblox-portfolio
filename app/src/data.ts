@@ -137,7 +137,7 @@ export const MIXES: Mix[] = [
     url: "https://www.mixcloud.com/explorationrecordings/lowlight-transmissions-014/",
     date: "2026-07-04",
     duration: "2h 02m",
-    artwork: IMAGES.booth,
+    artwork: IMAGES.mixerBlue,
     tags: ["Dub techno", "Electro", "Unreleased"],
   },
   {
@@ -150,7 +150,7 @@ export const MIXES: Mix[] = [
     url: "https://soundcloud.com/explorationrecordings/hors-serie-closing",
     date: "2026-06-14",
     duration: "3h 41m",
-    artwork: IMAGES.hero,
+    artwork: IMAGES.overheadSmoke,
     tags: ["Closing set", "Recorded live", "Paris"],
   },
   {
@@ -163,7 +163,7 @@ export const MIXES: Mix[] = [
     url: "https://soundcloud.com/basalt/podcast-088-explorationrecordings",
     date: "2026-05-02",
     duration: "1h 12m",
-    artwork: IMAGES.portrait,
+    artwork: IMAGES.studioDark,
     tags: ["Podcast", "Deep techno"],
   },
   {
@@ -176,7 +176,7 @@ export const MIXES: Mix[] = [
     url: "https://www.mixcloud.com/explorationrecordings/lowlight-transmissions-013/",
     date: "2026-06-06",
     duration: "2h 00m",
-    artwork: IMAGES.still,
+    artwork: IMAGES.deckBokeh,
     tags: ["Dub", "Ambient opening"],
   },
 ];
@@ -189,7 +189,7 @@ export const RELEASES: Release[] = [
     catalogue: "NGF012",
     year: "2026",
     format: "12\" vinyl / digital",
-    artwork: IMAGES.still,
+    artwork: IMAGES.vinyl,
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567890/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
@@ -203,7 +203,7 @@ export const RELEASES: Release[] = [
     catalogue: "TD002",
     year: "2025",
     format: "Digital",
-    artwork: IMAGES.portrait,
+    artwork: IMAGES.coverTapeDubs,
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567891/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
@@ -217,7 +217,7 @@ export const RELEASES: Release[] = [
     catalogue: "NGF007",
     year: "2024",
     format: "12\" vinyl",
-    artwork: IMAGES.booth,
+    artwork: IMAGES.coverColdStorage,
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567892/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
@@ -236,7 +236,7 @@ export const RADIO: RadioShow = {
   platform: "Mixcloud",
   embedUrl:
     "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Fexplorationrecordings%2Flowlight-transmissions-014%2F",
-  artwork: IMAGES.booth,
+  artwork: IMAGES.radioOnAir,
 };
 
 /* ─────────────────────────  SHOWS  ───────────────────────── */
@@ -346,31 +346,31 @@ export const SHOWS: Show[] = [
 export const PRESS_PHOTOS: PressPhoto[] = [
   {
     id: "press-01",
-    caption: "Press shot 01 — live, Paris 2026",
+    caption: "Press shot 01 — booth portrait",
     credit: "Photo: Lena Vogt",
-    src: IMAGES.hero,
-    orientation: "landscape",
+    src: IMAGES.pressPortrait,
+    orientation: "portrait",
   },
   {
     id: "press-02",
-    caption: "Press shot 02 — booth portrait",
+    caption: "Press shot 02 — live, green room lighting",
     credit: "Photo: Lena Vogt",
-    src: IMAGES.booth,
+    src: IMAGES.pressGreen,
     orientation: "portrait",
   },
   {
     id: "press-03",
-    caption: "Press shot 03 — studio portrait",
+    caption: "Press shot 03 — main room, closing set",
     credit: "Photo: Ilya Renko",
-    src: IMAGES.portrait,
-    orientation: "portrait",
+    src: IMAGES.crowdHands,
+    orientation: "landscape",
   },
   {
     id: "press-04",
-    caption: "Press shot 04 — artwork still",
+    caption: "Press shot 04 — floor, La Station",
     credit: "Photo: Ilya Renko",
-    src: IMAGES.still,
-    orientation: "portrait",
+    src: IMAGES.crowdDance,
+    orientation: "landscape",
   },
 ];
 
@@ -550,10 +550,10 @@ export const ROSTER: RosterArtist[] = [
 ];
 
 export const GALLERY: GalleryItem[] = [
-  { src: IMAGES.hero, caption: "La Station, Paris — June 2026" },
-  { src: IMAGES.booth, caption: "Refuge Radio, Berlin — 2026" },
-  { src: IMAGES.portrait, caption: "Studio, Neukölln — 2025" },
-  { src: IMAGES.still, caption: "Sub-Orbital EP artwork" },
+  { src: IMAGES.crowdConfetti, caption: "Kantine am Berghain — May 2026" },
+  { src: IMAGES.crowdBooth, caption: "La Station, Paris — June 2026" },
+  { src: IMAGES.radioDesk, caption: "Refuge Radio, Berlin — 2026" },
+  { src: IMAGES.studioVinyl, caption: "Studio, Neukölln — 2025" },
 ];
 
 /* ─────────────────────────  SITEWIDE  ───────────────────────── */

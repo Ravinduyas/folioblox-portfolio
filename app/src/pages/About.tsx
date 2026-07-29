@@ -26,8 +26,8 @@ export default function About() {
         eyebrow="The artist"
         title={ARTIST.displayName}
         intro={SHORT_BIO}
-        image={IMAGES.portrait}
-        objectPosition="66% 22%"
+        image={IMAGES.portraitShades}
+        objectPosition="52% 30%"
         glow="ellipse 52% 58% at 74% 36%"
         height={460}
         actions={
@@ -98,7 +98,7 @@ export default function About() {
           intro={`${ROSTER.length} artists on the label. Each one books and releases independently — get in touch through their own channels, or through booking for the label projects.`}
         />
 
-        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {ROSTER.map((artist, i) => (
             <Reveal key={artist.id} delay={i * 0.07} tilt={10}>
               <TiltCard intensity={9} lift={14} className="h-full">
@@ -134,7 +134,7 @@ export default function About() {
                     <h3 className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
                       <Link
                         to={`/artists/${artist.id}`}
-                        className="transition-colors hover:text-[#f25c27]"
+                        className="inline-block py-0.5 transition-colors hover:text-[#f25c27]"
                       >
                         {artist.name}
                       </Link>
@@ -152,7 +152,7 @@ export default function About() {
                     <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
                       <Link
                         to={`/artists/${artist.id}`}
-                        className="rounded-full border border-[#f25c27]/40 bg-[#f25c27]/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-[#f25c27] transition-all hover:bg-[#f25c27]/20"
+                        className="rounded-full border border-[#f25c27]/40 bg-[#f25c27]/10 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-[#f25c27] transition-all hover:bg-[#f25c27]/20"
                       >
                         Biography
                       </Link>
@@ -161,7 +161,7 @@ export default function About() {
                           <Link
                             key={link.label}
                             to={link.href}
-                            className="rounded-full border border-white/12 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
+                            className="rounded-full border border-white/12 bg-white/5 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
                           >
                             {link.label}
                           </Link>
@@ -172,7 +172,7 @@ export default function About() {
                             target="_blank"
                             rel="noreferrer"
                             data-cursor="open"
-                            className="rounded-full border border-white/12 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
+                            className="rounded-full border border-white/12 bg-white/5 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
                           >
                             {link.label}
                           </a>

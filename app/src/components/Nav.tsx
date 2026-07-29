@@ -32,7 +32,7 @@ export default function Nav() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm text-white/60 md:flex">
+        <div className="hidden items-center gap-8 text-sm text-white/60 lg:flex">
           {LINKS.map(({ label, to, audience, purpose }, i) => (
             <div key={to} className="flex items-center gap-5">
               {/* Divider where the architecture hands over from fans to industry */}
@@ -60,7 +60,7 @@ export default function Nav() {
           ))}
         </div>
 
-        <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <Magnetic strength={0.28}>
             <Link
               to="/booking"
@@ -76,7 +76,7 @@ export default function Nav() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-white md:hidden"
+          className="-mr-2 p-2 text-white lg:hidden"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -89,7 +89,7 @@ export default function Nav() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-b border-white/5 bg-[#0d0e10] md:hidden"
+            className="overflow-hidden border-b border-white/5 bg-[#0d0e10] lg:hidden"
           >
             <div className="flex flex-col gap-4 px-6 py-5 text-sm text-white/60">
               {LINKS.map(({ label, to, audience, contents }) => (
@@ -97,7 +97,7 @@ export default function Nav() {
                   key={to}
                   to={to}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-baseline gap-2.5 transition-colors hover:text-white ${
+                  className={`flex items-baseline gap-2.5 py-1.5 transition-colors hover:text-white ${
                     isActive(to) ? "font-medium text-white" : ""
                   }`}
                 >
