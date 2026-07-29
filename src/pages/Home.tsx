@@ -1,10 +1,23 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Disc3, Download, Headphones, Mail, Ticket } from "lucide-react";
+import {
+  ArrowRight,
+  Disc3,
+  Download,
+  Headphones,
+  Mail,
+  Quote,
+  Radio as RadioIcon,
+  Ticket,
+} from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { IMAGES } from "../assets/images";
 import {
   ARTIST,
+  FACTS,
+  LONG_BIO,
+  PRESS_QUOTES,
+  RADIO,
   RELEASES,
   SHORT_BIO,
   formatShowDate,
@@ -12,9 +25,11 @@ import {
   upcomingShows,
 } from "../data";
 import EmbedPlayer from "../components/EmbedPlayer";
-import Reveal, { EASE } from "../components/motion/Reveal";
+import NewsletterForm from "../components/NewsletterForm";
+import ShowRow from "../components/ShowRow";
+import Reveal, { EASE, RevealGroup } from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
-import { Card, Eyebrow, GhostLink, PrimaryLink } from "../components/ui";
+import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
 
 const container = {
   hidden: {},
@@ -33,7 +48,9 @@ const item = {
 export default function Home() {
   const reduce = useReducedMotion();
   const heroRef = useRef<HTMLDivElement>(null);
-  const next = upcomingShows().slice(0, 3);
+  const allUpcoming = upcomingShows();
+  const next = allUpcoming.slice(0, 3);
+  const nextDates = allUpcoming.slice(0, 4);
   const latestMix = latestMixes(1)[0];
   const latestRelease = RELEASES[0];
 
@@ -333,6 +350,154 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── NEXT DATES ─── */}
+      <section className="mx-auto max-w-7xl border-t border-white/[0.05] px-6 py-20 md:px-10">
+        <Reveal>
+          <SectionHeading
+            eyebrow="On tour"
+            title="Where to catch it"
+            intro="The hero strip is the glance version — this is the one with ticket links."
+            action={
+              <Link
+                to="/shows"
+                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+              >
+                All {allUpcoming.length} dates
+                <ArrowRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
+            }
+          />
+        </Reveal>
+
+        <RevealGroup className="flex flex-col gap-3">
+          {nextDates.map((show) => (
+            <ShowRow key={show.id} show={show} />
+          ))}
+        </RevealGroup>
+      </section>
+
+      {/* ─── RADIO RESIDENCY ─── */}
+      <section className="mx-auto max-w-7xl border-t border-white/[0.05] px-6 py-20 md:px-10">
+        <div className="grid items-start gap-10 md:grid-cols-12">
+          <Reveal direction="right" className="md:col-span-5">
+            <Eyebrow>Monthly residency</Eyebrow>
+            <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+              {RADIO.name}
+            </h2>
+            <p className="mt-3 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#f25c27]">
+              <RadioIcon size={12} />
+              {RADIO.station}
+            </p>
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-white/30">
+              {RADIO.schedule}
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-white/50">{RADIO.description}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <GhostLink href={RADIO.url}>Full archive</GhostLink>
+              <Link
+                to="/music"
+                className="inline-flex items-center gap-2 rounded-full bg-white/8 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-white/12"
+              >
+                <Headphones size={14} /> Every episode
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal direction="left" delay={0.1} className="md:col-span-7">
+            <Card className="overflow-hidden p-5">
+              <EmbedPlayer
+                title={`${RADIO.name} — latest episode`}
+                platform={RADIO.platform}
+                embedUrl={RADIO.embedUrl}
+                url={RADIO.url}
+                artwork={RADIO.artwork}
+                meta={RADIO.station}
+              />
+            </Card>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── WHO'S PLAYING ─── */}
+      <section className="mx-auto max-w-7xl border-t border-white/[0.05] px-6 py-20 md:px-10">
+        <div className="grid items-center gap-10 md:grid-cols-12">
+          <Reveal direction="right" className="md:col-span-5">
+            <TiltCard intensity={9} lift={20}>
+              <img
+                src={IMAGES.portrait}
+                alt={`${ARTIST.displayName} — portrait`}
+                className="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/50"
+                style={{ objectPosition: "60% 25%" }}
+              />
+            </TiltCard>
+          </Reveal>
+
+          <Reveal direction="left" delay={0.1} className="md:col-span-7">
+            <Eyebrow>The artist</Eyebrow>
+            <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+              Melbourne warehouses to Berlin back rooms.
+            </h2>
+            <p className="mt-5 text-sm leading-relaxed text-white/55 md:text-base">{LONG_BIO[0]}</p>
+
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/[0.06] pt-7 sm:grid-cols-4">
+              {FACTS.map((fact) => (
+                <div key={fact.label} className="flex flex-col gap-[5px]">
+                  <dt className="font-mono text-[10px] font-bold uppercase leading-none tracking-wider text-[#f25c27]">
+                    {fact.label}
+                  </dt>
+                  <dd className="text-[13px] font-medium leading-snug text-white/80">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-8">
+              <GhostLink to="/about">Read the full bio</GhostLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── PRESS ─── */}
+      <section className="mx-auto max-w-7xl border-t border-white/[0.05] px-6 py-20 md:px-10">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Press"
+            title="What gets written"
+            action={
+              <Link
+                to="/press"
+                className="group inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+              >
+                Press kit
+                <ArrowRight
+                  size={12}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
+            }
+          />
+        </Reveal>
+
+        <RevealGroup className="grid gap-5 md:grid-cols-3">
+          {PRESS_QUOTES.map((quote) => (
+            <Card key={quote.source} hover className="flex h-full flex-col p-7">
+              <Quote size={18} className="mb-4 shrink-0 text-[#f25c27]" />
+              <blockquote className="flex-1 font-display text-[15px] font-medium leading-relaxed text-white/85">
+                {quote.quote}
+              </blockquote>
+              <cite className="mt-5 block border-t border-white/[0.06] pt-4 font-mono text-[10px] uppercase not-italic tracking-wider text-white/35">
+                {quote.source}
+              </cite>
+            </Card>
+          ))}
+        </RevealGroup>
+      </section>
+
       {/* ─── AUDIENCE ROUTING ─── */}
       <section className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
         <div className="grid gap-6 md:grid-cols-2">
@@ -395,6 +560,39 @@ export default function Home() {
             </TiltCard>
           </Reveal>
         </div>
+      </section>
+
+      {/* ─── NEWSLETTER ─── */}
+      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214] px-8 py-12 md:px-14 md:py-16">
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 55% 120% at 85% 50%, rgba(215,60,15,0.22) 0%, transparent 70%)",
+              }}
+              animate={reduce ? undefined : { opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="relative grid items-center gap-8 md:grid-cols-12">
+              <div className="md:col-span-7">
+                <Eyebrow>Stay close</Eyebrow>
+                <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+                  New dates and dubs, straight to you.
+                </h2>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/50">
+                  A short email when there's a record out or a show near you — no algorithm deciding
+                  whether you see it. Nothing else, and one click to leave.
+                </p>
+              </div>
+              <div className="md:col-span-5">
+                <NewsletterForm />
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </>
   );
