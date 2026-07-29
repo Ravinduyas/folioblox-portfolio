@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/** Everything Tailwind should scan lives under app/ — this file's parent. */
+@source "../";
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", "Inter", sans-serif;

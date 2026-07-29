@@ -4,37 +4,57 @@ import fs from 'fs';
 import path from 'path';
 import {defineConfig, type Plugin} from 'vite';
 
-// Served from https://ravinduyas.github.io/folioblox-portfolio/ on GitHub Pages,
-// but from / during local dev and preview.
-const BASE = process.env.GITHUB_PAGES === 'true' ? '/folioblox-portfolio/' : '/';
+/**
+ * GitHub Pages serves this repo's root verbatim — it does not build anything.
+ * So the compiled index.html has to BE the repo root index.html, which is why
+ * the whole source tree lives under app/ instead: the two would otherwise
+ * collide. `npm run deploy` builds to dist/ and copies the result up.
+ *
+ * Assets go to static/ rather than assets/, to stay clear of the existing
+ * (unbuilt) assets/ folder at the root.
+ */
+const REPO_BASE = '/folioblox-portfolio/';
 
 /**
- * GitHub Pages has no server-side rewrite, so a hard load of /music would 404.
- * Pages serves 404.html for any unmatched path, so shipping a copy of index.html
- * under that name lets the client router pick the request up instead.
+ * Pages has no server-side rewrite, so a hard load of /music would 404. Pages
+ * serves 404.html for unmatched paths, so shipping a copy of index.html under
+ * that name lets the client router pick the request up instead.
  */
-function spaFallback(): Plugin {
+function spaFallback(outDir: string): Plugin {
   return {
     name: 'spa-404-fallback',
     apply: 'build',
     closeBundle() {
-      const dist = path.resolve(__dirname, 'dist');
-      const index = path.join(dist, 'index.html');
+      const index = path.join(outDir, 'index.html');
       if (fs.existsSync(index)) {
-        fs.copyFileSync(index, path.join(dist, '404.html'));
+        fs.copyFileSync(index, path.join(outDir, '404.html'));
       }
     },
   };
 }
 
-export default defineConfig(() => {
+export default defineConfig(({command, isPreview}) => {
+  const outDir = path.resolve(__dirname, 'dist');
+  // Only the dev server runs at the root; build and preview both use the
+  // deployed subpath, so `npm run preview` reproduces Pages exactly.
+  const isDevServer = command === 'serve' && !isPreview;
+
   return {
-    base: BASE,
-    plugins: [react(), tailwindcss(), spaFallback()],
+    // Root is app/ so that the built index.html can own the repo root.
+    root: path.resolve(__dirname, 'app'),
+    publicDir: path.resolve(__dirname, 'public'),
+    // Dev serves from /, the deployed copy lives under the repo subpath.
+    base: isDevServer ? '/' : REPO_BASE,
+    plugins: [react(), tailwindcss(), spaFallback(outDir)],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+    },
+    build: {
+      outDir,
+      assetsDir: 'static',
+      emptyOutDir: true,
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
