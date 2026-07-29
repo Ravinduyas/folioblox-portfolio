@@ -1,5 +1,6 @@
 import { IMAGES } from "./assets/images";
 import {
+  Audience,
   GalleryItem,
   Mix,
   PressPhoto,
@@ -7,7 +8,9 @@ import {
   RadioShow,
   Release,
   RiderSection,
+  RosterArtist,
   Show,
+  SiteSection,
   SocialLink,
 } from "./types";
 
@@ -15,14 +18,14 @@ import {
  * Single place to rebrand the site. Everything user-facing reads from here.
  */
 export const ARTIST = {
-  name: "FOLIOBLOX",
-  displayName: "Folioblox",
+  name: "EXPLORATION RECORDINGS",
+  displayName: "Exploration Recordings",
   role: "DJ · Producer",
   basedIn: "Berlin, DE",
   originally: "Melbourne, AU",
   genres: ["Deep techno", "Electro", "Breaks", "Dub"],
-  bookingEmail: "bookings@folioblox.com",
-  pressEmail: "press@folioblox.com",
+  bookingEmail: "bookings@explorationrecordings.com",
+  pressEmail: "press@explorationrecordings.com",
   /** Empty string = independent, no agency. Fill in to show a booking agent. */
   agent: {
     name: "",
@@ -34,19 +37,81 @@ export const ARTIST = {
     name: "",
     email: "",
   },
-  residentAdvisor: "https://ra.co/dj/folioblox",
+  residentAdvisor: "https://ra.co/dj/explorationrecordings",
   responseTime: "within 48 hours",
 } as const;
 
 /** Two-line bio used on the homepage and as the short EPK bio. */
 export const SHORT_BIO =
-  "Folioblox is a Berlin-based DJ and producer working the low, dubbed-out end of techno — long-form sets built on weight, patience and room-reading rather than peak-time shortcuts.";
+  "Exploration Recordings is the project of a Berlin-based DJ and producer working the low, dubbed-out end of techno — long-form sets built on weight, patience and room-reading rather than peak-time shortcuts.";
 
 export const LONG_BIO = [
-  "Folioblox started out on Melbourne's warehouse circuit, playing the kind of six-hour opening sets that teach you restraint. A move to Berlin in 2022 sharpened that instinct: fewer records, more space between them, an ear for the moment a room tips over.",
+  "Exploration Recordings started out on Melbourne's warehouse circuit, playing the kind of six-hour opening sets that teach you restraint. A move to Berlin in 2022 sharpened that instinct: fewer records, more space between them, an ear for the moment a room tips over.",
   "The productions follow the same logic. Two EPs on Nightform and a self-released dub series have built a catalogue that sits between deep techno, electro and sound-system culture — drum machines pushed through tape, sub-bass doing the melodic work, arrangements that arrive rather than announce.",
   "Since 2024 the monthly Lowlight Transmissions show on Refuge Radio has become the clearest statement of that world: two hours of unreleased dubs, records pulled from the back of the bag, and no genre policing whatsoever.",
 ];
+
+/* ────────────────────  SITE STRUCTURE (from the architecture)  ──────────────────── */
+
+/**
+ * The proposed site structure, encoded once and consumed by the nav and the
+ * footer, so the navigation cannot drift away from the approved architecture.
+ */
+export const SECTIONS: SiteSection[] = [
+  {
+    label: "Music",
+    to: "/music",
+    audience: "fan",
+    contents: ["Mixes & sets", "Releases", "Radio show"],
+    purpose: "Capture a curious listener with a play before they leave.",
+  },
+  {
+    label: "Shows",
+    to: "/shows",
+    audience: "fan",
+    contents: ["Tour dates", "Ticket links", "Past shows"],
+    purpose: "Turn interest into a ticket, and prove the rooms already played.",
+  },
+  {
+    label: "About",
+    to: "/about",
+    audience: "neutral",
+    contents: ["Artist bio", "Roster", "Gallery"],
+    purpose: "The neutral bridge — credibility for bookers, story for fans.",
+  },
+  {
+    label: "Press / EPK",
+    to: "/press",
+    audience: "industry",
+    contents: ["Press photos", "Tech rider", "Press quotes"],
+    purpose: "Let a promoter announce the show without waiting on an email.",
+  },
+  {
+    label: "Booking",
+    to: "/booking",
+    audience: "industry",
+    contents: ["Inquiry form", "Agents / mgmt"],
+    purpose: "Convert a vetted promoter into a paid offer.",
+    navHidden: true,
+  },
+];
+
+/**
+ * Audience accents. The architecture legends fan-facing teal and industry
+ * purple; purple fights the brand orange on a near-black page, so industry
+ * keeps the brand colour — the coding stays, the palette stays intact.
+ */
+export const AUDIENCE_ACCENT: Record<Audience, string> = {
+  fan: "#2ec9b0",
+  neutral: "#d9d5cd",
+  industry: "#f25c27",
+};
+
+export const AUDIENCE_LABEL: Record<Audience, string> = {
+  fan: "Fan-facing",
+  neutral: "Neutral",
+  industry: "Industry / bookers",
+};
 
 export const FACTS = [
   { label: "Based in", value: ARTIST.basedIn },
@@ -68,8 +133,8 @@ export const MIXES: Mix[] = [
     series: "Radio",
     platform: "Mixcloud",
     embedUrl:
-      "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Ffolioblox%2Flowlight-transmissions-014%2F",
-    url: "https://www.mixcloud.com/folioblox/lowlight-transmissions-014/",
+      "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Fexplorationrecordings%2Flowlight-transmissions-014%2F",
+    url: "https://www.mixcloud.com/explorationrecordings/lowlight-transmissions-014/",
     date: "2026-07-04",
     duration: "2h 02m",
     artwork: IMAGES.booth,
@@ -81,8 +146,8 @@ export const MIXES: Mix[] = [
     series: "Live set",
     platform: "SoundCloud",
     embedUrl:
-      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/folioblox/hors-serie-closing&color=%23f25c27&hide_related=true&show_comments=false&visual=false",
-    url: "https://soundcloud.com/folioblox/hors-serie-closing",
+      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/explorationrecordings/hors-serie-closing&color=%23f25c27&hide_related=true&show_comments=false&visual=false",
+    url: "https://soundcloud.com/explorationrecordings/hors-serie-closing",
     date: "2026-06-14",
     duration: "3h 41m",
     artwork: IMAGES.hero,
@@ -94,8 +159,8 @@ export const MIXES: Mix[] = [
     series: "Guest mix",
     platform: "SoundCloud",
     embedUrl:
-      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/basalt/podcast-088-folioblox&color=%23f25c27&hide_related=true&show_comments=false&visual=false",
-    url: "https://soundcloud.com/basalt/podcast-088-folioblox",
+      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/basalt/podcast-088-explorationrecordings&color=%23f25c27&hide_related=true&show_comments=false&visual=false",
+    url: "https://soundcloud.com/basalt/podcast-088-explorationrecordings",
     date: "2026-05-02",
     duration: "1h 12m",
     artwork: IMAGES.portrait,
@@ -107,8 +172,8 @@ export const MIXES: Mix[] = [
     series: "Radio",
     platform: "Mixcloud",
     embedUrl:
-      "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Ffolioblox%2Flowlight-transmissions-013%2F",
-    url: "https://www.mixcloud.com/folioblox/lowlight-transmissions-013/",
+      "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Fexplorationrecordings%2Flowlight-transmissions-013%2F",
+    url: "https://www.mixcloud.com/explorationrecordings/lowlight-transmissions-013/",
     date: "2026-06-06",
     duration: "2h 00m",
     artwork: IMAGES.still,
@@ -128,7 +193,7 @@ export const RELEASES: Release[] = [
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567890/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
-    url: "https://folioblox.bandcamp.com/album/sub-orbital-ep",
+    url: "https://explorationrecordings.bandcamp.com/album/sub-orbital-ep",
     tracks: ["Sub-Orbital", "Ground Station", "Null Island", "Sub-Orbital (Dub)"],
   },
   {
@@ -142,7 +207,7 @@ export const RELEASES: Release[] = [
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567891/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
-    url: "https://folioblox.bandcamp.com/album/tape-dubs-vol-2",
+    url: "https://explorationrecordings.bandcamp.com/album/tape-dubs-vol-2",
     tracks: ["Ferrite", "Bias Current", "Head Gap", "Erase Pass"],
   },
   {
@@ -156,7 +221,7 @@ export const RELEASES: Release[] = [
     platform: "Bandcamp",
     embedUrl:
       "https://bandcamp.com/EmbeddedPlayer/album=1234567892/size=large/bgcol=111214/linkcol=f25c27/tracklist=false/transparent=true/",
-    url: "https://folioblox.bandcamp.com/album/cold-storage",
+    url: "https://explorationrecordings.bandcamp.com/album/cold-storage",
     tracks: ["Cold Storage", "Deadlift", "Anteroom"],
   },
 ];
@@ -167,10 +232,10 @@ export const RADIO: RadioShow = {
   schedule: "First Saturday of the month · 23:00–01:00 CET",
   description:
     "Two hours a month with no brief: unreleased dubs, records that didn't fit the club, and long stretches where nothing much happens on purpose. Archived in full on Mixcloud.",
-  url: "https://www.mixcloud.com/folioblox/",
+  url: "https://www.mixcloud.com/explorationrecordings/",
   platform: "Mixcloud",
   embedUrl:
-    "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Ffolioblox%2Flowlight-transmissions-014%2F",
+    "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=0&feed=%2Fexplorationrecordings%2Flowlight-transmissions-014%2F",
   artwork: IMAGES.booth,
 };
 
@@ -187,7 +252,7 @@ export const SHOWS: Show[] = [
     status: "on-sale",
     ticketUrl: "https://ra.co/events/1",
     setType: "3h DJ set",
-    lineup: ["Folioblox", "Ayako Mori", "Deadstock"],
+    lineup: ["Exploration Recordings", "Ayako Mori", "Deadstock"],
   },
   {
     id: "dekmantel-amsterdam",
@@ -199,7 +264,7 @@ export const SHOWS: Show[] = [
     status: "on-sale",
     ticketUrl: "https://ra.co/events/2",
     setType: "2h DJ set",
-    lineup: ["Folioblox", "Sunju Hargun"],
+    lineup: ["Exploration Recordings", "Sunju Hargun"],
   },
   {
     id: "concrete-paris",
@@ -366,8 +431,120 @@ export const RIDER: RiderSection[] = [
     title: "Admin",
     items: [
       "Fee, currency and withholding tax confirmed in writing before announcement",
-      "Artwork and billing to use the name FOLIOBLOX in caps",
+      "Artwork and billing to use the name EXPLORATION RECORDINGS in caps",
       "Recording of the set permitted with prior written agreement only",
+    ],
+  },
+];
+
+/* ─────────────────────────  ROSTER  ───────────────────────── */
+
+/**
+ * Artists listed on the About page.
+ *
+ * PLACEHOLDER: every name, handle and blurb below is invented. Replace with the
+ * real roster before launch.
+ *
+ * PHOTOS: `photo` below is a STAND-IN — the site's own stock photography, so
+ * the roster reads as finished. Drop a real file into assets/images/artists/
+ * named after the `id` (halide.jpg, low-arc.jpg …) and it overrides the
+ * stand-in automatically; nothing here needs deleting. See that folder's
+ * README. An entry with neither shows a monogram tile.
+ *
+ * Four entries fill the grid's single row exactly; a fifth wraps onto a second.
+ */
+export const ROSTER: RosterArtist[] = [
+  {
+    id: "exploration-recordings",
+    name: "Exploration Recordings",
+    role: "DJ · Producer",
+    basedIn: "Berlin, DE",
+    since: "2021",
+    blurb:
+      "The founding project. Long-form sets at the low, dubbed-out end of techno, and the Lowlight Transmissions radio show.",
+    photoPosition: "58% 26%",
+    resident: true,
+    links: [
+      { label: "Music", href: "/music" },
+      { label: "Bandcamp", href: "https://explorationrecordings.bandcamp.com" },
+    ],
+    bio: LONG_BIO,
+    highlights: [
+      { label: "Residency", value: "Lowlight Transmissions · Refuge Radio" },
+      { label: "Releases", value: "2 EPs on Nightform, 2 self-released" },
+      { label: "Sets", value: "2–6 hours · vinyl + USB" },
+    ],
+  },
+  {
+    id: "halide",
+    name: "Halide",
+    role: "Live",
+    basedIn: "Glasgow, UK",
+    since: "2023",
+    blurb:
+      "All-hardware live sets built on tape saturation and a modular rig that never plays the same way twice.",
+    photoPosition: "50% 20%",
+    links: [
+      { label: "SoundCloud", href: "https://soundcloud.com/halide" },
+      { label: "Bandcamp", href: "https://halide.bandcamp.com" },
+    ],
+    bio: [
+      "Halide plays live, and only live. The rig is a fixed set of machines — two drum boxes, a mono synth, a tape delay that has never quite been serviced — patched into a mixer and driven hard. Nothing is sequenced in advance, which means the set finds its shape somewhere in the first fifteen minutes or not at all.",
+      "That approach came out of a decade in Glasgow's back rooms, where the sound systems reward low end and punish anything fussy. The records followed the sets rather than the other way around: two EPs cut from board recordings, mastered loud, with the mistakes left in.",
+      "Joined the roster in 2023. Currently touring a version of the live set built for longer slots — closer to two hours, with far more space in the first half.",
+    ],
+    highlights: [
+      { label: "Format", value: "Live hardware only — no laptop" },
+      { label: "Releases", value: "2 EPs, both cut from board recordings" },
+      { label: "Set length", value: "60–120 minutes" },
+    ],
+  },
+  {
+    id: "low-arc",
+    name: "Low Arc",
+    role: "Producer",
+    basedIn: "Lisbon, PT",
+    since: "2023",
+    blurb:
+      "Sub-heavy electro and broken rhythm records. Two EPs on the label and a standing residency at Cru.",
+    photoPosition: "50% 24%",
+    links: [
+      { label: "SoundCloud", href: "https://soundcloud.com/low-arc" },
+      { label: "Resident Advisor", href: "https://ra.co/dj/lowarc" },
+    ],
+    bio: [
+      "Low Arc makes records for rooms with proper sub. The productions sit between electro and broken techno — drum programming that swings rather than marches, and basslines carrying the melody because nothing else is asked to.",
+      "Based in Lisbon since 2019, with a standing residency at Cru that runs long and starts slow. The residency is where most of the material gets tested: if it does not work at 2am on a floor that has heard everything, it does not get pressed.",
+      "Two EPs on the label so far, with a third in mastering. Also produces for other artists, credited and uncredited.",
+    ],
+    highlights: [
+      { label: "Residency", value: "Cru, Lisbon — monthly" },
+      { label: "Releases", value: "2 EPs on the label, third in mastering" },
+      { label: "Also", value: "Production and mix work for others" },
+    ],
+  },
+  {
+    id: "marisa-volt",
+    name: "Marisa Volt",
+    role: "DJ",
+    basedIn: "Detroit, US",
+    since: "2024",
+    blurb:
+      "Vinyl-only sets that run from Motor City electro into dub plates, often in the same hour.",
+    photoPosition: "55% 28%",
+    links: [
+      { label: "Resident Advisor", href: "https://ra.co/dj/marisavolt" },
+      { label: "Instagram", href: "https://instagram.com/marisavolt" },
+    ],
+    bio: [
+      "Marisa Volt has played vinyl only since starting out, which is less a position than a working method: the bag is packed for a specific room, and what is not in it cannot be played. Sets move from Detroit electro into dub plates and back, often inside the same hour.",
+      "Twenty years of records, a good share of them bought the week they came out, means the selection reaches further back than most. The through-line is rhythm rather than genre — anything with the right swing is fair game, whatever year it landed.",
+      "Joined the roster in 2024 and tours Europe two weekends a month, usually in the closing slot.",
+    ],
+    highlights: [
+      { label: "Format", value: "Vinyl only" },
+      { label: "Usual slot", value: "Closing" },
+      { label: "Touring", value: "Europe, two weekends a month" },
     ],
   },
 ];
@@ -382,12 +559,12 @@ export const GALLERY: GalleryItem[] = [
 /* ─────────────────────────  SITEWIDE  ───────────────────────── */
 
 export const SOCIALS: SocialLink[] = [
-  { label: "Instagram", href: "https://instagram.com/folioblox", icon: "instagram", group: "social" },
+  { label: "Instagram", href: "https://instagram.com/explorationrecordings", icon: "instagram", group: "social" },
   { label: "Resident Advisor", href: ARTIST.residentAdvisor, icon: "ra", group: "social" },
-  { label: "SoundCloud", href: "https://soundcloud.com/folioblox", icon: "soundcloud", group: "streaming" },
-  { label: "Mixcloud", href: "https://mixcloud.com/folioblox", icon: "youtube", group: "streaming" },
-  { label: "Bandcamp", href: "https://folioblox.bandcamp.com", icon: "bandcamp", group: "streaming" },
-  { label: "Spotify", href: "https://open.spotify.com/artist/folioblox", icon: "spotify", group: "streaming" },
+  { label: "SoundCloud", href: "https://soundcloud.com/explorationrecordings", icon: "soundcloud", group: "streaming" },
+  { label: "Mixcloud", href: "https://mixcloud.com/explorationrecordings", icon: "youtube", group: "streaming" },
+  { label: "Bandcamp", href: "https://explorationrecordings.bandcamp.com", icon: "bandcamp", group: "streaming" },
+  { label: "Spotify", href: "https://open.spotify.com/artist/explorationrecordings", icon: "spotify", group: "streaming" },
 ];
 
 /* ─────────────────────────  HELPERS  ───────────────────────── */

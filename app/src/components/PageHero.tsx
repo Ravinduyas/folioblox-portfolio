@@ -14,7 +14,10 @@ interface PageHeroProps {
   eyebrow: string;
   title: ReactNode;
   intro?: string;
-  image: string;
+  /** Omit for a gradient panel — used by roster artists with no press shot. */
+  image?: string;
+  /** Sits where the photo would be when there isn't one, e.g. initials. */
+  watermark?: ReactNode;
   /** object-position for the photo — pick a crop that keeps the subject clear of the text. */
   objectPosition?: string;
   /** Where the orange light-leak sits, so no two pages glow in the same place. */
@@ -45,6 +48,7 @@ export default function PageHero({
   title,
   intro,
   image,
+  watermark,
   objectPosition = "50% 25%",
   glow = "ellipse 55% 60% at 72% 40%",
   actions,
@@ -87,20 +91,30 @@ export default function PageHero({
           className="relative overflow-hidden"
           style={{ minHeight: `${height}px` }}
         >
-          <motion.img
-            src={image}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
-            style={
-              reduce
-                ? { objectPosition }
-                : { objectPosition, y: imageY, scale: imageScale, willChange: "transform" }
-            }
-            initial={reduce ? undefined : { scale: 1.16, opacity: 0 }}
-            animate={reduce ? undefined : { scale: 1.06, opacity: 1 }}
-            transition={{ duration: 1.1, ease: EASE }}
-          />
+          {image ? (
+            <motion.img
+              src={image}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
+              style={
+                reduce
+                  ? { objectPosition }
+                  : { objectPosition, y: imageY, scale: imageScale, willChange: "transform" }
+              }
+              initial={reduce ? undefined : { scale: 1.16, opacity: 0 }}
+              animate={reduce ? undefined : { scale: 1.06, opacity: 1 }}
+              transition={{ duration: 1.1, ease: EASE }}
+            />
+          ) : (
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 flex items-center justify-end bg-gradient-to-br from-[#17181f] via-[#101116] to-[#0b0c0e] pr-[8%]"
+              style={reduce ? undefined : { y: imageY }}
+            >
+              {watermark}
+            </motion.div>
+          )}
 
           {/* Left-to-right darkening so the headline always has contrast */}
           <div

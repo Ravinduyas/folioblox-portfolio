@@ -1,4 +1,13 @@
-import { Copy, Check, Download, FileText, Image as ImageIcon, Quote } from "lucide-react";
+import {
+  Compass,
+  Copy,
+  Check,
+  Download,
+  FileText,
+  Image as ImageIcon,
+  Mail,
+  Quote,
+} from "lucide-react";
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
@@ -7,6 +16,8 @@ import {
   PRESS_QUOTES,
   RIDER,
   SHORT_BIO,
+  formatShowDate,
+  pastShows,
   upcomingShows,
 } from "../data";
 import { IMAGES } from "../assets/images";
@@ -39,6 +50,8 @@ function CopyButton({ value, label }: { value: string; label: string }) {
  */
 export default function Press() {
   const nextShow = upcomingShows()[0];
+  const recentRooms = pastShows().slice(0, 4);
+  const topQuote = PRESS_QUOTES[0];
 
   return (
     <div className="min-h-screen">
@@ -134,6 +147,102 @@ export default function Press() {
               )}
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Two-minute vet — the promoter's first question is "are they credible?" */}
+      <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+        <SectionHeading
+          eyebrow="Credibility"
+          title="Vet in two minutes"
+          intro="The short version, for anyone deciding whether to make an offer. Everything below is verifiable elsewhere."
+        />
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <Reveal tilt={8}>
+            <Card className="h-full p-7">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
+                Sounds like
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-white/60">{SHORT_BIO}</p>
+              <dl className="mt-5 space-y-2.5 border-t border-white/[0.06] pt-5">
+                {[
+                  { k: "Genres", v: ARTIST.genres.join(", ") },
+                  { k: "Set length", v: "2–6 hours" },
+                  { k: "Format", v: "Vinyl + USB / hybrid" },
+                ].map((row) => (
+                  <div key={row.k} className="flex gap-3 text-xs">
+                    <dt className="w-24 shrink-0 font-mono uppercase tracking-wider text-white/30">
+                      {row.k}
+                    </dt>
+                    <dd className="text-white/65">{row.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.1} tilt={8}>
+            <Card className="h-full p-7">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
+                Rooms already played
+              </p>
+              <ul className="mt-4 space-y-3">
+                {recentRooms.map((show) => (
+                  <li key={show.id} className="flex gap-3 text-xs">
+                    <span className="w-16 shrink-0 font-mono uppercase tracking-wider text-white/30">
+                      {formatShowDate(show.date).month} {formatShowDate(show.date).year}
+                    </span>
+                    <span className="text-white/65">
+                      <span className="text-white/85">{show.venue}</span>, {show.city} —{" "}
+                      {show.event}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={ARTIST.residentAdvisor}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="open"
+                className="mt-5 inline-flex items-center gap-2 border-t border-white/[0.06] pt-5 font-mono text-[10px] uppercase tracking-wider text-white/40 transition-colors hover:text-[#f25c27]"
+              >
+                <Compass size={12} />
+                Cross-check on Resident Advisor
+              </a>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.2} tilt={8}>
+            <Card className="flex h-full flex-col p-7">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
+                What gets written
+              </p>
+              {topQuote && (
+                <>
+                  <Quote size={16} className="mt-4 text-white/20" />
+                  <blockquote className="mt-3 flex-1 font-display text-[15px] leading-relaxed text-white/85">
+                    {topQuote.quote}
+                  </blockquote>
+                  <cite className="mt-4 block font-mono text-[10px] uppercase not-italic tracking-wider text-white/35">
+                    — {topQuote.source}
+                  </cite>
+                </>
+              )}
+              <div className="mt-5 border-t border-white/[0.06] pt-5">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-white/30">
+                  Booking runs direct — no agency in the way
+                </p>
+                <a
+                  href={`mailto:${ARTIST.bookingEmail}`}
+                  className="mt-2 inline-flex items-center gap-2 font-mono text-xs text-white transition-colors hover:text-[#f25c27]"
+                >
+                  <Mail size={12} />
+                  {ARTIST.bookingEmail}
+                </a>
+              </div>
+            </Card>
+          </Reveal>
         </div>
       </section>
 

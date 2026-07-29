@@ -1,4 +1,4 @@
-# FOLIOBLOX — artist site
+# EXPLORATION RECORDINGS — artist site
 
 Web presence for an independent electronic artist, built to the approved site
 architecture: convert interest into **paid bookings**, and turn listeners into an
@@ -29,7 +29,7 @@ Source lives in [`app/`](app/), not the repo root — see **Deployment** for why
 | `/`        | Home        | Hub: who / what's new / what's next, then routes visitors out  | Both     |
 | `/music`   | Music       | Mixes & sets, releases, radio show                             | Fan      |
 | `/shows`   | Shows       | Tour dates, ticket links, past shows, RA profile               | Fan      |
-| `/about`   | About       | Artist bio, gallery                                            | Neutral  |
+| `/about`   | About       | Artist bio, roster, gallery                                    | Neutral  |
 | `/press`   | Press / EPK | Press photos, technical rider, press quotes                    | Industry |
 | `/booking` | Booking     | Inquiry form, agent / management                               | Industry |
 
@@ -38,6 +38,18 @@ contact.
 
 Deliberately **not** built yet — later phase: shop / merch, gated press area,
 blog, multi-language.
+
+The table above is generated from `SECTIONS` in
+[`app/src/data.ts`](app/src/data.ts) — the nav and footer both read it, so the
+navigation cannot drift from the approved architecture.
+
+**Documentation**
+
+- [docs/site-architecture.md](docs/site-architecture.md) — the approved
+  architecture traced to the code, audience model, what was deferred and why,
+  and the places the build knowingly diverges.
+- [docs/page-specification.md](docs/page-specification.md) — page-by-page
+  content blocks, CTAs and the booking-form fields.
 
 ## Editing content
 
@@ -50,6 +62,13 @@ Everything user-facing lives in [`app/src/data.ts`](app/src/data.ts):
 - `MIXES`, `RELEASES`, `RADIO` — the Music page.
 - `SHOWS` — one list; `upcomingShows()` / `pastShows()` split it by date, so a
   show moves into the archive on its own.
+- `ROSTER` — the artists listed on About, each with a biography page at
+  `/artists/<id>`. Every entry is a placeholder. `resident: true` flags a label
+  project. **Photos:** drop a file into
+  [`app/src/assets/images/artists/`](app/src/assets/images/artists/) named after
+  the artist's `id` (`halide.jpg`) and it appears on the card, the biography
+  hero and the sibling links — no code change. Artists without one show a
+  monogram tile.
 - `PRESS_PHOTOS`, `PRESS_QUOTES`, `RIDER`, `GALLERY`, `SOCIALS`.
 
 Images are imported through [`app/src/assets/images.ts`](app/src/assets/images.ts) so

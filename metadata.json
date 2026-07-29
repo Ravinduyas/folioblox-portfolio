@@ -1,6 +1,6 @@
 {
-  "name": "Folioblox Portfolio",
-  "description": "A high-fidelity portfolio website of a Creative Director and Product Designer, featuring stunning light-leaks, high-contrast grids, and interactive showcases.",
+  "name": "Exploration Recordings",
+  "description": "Web presence for an independent electronic artist: mixes and releases, tour dates, a self-serve press kit and direct bookings.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

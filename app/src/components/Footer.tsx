@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Cloud, Compass, Disc3, Instagram, Mail, Music2, Radio, Youtube } from "lucide-react";
-import { ARTIST, SOCIALS } from "../data";
+import { ARTIST, AUDIENCE_ACCENT, SECTIONS, SOCIALS } from "../data";
+import { LogoMark } from "./Logo";
 import NewsletterForm from "./NewsletterForm";
 
 const ICONS = {
@@ -13,13 +14,8 @@ const ICONS = {
   ra: Compass,
 } as const;
 
-const NAV = [
-  { label: "Music", to: "/music" },
-  { label: "Shows", to: "/shows" },
-  { label: "About", to: "/about" },
-  { label: "Press / EPK", to: "/press" },
-  { label: "Booking", to: "/booking" },
-];
+/** Same structure the nav uses — the architecture, encoded once. */
+const NAV = SECTIONS;
 
 export default function Footer() {
   const social = SOCIALS.filter((s) => s.group === "social");
@@ -48,9 +44,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="space-y-4">
-            <h4 className="font-display text-lg font-black tracking-[0.14em] text-white">
-              {ARTIST.name}
-            </h4>
+            <div className="flex items-center gap-3">
+              <LogoMark size={40} />
+              <h4 className="font-display text-base font-black leading-snug tracking-[0.12em] text-white">
+                {ARTIST.name}
+              </h4>
+            </div>
             <p className="max-w-xs text-xs leading-relaxed">
               {ARTIST.role} · {ARTIST.basedIn}
               <br />
@@ -82,7 +81,16 @@ export default function Footer() {
             <ul className="space-y-2 text-xs">
               {NAV.map((item) => (
                 <li key={item.to}>
-                  <Link to={item.to} className="transition-colors hover:text-[#f25c27]">
+                  <Link
+                    to={item.to}
+                    title={item.contents.join(" · ")}
+                    className="group flex items-center gap-2 transition-colors hover:text-[#f25c27]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-1 w-1 shrink-0 rounded-full opacity-60 transition-opacity group-hover:opacity-100"
+                      style={{ backgroundColor: AUDIENCE_ACCENT[item.audience] }}
+                    />
                     {item.label}
                   </Link>
                 </li>

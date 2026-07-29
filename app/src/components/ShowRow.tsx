@@ -42,7 +42,7 @@ export default function ShowRow({ show, past = false }: { show: Show; past?: boo
         </p>
         <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-white/30">
           {show.setType}
-          {show.lineup ? ` · w/ ${show.lineup.filter((n) => n !== "Folioblox").join(", ")}` : ""}
+          {show.lineup ? ` · w/ ${show.lineup.filter((n) => n !== "Exploration Recordings").join(", ")}` : ""}
         </p>
       </div>
 

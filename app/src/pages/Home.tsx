@@ -130,7 +130,7 @@ export default function Home() {
               className="relative z-10 flex flex-col px-8 py-10 md:px-12 md:py-14 lg:px-16"
             >
               <div className="flex flex-1 items-start justify-between gap-4">
-                <div className="flex flex-col" style={{ maxWidth: "52%" }}>
+                <div className="flex flex-col" style={{ maxWidth: "60%" }}>
                   <motion.p
                     variants={reduce ? undefined : item}
                     className="mb-3 font-mono font-semibold uppercase tracking-[0.20em] text-[#f25c27]"
@@ -140,8 +140,8 @@ export default function Home() {
                   </motion.p>
                   <motion.h1
                     variants={reduce ? undefined : item}
-                    className="font-display font-extrabold leading-[0.88] tracking-tight text-white"
-                    style={{ fontSize: "clamp(3.2rem, 8vw, 6rem)" }}
+                    className="font-display font-extrabold leading-[0.9] tracking-tight text-white"
+                    style={{ fontSize: "clamp(2.1rem, 5.4vw, 4.1rem)" }}
                   >
                     {ARTIST.name}
                   </motion.h1>

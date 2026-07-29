@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { IMAGES } from "../assets/images";
-import { ARTIST, FACTS, GALLERY, LONG_BIO, SHORT_BIO } from "../data";
+import { artistPhoto } from "../assets/artists";
+import { ARTIST, FACTS, GALLERY, LONG_BIO, ROSTER, SHORT_BIO } from "../data";
 import PageHero from "../components/PageHero";
+import { LogoMark } from "../components/Logo";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
 import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
+
+/** "Tunnel Sound System" → "TSS". Used on roster cards with no press shot. */
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+}
 
 export default function About() {
   return (
@@ -73,6 +85,110 @@ export default function About() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Roster */}
+      <section
+        id="roster"
+        className="mx-auto max-w-7xl scroll-mt-24 border-b border-white/[0.05] px-6 py-16 md:px-10"
+      >
+        <SectionHeading
+          eyebrow="Roster"
+          title="Artists"
+          intro={`${ROSTER.length} artists on the label. Each one books and releases independently — get in touch through their own channels, or through booking for the label projects.`}
+        />
+
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+          {ROSTER.map((artist, i) => (
+            <Reveal key={artist.id} delay={i * 0.07} tilt={10}>
+              <TiltCard intensity={9} lift={14} className="h-full">
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214] transition-colors hover:border-[#f25c27]/25">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#0d0e10]">
+                    {artistPhoto(artist.id, artist.photo) ? (
+                      <img
+                        src={artistPhoto(artist.id, artist.photo)}
+                        alt={artist.name}
+                        className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                        style={{ objectPosition: artist.photoPosition ?? "50% 30%" }}
+                      />
+                    ) : (
+                      /* No press shot yet — monogram tile rather than a stock face */
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#16171d] to-[#0d0e10]">
+                        <span className="font-display text-3xl font-black tracking-tight text-white/12 transition-colors duration-500 group-hover:text-white/20">
+                          {initials(artist.name)}
+                        </span>
+                        <LogoMark
+                          size={18}
+                          className="absolute bottom-2.5 right-2.5 opacity-25 transition-opacity duration-500 group-hover:opacity-60"
+                        />
+                      </div>
+                    )}
+                    {artist.resident && (
+                      <span className="absolute left-2.5 top-2.5 rounded-full bg-black/70 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-[#f25c27] backdrop-blur-md">
+                        Label project
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
+                      <Link
+                        to={`/artists/${artist.id}`}
+                        className="transition-colors hover:text-[#f25c27]"
+                      >
+                        {artist.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-wider text-[#f25c27]">
+                      {artist.role}
+                    </p>
+                    <p className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-white/30">
+                      {artist.basedIn} · {artist.since}
+                    </p>
+                    <p className="mt-2.5 line-clamp-3 flex-1 text-xs leading-relaxed text-white/50">
+                      {artist.blurb}
+                    </p>
+
+                    <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
+                      <Link
+                        to={`/artists/${artist.id}`}
+                        className="rounded-full border border-[#f25c27]/40 bg-[#f25c27]/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-[#f25c27] transition-all hover:bg-[#f25c27]/20"
+                      >
+                        Biography
+                      </Link>
+                      {artist.links.map((link) =>
+                        link.href.startsWith("/") ? (
+                          <Link
+                            key={link.label}
+                            to={link.href}
+                            className="rounded-full border border-white/12 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
+                          >
+                            {link.label}
+                          </Link>
+                        ) : (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            data-cursor="open"
+                            className="rounded-full border border-white/12 bg-white/5 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
+                          >
+                            {link.label}
+                          </a>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </TiltCard>
+            </Reveal>
+          ))}
+        </div>
+
+        <p className="mt-8 font-mono text-[10px] uppercase tracking-wider text-white/25">
+          Demos: {ARTIST.pressEmail} · one link, no attachments
+        </p>
       </section>
 
       {/* Gallery */}

@@ -101,10 +101,13 @@ export default function CustomCursor() {
         aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center justify-center rounded-full border"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+        /* Radius stays with the `rounded-full` class — animating borderRadius
+           here would mix px and % units, which motion can't interpolate, and
+           the half-resolved inline value squared the ring off. At 2×26 the
+           same class renders the text caret as a thin pill, which is right. */
         animate={{
           width: isTextCaret ? 2 : config.size,
           height: isTextCaret ? 26 : config.size,
-          borderRadius: isTextCaret ? 1 : "50%",
           opacity: visible ? 1 : 0,
           scale: pressed ? 0.86 : 1,
           borderColor: config.filled ? "rgba(242,92,39,0.85)" : "rgba(255,255,255,0.45)",

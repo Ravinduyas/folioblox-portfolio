@@ -16,15 +16,30 @@ import Home from "./pages/Home";
 import Music from "./pages/Music";
 import Shows from "./pages/Shows";
 import About from "./pages/About";
+import ArtistDetail from "./pages/ArtistDetail";
 import Press from "./pages/Press";
 import Booking from "./pages/Booking";
 
-/** Land at the top on navigation, but leave in-page #anchors alone. */
+/**
+ * Land at the top on navigation. With a #hash, wait a frame for the incoming
+ * page to mount — the client router bypasses the browser's own hash scrolling,
+ * so /about#roster would otherwise land nowhere.
+ */
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    if (!hash) window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      return;
+    }
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ block: "start" });
+    });
+    return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
+
   return null;
 }
 
@@ -37,6 +52,7 @@ function AnimatedRoutes() {
     ["/music", <Music />],
     ["/shows", <Shows />],
     ["/about", <About />],
+    ["/artists/:artistId", <ArtistDetail />],
     ["/press", <Press />],
     ["/booking", <Booking />],
     ["*", <Home />],
