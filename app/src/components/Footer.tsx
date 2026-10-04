@@ -12,6 +12,7 @@ const ICONS = {
   youtube: Radio,
   mail: Mail,
   ra: Compass,
+  proton: Radio,
 } as const;
 
 /** Same structure the nav uses — the architecture, encoded once. */
@@ -31,10 +32,10 @@ export default function Footer() {
               Mailing list
             </p>
             <h4 className="mt-2 font-display text-xl font-bold text-white">
-              New music and dates, first.
+              New releases, first.
             </h4>
             <p className="mt-1.5 text-xs leading-relaxed">
-              A few emails a year — tour dates, releases, radio. No algorithm in between.
+              A few emails a year — new releases and pre-orders. No algorithm in between.
             </p>
           </div>
           <NewsletterForm />
@@ -122,7 +123,7 @@ export default function Footer() {
             <h5 className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
               Contact
             </h5>
-            <p className="text-xs">Bookings direct — no agency.</p>
+            <p className="text-xs">Bookings for every roster artist, through the label.</p>
             <a
               href={`mailto:${ARTIST.bookingEmail}`}
               className="inline-flex items-center gap-2 font-mono text-xs text-white transition-colors hover:text-[#f25c27]"
@@ -146,12 +147,12 @@ export default function Footer() {
           </p>
           <div className="flex gap-4">
             <a
-              href={ARTIST.residentAdvisor}
+              href={ARTIST.profileUrl}
               target="_blank"
               rel="noreferrer"
               className="font-bold text-[#f25c27]"
             >
-              RA PROFILE
+              PROTON RADIO
             </a>
             <span className="text-white/20">|</span>
             <span className="font-bold text-emerald-400">TAKING BOOKINGS</span>

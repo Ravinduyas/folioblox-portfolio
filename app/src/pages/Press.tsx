@@ -199,14 +199,14 @@ export default function Press() {
                 ))}
               </ul>
               <a
-                href={ARTIST.residentAdvisor}
+                href={ARTIST.profileUrl}
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="open"
                 className="mt-5 inline-flex items-center gap-2 border-t border-white/[0.06] pt-5 font-mono text-[10px] uppercase tracking-wider text-white/40 transition-colors hover:text-[#f25c27]"
               >
                 <Compass size={12} />
-                Cross-check on Resident Advisor
+                Cross-check on Proton Radio
               </a>
             </Card>
           </Reveal>

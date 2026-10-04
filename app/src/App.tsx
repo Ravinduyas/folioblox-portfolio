@@ -4,7 +4,7 @@
  */
 
 import { ReactNode, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 import { BookingProvider } from "./context/BookingContext";
 import Nav from "./components/Nav";
@@ -13,12 +13,16 @@ import ScrollProgress from "./components/ScrollProgress";
 import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/motion/PageTransition";
 import Home from "./pages/Home";
-import Music from "./pages/Music";
-import Shows from "./pages/Shows";
-import About from "./pages/About";
+import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
+import Releases from "./pages/Releases";
+import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
-import Press from "./pages/Press";
 import Booking from "./pages/Booking";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Shows from "./pages/Shows";
+import Press from "./pages/Press";
 
 /**
  * Land at the top on navigation. With a #hash, wait a frame for the incoming
@@ -49,12 +53,19 @@ function AnimatedRoutes() {
 
   const pages: [string, ReactNode][] = [
     ["/", <Home />],
-    ["/music", <Music />],
-    ["/shows", <Shows />],
-    ["/about", <About />],
+    ["/news", <News />],
+    ["/news/:newsId", <NewsDetail />],
+    ["/releases", <Releases />],
+    ["/artists", <Artists />],
     ["/artists/:artistId", <ArtistDetail />],
-    ["/press", <Press />],
     ["/booking", <Booking />],
+    ["/about", <About />],
+    ["/contact", <Contact />],
+    // Not in the nav — left over from the single-artist site.
+    ["/shows", <Shows />],
+    ["/press", <Press />],
+    // Old URL — Releases replaced the Music page.
+    ["/music", <Navigate to="/releases" replace />],
     ["*", <Home />],
   ];
 

@@ -97,6 +97,15 @@
   animation-play-state: paused;
 }
 
+/* Sliders scroll natively (touch, trackpad) but show arrows, not a scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom cursor — the class is added by <CustomCursor> only on fine pointers,
    so touch and coarse-pointer devices never lose the native cursor. */
 .has-custom-cursor,

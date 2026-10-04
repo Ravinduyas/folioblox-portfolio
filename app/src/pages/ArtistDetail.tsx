@@ -1,31 +1,24 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
-import { ARTIST, ROSTER } from "../data";
+import { ARTIST, ROSTER, releasesFor } from "../data";
 import { artistPhoto } from "../assets/artists";
+import { initials } from "../components/ArtistCard";
 import PageHero from "../components/PageHero";
+import ReleaseCard from "../components/ReleaseCard";
 import { LogoMark } from "../components/Logo";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
 import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
 
-/** "Tunnel Sound System" → "TSS" */
-function initials(name: string) {
-  return name
-    .split(/\s+/)
-    .map((word) => word[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-}
-
 /**
- * Biography page for one roster artist. Reached from the About roster; each
- * artist keeps their own links, because they book and release independently.
+ * Biography page for one roster artist, with their releases on the label.
+ * Each artist keeps their own links, because they release independently.
  */
 export default function ArtistDetail() {
   const { artistId } = useParams();
   const artist = ROSTER.find((entry) => entry.id === artistId);
   const others = ROSTER.filter((entry) => entry.id !== artistId);
+  const releases = artist ? releasesFor(artist.name) : [];
 
   if (!artist) {
     return (
@@ -38,7 +31,7 @@ export default function ArtistDetail() {
           The link may be out of date, or the artist may have left the roster.
         </p>
         <div className="mt-7">
-          <PrimaryLink to="/about#roster">Back to the roster</PrimaryLink>
+          <PrimaryLink to="/artists">Back to the roster</PrimaryLink>
         </div>
       </div>
     );
@@ -47,7 +40,7 @@ export default function ArtistDetail() {
   return (
     <div className="min-h-screen">
       <PageHero
-        eyebrow={`${artist.role} · roster`}
+        eyebrow={`${artist.role} · ${ARTIST.displayName}`}
         title={artist.name}
         intro={artist.blurb}
         image={artistPhoto(artist.id, artist.photo)}
@@ -61,8 +54,8 @@ export default function ArtistDetail() {
         height={420}
         actions={
           <>
-            <PrimaryLink to="/booking">Book {artist.name}</PrimaryLink>
-            <GhostLink to="/about#roster">All artists</GhostLink>
+            <PrimaryLink to={`/booking?artist=${artist.id}`}>Book {artist.name}</PrimaryLink>
+            <GhostLink to="/artists">All artists</GhostLink>
           </>
         }
         meta={
@@ -71,7 +64,7 @@ export default function ArtistDetail() {
               { label: "Based in", value: artist.basedIn },
               { label: "On the roster", value: `Since ${artist.since}` },
               { label: "Role", value: artist.role },
-              ...(artist.resident ? [{ label: "Status", value: "Label project" }] : []),
+              ...(artist.resident ? [{ label: "Status", value: "Co-founder" }] : []),
             ].map((fact) => (
               <div key={fact.label} className="flex flex-col gap-[5px]">
                 <span
@@ -95,13 +88,13 @@ export default function ArtistDetail() {
       {/* Biography */}
       <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
             <Eyebrow>Biography</Eyebrow>
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-white">
               {artist.name}
             </h2>
             <p className="mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-wider text-white/30">
-              Free to reprint · credit the label
+              Free to reprint · credit the artist
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2">
@@ -158,23 +151,35 @@ export default function ArtistDetail() {
         </div>
       </section>
 
-      {/* Booking — the point of the page */}
+      {/* Releases on the label */}
+      {releases.length > 0 && (
+        <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+          <SectionHeading eyebrow="Discography" title={`On ${ARTIST.displayName}`} />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {releases.map((release, i) => (
+              <Reveal key={release.id} delay={i * 0.1} tilt={8} className="h-full">
+                <ReleaseCard release={release} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Booking */}
       <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
         <Reveal>
           <Card className="grid items-center gap-8 p-8 md:grid-cols-12 md:p-10">
             <div className="md:col-span-8">
               <Eyebrow>Booking</Eyebrow>
               <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-white md:text-3xl">
-                Book {artist.name} direct.
+                Book {artist.name}.
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/50">
-                {artist.resident
-                  ? `Enquiries come straight to the artist — availability and a fee back ${ARTIST.responseTime}.`
-                  : `${artist.name} books independently. Send the enquiry through the label and it goes straight to them — availability and a fee back ${ARTIST.responseTime}.`}
+                {`Send the enquiry through the label and it goes straight to ${artist.name} — availability and a fee back ${ARTIST.responseTime}.`}
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
-              <PrimaryLink to="/booking">Booking enquiry</PrimaryLink>
+              <PrimaryLink to={`/booking?artist=${artist.id}`}>Booking enquiry</PrimaryLink>
               <a
                 href={`mailto:${ARTIST.bookingEmail}`}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all hover:border-[#f25c27]/40 hover:bg-white/10"
@@ -194,7 +199,7 @@ export default function ArtistDetail() {
           title="Also on the label"
           action={
             <Link
-              to="/about#roster"
+              to="/artists"
               className="group inline-flex items-center gap-1.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
             >
               <ArrowLeft

@@ -1,9 +1,12 @@
 import { FormEvent, useState } from "react";
 import { CheckCircle2, SendHorizontal } from "lucide-react";
 import { motion } from "motion/react";
-import { ARTIST } from "../data";
+import { useSearchParams } from "react-router-dom";
+import { ARTIST, ROSTER } from "../data";
 
 export interface BookingEnquiry {
+  /** Roster id, or "" when the booker hasn't chosen yet. */
+  artist: string;
   name: string;
   organisation: string;
   email: string;
@@ -19,6 +22,7 @@ export interface BookingEnquiry {
 }
 
 const EMPTY: BookingEnquiry = {
+  artist: "",
   name: "",
   organisation: "",
   email: "",
@@ -67,7 +71,10 @@ function Field({
 }
 
 export default function BookingForm({ compact = false }: { compact?: boolean }) {
-  const [form, setForm] = useState<BookingEnquiry>(EMPTY);
+  // /booking?artist=junior-sl arrives with that artist already chosen.
+  const [params] = useSearchParams();
+  const preselected = ROSTER.some((a) => a.id === params.get("artist")) ? params.get("artist")! : "";
+  const [form, setForm] = useState<BookingEnquiry>({ ...EMPTY, artist: preselected });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -112,6 +119,12 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           </p>
           <div className="space-y-1 text-[12px] text-white/50">
             <p>
+              • Artist:{" "}
+              <span className="font-medium text-white">
+                {ROSTER.find((a) => a.id === form.artist)?.name ?? "Not decided"}
+              </span>
+            </p>
+            <p>
               • Event: <span className="font-medium text-white">{form.event || "—"}</span>
             </p>
             <p>
@@ -142,6 +155,21 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <Field label="Artist">
+        <select
+          value={form.artist}
+          onChange={(e) => set("artist", e.target.value)}
+          className={`${inputClass} bg-[#121318]`}
+        >
+          <option value="">Not sure yet — recommend someone</option>
+          {ROSTER.map((artist) => (
+            <option key={artist.id} value={artist.id}>
+              {artist.name} · {artist.basedIn}
+            </option>
+          ))}
+        </select>
+      </Field>
+
       <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2"}`}>
         <Field label="Your name" required>
           <input
@@ -200,7 +228,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
             required
             value={form.city}
             onChange={(e) => set("city", e.target.value)}
-            placeholder="Berlin, DE"
+            placeholder="Colombo, LK"
             className={inputClass}
           />
         </Field>

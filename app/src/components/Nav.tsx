@@ -4,12 +4,10 @@ import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { ARTIST, AUDIENCE_ACCENT, SECTIONS } from "../data";
 import { LogoMark } from "./Logo";
-import Magnetic from "./motion/Magnetic";
 
 /**
- * Nav order is the architecture's order — fan-facing, then the neutral bridge,
- * then industry — and comes from SECTIONS so the two cannot diverge. Booking
- * is excluded here because it rides as the standing CTA.
+ * News · Releases · Artists · Bookings · About Us · Contact Us — straight from
+ * SECTIONS, so the nav and footer cannot diverge.
  */
 const LINKS = SECTIONS.filter((section) => !section.navHidden);
 
@@ -32,46 +30,27 @@ export default function Nav() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm text-white/60 lg:flex">
-          {LINKS.map(({ label, to, audience, purpose }, i) => (
-            <div key={to} className="flex items-center gap-5">
-              {/* Divider where the architecture hands over from fans to industry */}
-              {i > 0 && LINKS[i - 1].audience !== audience && (
-                <span aria-hidden="true" className="h-3 w-px bg-white/12" />
-              )}
-              <Link
-                to={to}
-                title={purpose}
-                className={`relative py-1 transition-colors hover:text-white ${
-                  isActive(to) ? "font-medium text-white" : ""
-                }`}
-              >
-                {label}
-                {isActive(to) && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full"
-                    style={{ backgroundColor: AUDIENCE_ACCENT[audience] }}
-                  />
-                )}
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        <div className="hidden lg:flex">
-          <Magnetic strength={0.28}>
+        <div className="hidden items-center gap-7 text-sm text-white/60 lg:flex">
+          {LINKS.map(({ label, to, audience, purpose }) => (
             <Link
-              to="/booking"
-              className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-all hover:border-[#f25c27]/40 hover:bg-white/10"
+              key={to}
+              to={to}
+              title={purpose}
+              className={`relative whitespace-nowrap py-1 transition-colors hover:text-white ${
+                isActive(to) ? "font-medium text-white" : ""
+              }`}
             >
-              Booking
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#f25c27] text-xs font-bold text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:rotate-[-45deg]">
-                →
-              </span>
+              {label}
+              {isActive(to) && (
+                <motion.span
+                  layoutId="nav-underline"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full"
+                  style={{ backgroundColor: AUDIENCE_ACCENT[audience] }}
+                />
+              )}
             </Link>
-          </Magnetic>
+          ))}
         </div>
 
         <button
@@ -112,13 +91,6 @@ export default function Nav() {
                   </span>
                 </Link>
               ))}
-              <Link
-                to="/booking"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 rounded-full bg-[#f25c27] py-2.5 text-center text-sm font-semibold text-white"
-              >
-                Booking
-              </Link>
             </div>
           </motion.div>
         )}

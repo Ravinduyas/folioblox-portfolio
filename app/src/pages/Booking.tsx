@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { Check, Clock, Download, Mail, UserRound } from "lucide-react";
+import { Check, Clock, Mail, UserRound, Users } from "lucide-react";
 import { motion } from "motion/react";
 import { IMAGES } from "../assets/images";
-import { ARTIST } from "../data";
+import { ARTIST, ROSTER } from "../data";
 import BookingForm from "../components/BookingForm";
 import PageHero from "../components/PageHero";
 import Reveal, { EASE } from "../components/motion/Reveal";
-import { downloadRider } from "../lib/downloads";
 import { Card } from "../components/ui";
 
 const CHECKLIST = [
+  "Which artist — or the kind of set you need, and we'll recommend",
   "Date, city and venue (or the shortlist you're choosing between)",
   "Room capacity and expected attendance",
   "Set length and slot — opening, peak, closing, all-night",
@@ -25,9 +25,9 @@ export default function Booking() {
     <div className="min-h-screen">
       {/* Header */}
       <PageHero
-        eyebrow="Booking"
-        title="Book direct."
-        intro={`${ARTIST.displayName} is independent — enquiries go straight to the artist, and answers come back ${ARTIST.responseTime} with availability and a fee.`}
+        eyebrow="Bookings"
+        title="Book an artist."
+        intro={`Bring an ${ARTIST.displayName} artist to your event. Enquiries come straight to the label, and answers come back ${ARTIST.responseTime} with availability and a fee.`}
         image={IMAGES.boothPov}
         objectPosition="45% 35%"
         glow="ellipse 46% 56% at 82% 46%"
@@ -36,7 +36,7 @@ export default function Booking() {
           <div className="flex flex-wrap items-end gap-x-9 gap-y-4">
             {[
               { label: "Reply time", value: ARTIST.responseTime },
-              { label: "Representation", value: "Independent — no agency" },
+              { label: "Roster", value: `${ROSTER.length} artists` },
               { label: "Direct", value: ARTIST.bookingEmail },
             ].map((fact) => (
               <div key={fact.label} className="flex flex-col gap-[5px]">
@@ -152,11 +152,11 @@ export default function Booking() {
               ) : (
                 <>
                   <h3 className="mt-3 font-display text-lg font-bold text-white">
-                    No agency. No gatekeeper.
+                    Booked through the label.
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/50">
-                    Everything is handled directly. If that changes, agent and management details
-                    will appear here.
+                    Bookings for every roster artist are handled by the label directly. If an
+                    artist signs with an agency, their details will appear here.
                   </p>
                   <a
                     href={`mailto:${ARTIST.bookingEmail}`}
@@ -173,34 +173,28 @@ export default function Booking() {
             <Reveal direction="left" delay={0.24}>
             <Card hover className="p-7">
               <div className="flex items-center gap-2">
-                <Download size={14} className="text-[#f25c27]" />
+                <Users size={14} className="text-[#f25c27]" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
-                  Before you ask
+                  The roster
                 </span>
               </div>
               <h3 className="mt-3 font-display text-lg font-bold text-white">
-                The rider is already public.
+                Not sure who to book?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                Booth spec, sound and hospitality — read it before offering, so nothing derails the
-                contract later.
+                Every artist page has a full biography and their releases on the label — or leave
+                the artist blank and we'll recommend someone for the room.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <motion.button
-                  onClick={downloadRider}
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-5 py-2.5 text-xs font-medium text-white transition-colors hover:border-[#f25c27]/40 hover:bg-white/10"
-                >
-                  <Download size={13} />
-                  Technical rider
-                </motion.button>
-                <Link
-                  to="/press"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-5 py-2.5 text-xs font-medium text-white transition-all hover:border-[#f25c27]/40 hover:bg-white/10"
-                >
-                  Full press kit
-                </Link>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {ROSTER.map((artist) => (
+                  <Link
+                    key={artist.id}
+                    to={`/artists/${artist.id}`}
+                    className="rounded-full border border-white/12 bg-white/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
+                  >
+                    {artist.name}
+                  </Link>
+                ))}
               </div>
             </Card>
             </Reveal>

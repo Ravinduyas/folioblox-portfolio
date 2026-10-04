@@ -62,10 +62,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             Let's get a date in.
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-white/50">
-            Direct to {ARTIST.displayName} — no agency in between. Everything a promoter needs is
-            on the{" "}
-            <Link to="/press" onClick={onClose} className="text-[#f25c27] hover:underline">
-              press kit
+            Straight to {ARTIST.displayName}. Every artist's biography and releases are on the{" "}
+            <Link to="/artists" onClick={onClose} className="text-[#f25c27] hover:underline">
+              roster
             </Link>
             .
           </p>

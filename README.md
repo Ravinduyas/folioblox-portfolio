@@ -24,14 +24,20 @@ Source lives in [`app/`](app/), not the repo root — see **Deployment** for why
 
 ## Structure
 
-| Route      | Page        | Contains                                                      | Audience |
-| ---------- | ----------- | ------------------------------------------------------------- | -------- |
-| `/`        | Home        | Hub: who / what's new / what's next, then routes visitors out  | Both     |
-| `/music`   | Music       | Mixes & sets, releases, radio show                             | Fan      |
-| `/shows`   | Shows       | Tour dates, ticket links, past shows, RA profile               | Fan      |
-| `/about`   | About       | Artist bio, roster, gallery                                    | Neutral  |
-| `/press`   | Press / EPK | Press photos, technical rider, press quotes                    | Industry |
-| `/booking` | Booking     | Inquiry form, agent / management                               | Industry |
+| Route          | Page        | Contains                                                        |
+| -------------- | ----------- | --------------------------------------------------------------- |
+| `/`            | Home        | Auto-sliding news hero, latest releases, the label, artists    |
+| `/news`        | News        | All label news; each story at `/news/:id`                      |
+| `/releases`    | Releases    | Full catalogue — liner notes, tracklists, buy / stream links    |
+| `/artists`     | Artists     | Roster; each artist's bio and releases at `/artists/:id`       |
+| `/booking`     | Bookings    | Inquiry form (pre-select an artist with `?artist=<id>`)        |
+| `/about`       | About Us    | Label story, sound, catalogue timeline, founders                |
+| `/contact`     | Contact Us  | Message form, press / bookings / demo contacts                  |
+
+Label facts, releases, tracklists and artist bios come from the label's
+[Proton Radio catalogue](https://www.protonradio.com/labels/4587/exploration-recordings).
+`/shows` and `/press` are left over from the earlier single-artist site and
+are not linked from the nav; `/music` redirects to `/releases`.
 
 Sitewide (footer, every page): newsletter signup, social & streaming links,
 contact.

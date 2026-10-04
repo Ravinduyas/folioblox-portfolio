@@ -29,6 +29,10 @@ import crowdBooth from "./images/site/crowd-booth.jpg";
 import crowdHands from "./images/site/crowd-hands.jpg";
 import crowdDance from "./images/site/crowd-dance.jpg";
 
+/* Release artwork — see images/releases/ (from the label's Proton Radio catalogue) */
+import coverER001 from "./images/releases/er001-time-machine.jpg";
+import coverER002 from "./images/releases/er002-liquid-aura.jpg";
+
 export const IMAGES = {
   logo,
 
@@ -60,4 +64,8 @@ export const IMAGES = {
   crowdBooth,
   crowdHands,
   crowdDance,
+
+  /* Release artwork */
+  coverER001,
+  coverER002,
 };

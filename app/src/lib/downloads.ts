@@ -28,7 +28,7 @@ export function downloadBio() {
     rule("BILLING"),
     `Billing name: ${ARTIST.name} (all caps)`,
     `Genres: ${ARTIST.genres.join(", ")}`,
-    `Resident Advisor: ${ARTIST.residentAdvisor}`,
+    `Proton Radio: ${ARTIST.profileUrl}`,
     "",
     rule("CONTACT"),
     `Bookings: ${ARTIST.bookingEmail}`,

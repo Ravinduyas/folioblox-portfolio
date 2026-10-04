@@ -1,44 +1,55 @@
 export type Platform = "SoundCloud" | "Mixcloud" | "Bandcamp" | "YouTube" | "Spotify";
 
-/** A mix, live set or radio episode — always hosted on a platform, embedded here. */
-export interface Mix {
-  id: string;
+export interface Track {
   title: string;
-  series: string;
-  platform: Platform;
-  /** Iframe src used by <EmbedPlayer>. Replace with the real embed URL. */
-  embedUrl: string;
-  /** Canonical page on the platform — used for the "open on …" fallback. */
-  url: string;
-  date: string;
+  /** "Original Mix", "Rockka Remix" … */
+  version: string;
+  /** Remixer, when the version is a remix — links to their roster page. */
+  remixer?: string;
+  /** "7:40" */
   duration: string;
-  artwork: string;
-  tags: string[];
 }
 
+/** A label release, as catalogued on Proton Radio. */
 export interface Release {
   id: string;
   title: string;
-  label: string;
+  /** "ER002" */
   catalogue: string;
-  year: string;
-  format: string;
+  /** ISO release date. */
+  date: string;
+  /** ISO pre-order date, where there was one. */
+  preOrderDate?: string;
+  /** Headline (original) artists, in billing order. */
+  artists: string[];
+  genre: string;
   artwork: string;
-  platform: Platform;
-  embedUrl: string;
+  /** Liner notes, one string per paragraph. */
+  description: string[];
+  /** The release on Proton Radio — buy / stream links live there. */
   url: string;
-  tracks: string[];
+  tracks: Track[];
 }
 
-export interface RadioShow {
-  name: string;
-  station: string;
-  schedule: string;
-  description: string;
-  url: string;
-  platform: Platform;
-  embedUrl: string;
-  artwork: string;
+/** A label announcement — the homepage hero slides through the newest. */
+export interface NewsItem {
+  id: string;
+  /** ISO date. */
+  date: string;
+  category: "Release" | "Pre-order" | "Label";
+  title: string;
+  /** One or two sentences — shown on the slider and the news cards. */
+  excerpt: string;
+  /** Full story, one string per paragraph. */
+  body: string[];
+  /** Wide backdrop photo for the hero slide. */
+  image: string;
+  /** objectPosition for the backdrop crop. */
+  imagePosition?: string;
+  /** Square artwork shown beside the headline, usually a release cover. */
+  cover?: string;
+  /** Catalogue release this story is about, if any. */
+  releaseId?: string;
 }
 
 export type ShowStatus = "on-sale" | "sold-out" | "tba";
@@ -89,7 +100,7 @@ export interface RosterArtist {
   photo?: string;
   /** object-position for the crop, e.g. "60% 22%". Defaults to centre-ish. */
   photoPosition?: string;
-  /** Flags the flagship project so it sorts and reads first. */
+  /** Flags the label's founders so they sort and read first. */
   resident?: boolean;
   links: { label: string; href: string }[];
   /** Long-form biography, one string per paragraph — their own page. */
@@ -107,7 +118,7 @@ export interface SocialLink {
   label: string;
   href: string;
   /** lucide-react icon name resolved in the Footer/Nav. */
-  icon: "instagram" | "soundcloud" | "bandcamp" | "spotify" | "youtube" | "mail" | "ra";
+  icon: "instagram" | "soundcloud" | "bandcamp" | "spotify" | "youtube" | "mail" | "ra" | "proton";
   group: "social" | "streaming";
 }
 
@@ -126,7 +137,7 @@ export interface SiteSection {
   contents: string[];
   /** The job this section does, in the architecture's terms. */
   purpose: string;
-  /** Hidden from the main nav (it lives as the standing CTA instead). */
+  /** Hidden from the main nav (still listed in the footer). */
   navHidden?: boolean;
 }
 

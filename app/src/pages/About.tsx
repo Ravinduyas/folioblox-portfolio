@@ -1,39 +1,46 @@
 import { Link } from "react-router-dom";
 import { IMAGES } from "../assets/images";
-import { artistPhoto } from "../assets/artists";
-import { ARTIST, FACTS, GALLERY, LONG_BIO, ROSTER, SHORT_BIO } from "../data";
+import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, billing, formatShowDate } from "../data";
+import ArtistCard from "../components/ArtistCard";
 import PageHero from "../components/PageHero";
-import { LogoMark } from "../components/Logo";
 import Reveal from "../components/motion/Reveal";
-import TiltCard from "../components/motion/TiltCard";
 import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
 
-/** "Tunnel Sound System" → "TSS". Used on roster cards with no press shot. */
-function initials(name: string) {
-  return name
-    .split(/\s+/)
-    .map((word) => word[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-}
+/** What the label signs, in its own words (from the label statement). */
+const PILLARS = [
+  {
+    title: "Boundary-pushing",
+    text: "A platform for visionary artists — tracks that transcend the ordinary rather than follow the formula.",
+  },
+  {
+    title: "Deep & driving",
+    text: "Progressive house rooted in hypnotic rhythms, deep textures and emotional storytelling.",
+  },
+  {
+    title: "Crafted with intention",
+    text: "Only the most unique, specially crafted records — exploration through sound, never filler.",
+  },
+];
 
 export default function About() {
+  const founders = ROSTER.filter((artist) => artist.resident);
+  // Oldest first — the label's story in order.
+  const timeline = [...RELEASES].reverse();
+
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <PageHero
-        eyebrow="The artist"
+        eyebrow="About us"
         title={ARTIST.displayName}
         intro={SHORT_BIO}
-        image={IMAGES.portraitShades}
-        objectPosition="52% 30%"
+        image={IMAGES.handsBw}
+        objectPosition="52% 40%"
         glow="ellipse 52% 58% at 74% 36%"
         height={460}
         actions={
           <>
-            <PrimaryLink to="/music">Hear a set</PrimaryLink>
-            <GhostLink to="/press">Press kit</GhostLink>
+            <PrimaryLink to="/releases">Hear the releases</PrimaryLink>
+            <GhostLink to="/contact">Contact us</GhostLink>
           </>
         }
         meta={
@@ -58,16 +65,16 @@ export default function About() {
         }
       />
 
-      {/* Biography */}
+      {/* Story */}
       <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
         <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <Eyebrow>Biography</Eyebrow>
+          <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
+            <Eyebrow>Our story</Eyebrow>
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-white">
-              Melbourne warehouses to Berlin back rooms.
+              Not just a label — a movement.
             </h2>
             <p className="mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-wider text-white/30">
-              Long-form bio · free to reprint
+              {ARTIST.basedIn} · since {ARTIST.founded}
             </p>
           </div>
           <div className="space-y-5 text-base leading-relaxed text-white/55 md:col-span-8">
@@ -76,180 +83,114 @@ export default function About() {
                 <p>{para}</p>
               </Reveal>
             ))}
-            <p className="text-sm text-white/35">
-              Need this as a file? The short and long bios are downloadable on the{" "}
-              <Link to="/press" className="text-[#f25c27] hover:underline">
-                press page
-              </Link>
-              .
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Roster */}
-      <section
-        id="roster"
-        className="mx-auto max-w-7xl scroll-mt-24 border-b border-white/[0.05] px-6 py-16 md:px-10"
-      >
-        <SectionHeading
-          eyebrow="Roster"
-          title="Artists"
-          intro={`${ROSTER.length} artists on the label. Each one books and releases independently — get in touch through their own channels, or through booking for the label projects.`}
-        />
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ROSTER.map((artist, i) => (
-            <Reveal key={artist.id} delay={i * 0.07} tilt={10}>
-              <TiltCard intensity={9} lift={14} className="h-full">
-                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214] transition-colors hover:border-[#f25c27]/25">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#0d0e10]">
-                    {artistPhoto(artist.id, artist.photo) ? (
-                      <img
-                        src={artistPhoto(artist.id, artist.photo)}
-                        alt={artist.name}
-                        className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                        style={{ objectPosition: artist.photoPosition ?? "50% 30%" }}
-                      />
-                    ) : (
-                      /* No press shot yet — monogram tile rather than a stock face */
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#16171d] to-[#0d0e10]">
-                        <span className="font-display text-3xl font-black tracking-tight text-white/12 transition-colors duration-500 group-hover:text-white/20">
-                          {initials(artist.name)}
-                        </span>
-                        <LogoMark
-                          size={18}
-                          className="absolute bottom-2.5 right-2.5 opacity-25 transition-opacity duration-500 group-hover:opacity-60"
-                        />
-                      </div>
-                    )}
-                    {artist.resident && (
-                      <span className="absolute left-2.5 top-2.5 rounded-full bg-black/70 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-[#f25c27] backdrop-blur-md">
-                        Label project
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex flex-1 flex-col p-4">
-                    <h3 className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
-                      <Link
-                        to={`/artists/${artist.id}`}
-                        className="inline-block py-0.5 transition-colors hover:text-[#f25c27]"
-                      >
-                        {artist.name}
-                      </Link>
-                    </h3>
-                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-wider text-[#f25c27]">
-                      {artist.role}
-                    </p>
-                    <p className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-white/30">
-                      {artist.basedIn} · {artist.since}
-                    </p>
-                    <p className="mt-2.5 line-clamp-3 flex-1 text-xs leading-relaxed text-white/50">
-                      {artist.blurb}
-                    </p>
-
-                    <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
-                      <Link
-                        to={`/artists/${artist.id}`}
-                        className="rounded-full border border-[#f25c27]/40 bg-[#f25c27]/10 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-[#f25c27] transition-all hover:bg-[#f25c27]/20"
-                      >
-                        Biography
-                      </Link>
-                      {artist.links.map((link) =>
-                        link.href.startsWith("/") ? (
-                          <Link
-                            key={link.label}
-                            to={link.href}
-                            className="rounded-full border border-white/12 bg-white/5 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
-                          >
-                            {link.label}
-                          </Link>
-                        ) : (
-                          <a
-                            key={link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            data-cursor="open"
-                            className="rounded-full border border-white/12 bg-white/5 px-3 py-2 font-mono text-[9px] uppercase tracking-wider sm:px-2.5 sm:py-1 text-white/70 transition-all hover:border-[#f25c27]/40 hover:text-white"
-                          >
-                            {link.label}
-                          </a>
-                        ),
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
-
-        <p className="mt-8 font-mono text-[10px] uppercase tracking-wider text-white/25">
-          Demos: {ARTIST.pressEmail} · one link, no attachments
-        </p>
-      </section>
-
-      {/* Gallery */}
+      {/* Sound */}
       <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
         <SectionHeading
-          eyebrow="Gallery"
-          title="On the road"
-          intro="Live shots, studio and artwork. Higher-resolution press-approved images live in the EPK."
+          eyebrow="The sound"
+          title="What we release"
+          intro={`${ARTIST.genres.join(" · ")} — for those who truly seek something deeper.`}
         />
-
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {GALLERY.map((item, i) => (
-            <Reveal key={i} delay={i * 0.09} tilt={10}>
-              <TiltCard intensity={12} lift={18} className="h-full">
-                <figure className="group h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214]">
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <img
-                      src={item.src}
-                      alt={item.caption}
-                      className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                    />
-                  </div>
-                  <figcaption className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-white/35">
-                    {item.caption}
-                  </figcaption>
-                </figure>
-              </TiltCard>
+        <div className="grid gap-4 md:grid-cols-3">
+          {PILLARS.map((pillar, i) => (
+            <Reveal key={pillar.title} delay={i * 0.08} tilt={8} className="h-full">
+              <Card hover className="h-full p-7">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-2 font-display text-lg font-bold text-white">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/50">{pillar.text}</p>
+              </Card>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Bridge — About is the neutral hand-off to either audience */}
+      {/* Timeline */}
+      <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+        <SectionHeading eyebrow="So far" title="The catalogue" />
+        <ol className="relative space-y-8 border-l border-white/10 pl-8">
+          {timeline.map((release, i) => (
+            <li key={release.id} className="relative">
+              <Reveal delay={i * 0.1} direction="left" tilt={4}>
+                <span className="absolute -left-[37px] top-1.5 h-2.5 w-2.5 rounded-full bg-[#f25c27] ring-4 ring-[#0b0c0e]" />
+                <time
+                  dateTime={release.date}
+                  className="font-mono text-[10px] uppercase tracking-wider text-[#f25c27]"
+                >
+                  {formatShowDate(release.date).full}
+                </time>
+                <Link
+                  to={`/releases#${release.id}`}
+                  className="group mt-2 flex items-center gap-4"
+                >
+                  <img
+                    src={release.artwork}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-16 w-16 shrink-0 rounded-lg ring-1 ring-white/10"
+                  />
+                  <span className="min-w-0">
+                    <span className="block font-display text-lg font-bold text-white transition-colors group-hover:text-[#f25c27]">
+                      {release.catalogue} — {release.title} EP
+                    </span>
+                    <span className="block text-sm text-white/50">
+                      {billing(release)} · {release.tracks.length} tracks
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Founders */}
+      {founders.length > 0 && (
+        <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+          <SectionHeading
+            eyebrow="The people"
+            title="Behind the label"
+            action={<GhostLink to="/artists">Full roster</GhostLink>}
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {founders.map((artist) => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Bridge */}
       <section className="mx-auto max-w-7xl px-6 py-16 pb-24 md:px-10">
         <div className="grid gap-6 md:grid-cols-2">
           <Reveal direction="right">
             <Card hover className="p-8">
-            <Eyebrow>Listeners</Eyebrow>
-            <h3 className="mt-2 font-display text-xl font-bold text-white">
-              Two hours a month, free.
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/50">
-              Lowlight Transmissions on Refuge Radio, archived in full.
-            </p>
-            <div className="mt-5">
-              <GhostLink to="/music">Listen</GhostLink>
-            </div>
+              <Eyebrow>Artists</Eyebrow>
+              <h3 className="mt-2 font-display text-xl font-bold text-white">Got a record for us?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/50">
+                Send one private streaming link to {ARTIST.pressEmail} — no attachments.
+              </p>
+              <div className="mt-5">
+                <GhostLink to="/contact">Send a demo</GhostLink>
+              </div>
             </Card>
           </Reveal>
           <Reveal direction="left" delay={0.1}>
             <Card hover className="p-8">
-            <Eyebrow>Promoters</Eyebrow>
-            <h3 className="mt-2 font-display text-xl font-bold text-white">
-              Booking direct, {ARTIST.responseTime}.
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/50">
-              Rider, photos and past dates ready to download — no email chain first.
-            </p>
-            <div className="mt-5">
-              <PrimaryLink to="/booking">Booking</PrimaryLink>
-            </div>
+              <Eyebrow>Promoters</Eyebrow>
+              <h3 className="mt-2 font-display text-xl font-bold text-white">
+                Book a label artist, reply {ARTIST.responseTime}.
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/50">
+                Pick from the roster, tell us the date and the room.
+              </p>
+              <div className="mt-5">
+                <PrimaryLink to="/booking">Bookings</PrimaryLink>
+              </div>
             </Card>
           </Reveal>
         </div>

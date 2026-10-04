@@ -3,21 +3,15 @@
 Drop artist photos in this folder. The filename must match the artist's `id` in
 `ROSTER` (see [`app/src/data.ts`](../../../data.ts)) — nothing else to change.
 
-| Artist | Filename | Present |
-| ------ | -------- | ------- |
-| Exploration Recordings | `exploration-recordings.*` | ✅ `.jpg` |
-| Halide | `halide.*` | ✅ `.webp` |
-| Low Arc | `low-arc.*` | ✅ `.jpg` |
-| Marisa Volt | `marisa-volt.*` | ✅ `.jpg` |
+Current photos are each artist's avatar from their Proton Radio profile
+(500×500), named after their `id`: `junior-sl`, `alpha21`, `sound-fusion`,
+`rockka`, `imal-sl`, `rndom`, `stereo-munk`, `juani-ramirez`.
 
 Formats: `.jpg`, `.jpeg`, `.png`, `.webp`. Replacing a photo means overwriting
 the file — the extension can change, the name cannot.
 
-> **Rights check before launch.** The current four are web-sourced press shots
-> of real, identifiable DJs, used here as placeholders. Two are named in their
-> original filenames. Publishing them next to invented artist names and bios
-> would misrepresent those people, so swap in licensed or own photography
-> before the site goes live.
+> **Before launch:** confirm with each artist that their Proton avatar is fine
+> to use here, or swap in a press shot they supply.
 
 **A file here always wins.** Until one exists, each artist shows the stand-in
 set on `photo` in `ROSTER` — currently the site's own stock photography, reused

@@ -32,14 +32,14 @@ export default function Shows() {
         glow="ellipse 55% 62% at 70% 42%"
         actions={
           <a
-            href={ARTIST.residentAdvisor}
+            href={ARTIST.profileUrl}
             target="_blank"
             rel="noreferrer"
             data-cursor="open"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-[#f25c27]/40 hover:bg-white/15"
           >
             <Compass size={14} />
-            Resident Advisor profile
+            Proton Radio profile
             <ExternalLink size={12} className="text-white/40" />
           </a>
         }
