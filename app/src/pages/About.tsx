@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { IMAGES } from "../assets/images";
-import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, billing, formatShowDate } from "../data";
+import { ARTIST, FACTS, FAQS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, billing, formatShowDate } from "../data";
 import ArtistCard from "../components/ArtistCard";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/motion/Reveal";
@@ -163,6 +163,19 @@ export default function About() {
           </div>
         </section>
       )}
+
+      {/* FAQ — plain answers people (and answer engines) can quote; marked up as FAQPage in seo.ts */}
+      <section id="faq" className="mx-auto max-w-7xl scroll-mt-24 border-b border-white/[0.05] px-6 py-16 md:px-10">
+        <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
+        <div className="grid gap-x-12 gap-y-9 md:grid-cols-2">
+          {FAQS.map((faq, i) => (
+            <Reveal key={faq.question} delay={(i % 2) * 0.08} tilt={4}>
+              <h3 className="font-display text-lg font-bold leading-snug text-white">{faq.question}</h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-white/55">{faq.answer}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* Bridge */}
       <section className="mx-auto max-w-7xl px-6 py-16 pb-24 md:px-10">

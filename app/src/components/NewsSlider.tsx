@@ -204,12 +204,12 @@ export default function NewsSlider({ items }: { items: NewsItem[] }) {
                     {date.full}
                   </time>
                 </p>
-                <h1
+                <h2
                   className="line-clamp-3 font-display font-extrabold leading-[0.95] tracking-tight text-white"
                   style={{ fontSize: "clamp(2rem, 5vw, 3.9rem)" }}
                 >
                   {item.title}
-                </h1>
+                </h2>
                 <p className="mt-5 line-clamp-3 max-w-xl text-sm leading-relaxed text-white/65 md:text-base">
                   {item.excerpt}
                 </p>

@@ -10,3 +10,4 @@ coverage/
 # Original photography and reference material — kept locally, not published
 # (includes the client architecture PDF and unused stock).
 source-photos/
+dist-ssr/

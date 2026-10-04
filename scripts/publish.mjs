@@ -2,8 +2,9 @@
  * Copies the Vite build from dist/ up to the repo root, because GitHub Pages is
  * configured to serve this branch's root verbatim and cannot build anything.
  *
- * Only ever touches the four published paths listed in MANAGED — everything
- * else at the root (src/, app/, package.json, README…) is left alone.
+ * Copies every top-level entry of dist/ — the prerendered route folders
+ * (news/, releases/ …), static/, sitemap.xml, llms.txt and so on — and refuses
+ * to overwrite anything in PROTECTED, so source files at the root are safe.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,8 +13,12 @@ import {fileURLToPath} from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 
-/** The published surface. Anything here is build output and safe to replace. */
-const MANAGED = ['index.html', '404.html', 'static', '.nojekyll'];
+/** Root entries that are source, never build output. */
+const PROTECTED = new Set([
+  'app', 'scripts', 'public', 'docs', 'legacy', 'assets', 'source-photos', 'node_modules',
+  'dist', 'package.json', 'package-lock.json', 'README.md', 'vite.config.ts', 'tsconfig.json',
+  'metadata.json', '.git', '.github', '.gitignore', '.env.example',
+]);
 
 if (!fs.existsSync(path.join(DIST, 'index.html'))) {
   console.error('No build found in dist/ — run `npm run build` first.');
@@ -25,6 +30,13 @@ if (!fs.existsSync(path.join(DIST, 'index.html'))) {
 const rootIndex = path.join(ROOT, 'index.html');
 if (fs.existsSync(rootIndex) && fs.readFileSync(rootIndex, 'utf8').includes('src/main.tsx')) {
   console.error('Root index.html looks like the source entry, not build output. Aborting.');
+  process.exit(1);
+}
+
+const MANAGED = fs.readdirSync(DIST);
+const clash = MANAGED.filter((entry) => PROTECTED.has(entry));
+if (clash.length) {
+  console.error(`Build output would overwrite source at the root: ${clash.join(', ')}. Aborting.`);
   process.exit(1);
 }
 

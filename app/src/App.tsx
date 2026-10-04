@@ -23,6 +23,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Shows from "./pages/Shows";
 import Press from "./pages/Press";
+import { headTags, jsonLdGraph, pageSeo } from "./seo";
 
 /**
  * Land at the top on navigation. With a #hash, wait a frame for the incoming
@@ -92,18 +93,56 @@ function Layout({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Keeps the head in step with the route on client-side navigation: title,
+ * description, canonical, Open Graph / Twitter tags and JSON-LD, all from
+ * seo.ts. The prerendered HTML ships the same tags for the first load.
+ */
+function Seo() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const seo = pageSeo(pathname);
+    document.title = seo.title;
+    document.head.querySelectorAll("[data-seo]").forEach((node) => node.remove());
+    for (const { tag, attrs } of headTags(seo)) {
+      const el = document.createElement(tag);
+      for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value);
+      el.setAttribute("data-seo", "");
+      document.head.appendChild(el);
+    }
+    if (seo.jsonLd.length) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-seo", "");
+      script.textContent = jsonLdGraph(seo);
+      document.head.appendChild(script);
+    }
+  }, [pathname]);
+
+  return null;
+}
+
 /** Vite's base is "/" locally and "/folioblox-portfolio/" on GitHub Pages. */
-const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+export const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+/** Everything inside the router — shared by the browser app and the prerender. */
+export function AppShell() {
+  return (
+    <BookingProvider>
+      <Seo />
+      <ScrollToTop />
+      <Layout>
+        <AnimatedRoutes />
+      </Layout>
+    </BookingProvider>
+  );
+}
 
 export default function App() {
   return (
     <BrowserRouter basename={basename}>
-      <BookingProvider>
-        <ScrollToTop />
-        <Layout>
-          <AnimatedRoutes />
-        </Layout>
-      </BookingProvider>
+      <AppShell />
     </BrowserRouter>
   );
 }

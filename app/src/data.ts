@@ -724,3 +724,58 @@ export function releasesFor(name: string): Release[] {
 
 /** "JUNIOR (SL) & Sound Fusion" */
 export const billing = (release: Release) => release.artists.join(" & ");
+
+/* ─────────────────────────  FAQ (AEO)  ───────────────────────── */
+
+/** ["A", "B", "C"] → "A, B and C" */
+const listJoin = (items: string[]) =>
+  items.length < 2 ? items.join("") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+
+/**
+ * Plain-language answers to the questions people actually ask about the label.
+ * Shown on the About page and marked up as FAQPage, so search engines and AI
+ * assistants can quote them directly. Built from the data above, so answers
+ * never drift from the catalogue.
+ */
+export const FAQS: { question: string; answer: string }[] = [
+  {
+    question: "What is Exploration Recordings?",
+    answer: `Exploration Recordings is an independent progressive house record label from Sri Lanka, founded in ${ARTIST.founded} and co-founded by JUNIOR (SL). It releases deep, driving, melodic progressive house from Sri Lankan and international artists, and every release is available on Proton Radio.`,
+  },
+  {
+    question: "Where is Exploration Recordings based?",
+    answer:
+      "The label is based in Sri Lanka. Co-founder JUNIOR (SL) and ALPHA21 are from Weligama and RNDØM is from Kalutara, while the wider roster includes artists from Poland, Pakistan and Argentina.",
+  },
+  {
+    question: "What has Exploration Recordings released?",
+    answer: `${RELEASES.length} EPs so far: ${[...RELEASES]
+      .reverse()
+      .map(
+        (release) =>
+          `${release.catalogue} ${release.title} by ${release.artists.join(" & ")} (${formatShowDate(release.date).full}), with remixes from ${listJoin(
+            release.tracks.flatMap((track) => (track.remixer ? [track.remixer] : [])),
+          )}`,
+      )
+      .join("; ")}.`,
+  },
+  {
+    question: "What kind of music does the label release?",
+    answer:
+      "Progressive house — deep textures, hypnotic rhythms and emotional, melodic storytelling, from slow-burning atmospheric originals to rolling underground and peak-time remixes. The label curates only unique, specially crafted tracks.",
+  },
+  {
+    question: "Where can I buy or stream Exploration Recordings releases?",
+    answer:
+      "Every release is on Proton Radio, where you can buy or stream each EP and its individual tracks. Each release on this site links straight to its Proton Radio page.",
+  },
+  {
+    question: "How do I book an Exploration Recordings artist?",
+    answer: `Use the booking form: choose an artist (or leave it open for a recommendation), add the date, city, venue and fee offer, and the label replies ${ARTIST.responseTime} with availability.`,
+  },
+  {
+    question: "How do I submit a demo to Exploration Recordings?",
+    answer:
+      "Send a short message through the Contact page with the topic set to Demo submission, including one private streaming link. Please don't send attachments.",
+  },
+];

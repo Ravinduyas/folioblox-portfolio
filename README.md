@@ -36,6 +36,24 @@ Source lives in [`app/`](app/), not the repo root — see **Deployment** for why
 
 Label facts, releases, tracklists and artist bios come from the label's
 [Proton Radio catalogue](https://www.protonradio.com/labels/4587/exploration-recordings).
+## SEO, GEO and AEO
+
+`npm run build` prerenders every route to static HTML (`scripts/prerender.mjs`),
+so search engines and AI crawlers get full content, a 200 status and per-page
+metadata without running JavaScript. Everything comes from
+[`app/src/seo.ts`](app/src/seo.ts):
+
+- **Head tags** — title, description, canonical, Open Graph, Twitter card;
+  `<Seo>` in `App.tsx` keeps them in sync on client-side navigation.
+- **JSON-LD** — Organization (the label), WebSite, MusicAlbum with full
+  tracklists, MusicGroup per artist, NewsArticle, FAQPage, BreadcrumbList.
+- **`sitemap.xml`** and **`llms.txt`** (a plain-text brief for AI assistants),
+  generated into `dist/` on every build.
+- **FAQ** — `FAQS` in `data.ts`, shown on About and marked up as FAQPage.
+
+Adding a news item, release or artist to `data.ts` updates all of the above.
+Placeholder emails and social handles are kept out of the structured data.
+
 `/shows` and `/press` are left over from the earlier single-artist site and
 are not linked from the nav; `/music` redirects to `/releases`.
 

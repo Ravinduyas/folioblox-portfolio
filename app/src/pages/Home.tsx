@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CalendarCheck, Disc3, Mail } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { IMAGES } from "../assets/images";
-import { FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
+import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
 import ArtistSlider from "../components/ArtistSlider";
 import Marquee from "../components/Marquee";
 import NewsSlider from "../components/NewsSlider";
@@ -36,6 +36,11 @@ export default function Home() {
 
   return (
     <>
+      {/* The page's h1 names the label — the slider's story titles are h2s. */}
+      <h1 className="sr-only">
+        {ARTIST.displayName} — independent progressive house record label from {ARTIST.basedIn}
+      </h1>
+
       {/* ─── HERO: auto-sliding news ─── */}
       <section className="px-3 pt-3 pb-0 md:px-5">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem]">
@@ -129,7 +134,9 @@ export default function Home() {
             <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
               A home for boundary-pushing sound.
             </h2>
-            <p className="mt-5 text-sm leading-relaxed text-white/55 md:text-base">{LONG_BIO[0]}</p>
+            <p data-speakable className="mt-5 text-sm leading-relaxed text-white/55 md:text-base">
+              {SHORT_BIO} {LONG_BIO[0]}
+            </p>
 
             <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/[0.06] pt-7 sm:grid-cols-4">
               {FACTS.map((fact) => (

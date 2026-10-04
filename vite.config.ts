@@ -1,8 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import fs from 'fs';
 import path from 'path';
-import {defineConfig, type Plugin} from 'vite';
+import {defineConfig} from 'vite';
 
 /**
  * GitHub Pages serves this repo's root verbatim — it does not build anything.
@@ -16,25 +15,14 @@ import {defineConfig, type Plugin} from 'vite';
 const REPO_BASE = '/folioblox-portfolio/';
 
 /**
- * Pages has no server-side rewrite, so a hard load of /music would 404. Pages
- * serves 404.html for unmatched paths, so shipping a copy of index.html under
- * that name lets the client router pick the request up instead.
+ * Pages has no server-side rewrite. scripts/prerender.mjs writes a real
+ * index.html for every known route (so they return 200 with full content) and
+ * a 404.html app shell, so any other path still boots the client router.
  */
-function spaFallback(outDir: string): Plugin {
-  return {
-    name: 'spa-404-fallback',
-    apply: 'build',
-    closeBundle() {
-      const index = path.join(outDir, 'index.html');
-      if (fs.existsSync(index)) {
-        fs.copyFileSync(index, path.join(outDir, '404.html'));
-      }
-    },
-  };
-}
 
-export default defineConfig(({command, isPreview}) => {
-  const outDir = path.resolve(__dirname, 'dist');
+export default defineConfig(({command, isPreview, isSsrBuild}) => {
+  // The SSR build (entry-server.tsx) only feeds the prerender — kept apart from dist/.
+  const outDir = path.resolve(__dirname, isSsrBuild ? 'dist-ssr' : 'dist');
   // Only the dev server runs at the root; build and preview both use the
   // deployed subpath, so `npm run preview` reproduces Pages exactly.
   const isDevServer = command === 'serve' && !isPreview;
@@ -45,7 +33,7 @@ export default defineConfig(({command, isPreview}) => {
     publicDir: path.resolve(__dirname, 'public'),
     // Dev serves from /, the deployed copy lives under the repo subpath.
     base: isDevServer ? '/' : REPO_BASE,
-    plugins: [react(), tailwindcss(), spaFallback(outDir)],
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
