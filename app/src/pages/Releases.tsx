@@ -5,7 +5,7 @@ import PageHero from "../components/PageHero";
 import { Billing, Credit } from "../components/ReleaseCard";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
-import { Card, GhostLink, Pill } from "../components/ui";
+import { GhostLink, Pill } from "../components/ui";
 
 export default function Releases() {
   const trackCount = RELEASES.reduce((sum, release) => sum + release.tracks.length, 0);
@@ -96,7 +96,9 @@ export default function Releases() {
                     ))}
                   </div>
 
-                  <Card className="mt-7 p-5">
+                  {/* Not <Card>: its h-full would stretch this to the whole grid column
+                      and push the buy row down into the next release. */}
+                  <div className="mt-7 rounded-2xl border border-white/[0.06] bg-[#111214] p-5">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-[#f25c27]">
                       Tracklist
                     </p>
@@ -129,7 +131,7 @@ export default function Releases() {
                         </li>
                       ))}
                     </ol>
-                  </Card>
+                  </div>
 
                   <div className="mt-6 flex flex-wrap items-center gap-3">
                     <a
