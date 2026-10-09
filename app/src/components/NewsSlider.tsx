@@ -16,7 +16,7 @@ import TiltCard from "./motion/TiltCard";
 import { PrimaryLink } from "./ui";
 
 /** How long each story holds before the next one slides in. */
-const SLIDE_MS = 6500;
+const SLIDE_MS = 3000;
 
 /**
  * A fixed height, not a minimum — so the hero never grows or shrinks as stories
@@ -141,7 +141,7 @@ export default function NewsSlider({ items }: { items: NewsItem[] }) {
           animate={{ opacity: 1, scale: reduce ? 1 : 1.03 }}
           exit={{ opacity: 0 }}
           transition={{
-            opacity: { duration: 0.9, ease: "easeOut" },
+            opacity: { duration: 0.6, ease: "easeOut" },
             scale: { duration: SLIDE_MS / 1000 + 1, ease: "linear" },
           }}
         />
@@ -190,7 +190,7 @@ export default function NewsSlider({ items }: { items: NewsItem[] }) {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.55, ease: EASE }}
+              transition={{ duration: 0.35, ease: EASE }}
             >
               <div className="flex w-full flex-col md:max-w-[58%]">
                 <p

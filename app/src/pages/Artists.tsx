@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IMAGES } from "../assets/images";
 import { ARTIST, ROSTER } from "../data";
 import ArtistCard from "../components/ArtistCard";
@@ -6,7 +7,6 @@ import Reveal from "../components/motion/Reveal";
 import { GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
 
 export default function Artists() {
-  const countries = new Set(ROSTER.map((artist) => artist.basedIn.split(", ").pop()));
 
   return (
     <div className="min-h-screen">
@@ -19,7 +19,7 @@ export default function Artists() {
             artists.
           </>
         }
-        intro="Everyone who has released or remixed on Exploration Recordings — producers and DJs from Sri Lanka and beyond."
+        intro="The DJs and producers of Exploration Recordings — progressive and organic house from Sri Lanka."
         image={IMAGES.portraitShades}
         objectPosition="52% 30%"
         glow="ellipse 52% 58% at 74% 36%"
@@ -34,7 +34,7 @@ export default function Artists() {
           <div className="flex flex-wrap items-end gap-x-9 gap-y-4">
             {[
               { label: "Artists", value: String(ROSTER.length) },
-              { label: "Countries", value: String(countries.size) },
+              { label: "Co-founders", value: String(ROSTER.filter((artist) => artist.resident).length) },
               { label: "Home", value: ARTIST.basedIn },
             ].map((fact) => (
               <div key={fact.label} className="flex flex-col gap-[5px]">
@@ -60,7 +60,7 @@ export default function Artists() {
         <SectionHeading
           eyebrow="On the label"
           title="Roster"
-          intro="Original artists and remixers across the catalogue. Each artist page has their full biography and their releases on the label."
+          intro="Each artist page has their full biography, their links and their releases on the label."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -72,7 +72,10 @@ export default function Artists() {
         </div>
 
         <p className="mt-8 font-mono text-[10px] uppercase tracking-wider text-white/25">
-          Demos: {ARTIST.pressEmail} · one link, no attachments
+          Demos:{" "}
+            <Link to="/demo" className="text-[#f25c27] hover:underline">
+              submit through the demo form
+            </Link>
         </p>
       </section>
     </div>

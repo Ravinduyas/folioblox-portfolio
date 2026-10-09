@@ -52,7 +52,7 @@ export const SHORT_BIO =
 export const LONG_BIO = [
   "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. We curate only the most unique and specially crafted tracks that transcend the ordinary and speak to those who truly seek something deeper.",
   "This isn’t just a label; it’s a movement — a space for those who understand that music is more than sound. It’s an exploration of artistry, emotion and innovation.",
-  "Founded in Sri Lanka in 2025 and co-founded by JUNIOR (SL), the label opened its catalogue with ALPHA21 & JUNIOR (SL)'s Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion — deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.",
+  "Founded in Sri Lanka in 2025 by Weligama producers JUNIOR and ALPHA21, the label opened its catalogue with the co-founders' own Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion — deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.",
 ];
 
 /* ────────────────────  SITE STRUCTURE  ──────────────────── */
@@ -98,11 +98,11 @@ export const SECTIONS: SiteSection[] = [
     purpose: "Who we are and what we release.",
   },
   {
-    label: "Contact Us",
-    to: "/contact",
-    audience: "neutral",
-    contents: ["Email", "Demos", "Message"],
-    purpose: "Get in touch — general, press or demos.",
+    label: "Demo Submission",
+    to: "/demo",
+    audience: "fan",
+    contents: ["Submit a demo", "Demo guide"],
+    purpose: "Send the label your finished tracks.",
   },
 ];
 
@@ -133,11 +133,11 @@ export const RELEASES: Release[] = [
     catalogue: "ER002",
     date: "2026-07-03",
     preOrderDate: "2026-06-17",
-    artists: ["JUNIOR (SL)", "Sound Fusion"],
+    artists: ["JUNIOR", "Sound Fusion"],
     genre: "Progressive house",
     artwork: IMAGES.coverER002,
     description: [
-      "Exploration Recordings continues its journey with ER002, welcoming co-founder JUNIOR (SL) alongside Sound Fusion for a powerful five-track statement.",
+      "Exploration Recordings continues its journey with ER002, welcoming co-founder JUNIOR alongside Sound Fusion for a powerful five-track statement.",
       "The EP features two originals, “Liquid Aura” and “Bleeding Shadow”, both rooted in deep progressive textures, hypnotic rhythms and emotional storytelling. Liquid Aura flows with subtle tension and immersive atmospheres, while Bleeding Shadow dives darker, driven by pulsating basslines and haunting melodic layers.",
       "On remix duties, Stereo Munk delivers a refined and dynamic reinterpretation, Juani Ramirez adds his signature melodic depth and groove precision, and RNDØM crafts a rolling underground version that pushes the energy forward.",
       "This release represents what Exploration Recordings stands for: exploration through sound, crafted with intention.",
@@ -157,11 +157,11 @@ export const RELEASES: Release[] = [
     catalogue: "ER001",
     date: "2025-09-21",
     preOrderDate: "2025-08-27",
-    artists: ["ALPHA21", "JUNIOR (SL)"],
+    artists: ["ALPHA21", "JUNIOR"],
     genre: "Progressive house",
     artwork: IMAGES.coverER001,
     description: [
-      "Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR (SL).",
+      "Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR.",
       "Time Machine EP showcases their vision of deep, driving progressive house across two originals and two standout remixes.",
       "The title track Time Machine unfolds with hypnotic grooves and cinematic tension, while Gate 8 Journey offers a more atmospheric and melodic voyage. On remix duties, Rockka injects peak-time energy with a powerful melodic rework, and Imal SL strips the original into a rolling underground interpretation.",
       "A statement first release — setting the tone for the journeys ahead.",
@@ -198,9 +198,9 @@ export const NEWS: NewsItem[] = [
     category: "Release",
     title: "Liquid Aura EP is out now",
     excerpt:
-      "ER002 lands: JUNIOR (SL) & Sound Fusion with two deep progressive originals, plus remixes from Stereo Munk, Juani Ramirez and RNDØM.",
+      "ER002 lands: JUNIOR & Sound Fusion with two deep progressive originals, plus remixes from Stereo Munk, Juani Ramirez and RNDØM.",
     body: [
-      "The label's second release is out now. ER002 pairs co-founder JUNIOR (SL) with Poland's Sound Fusion on two originals — the immersive, slow-burning Liquid Aura and the darker, bass-driven Bleeding Shadow.",
+      "The label's second release is out now. ER002 pairs co-founder JUNIOR with Poland's Sound Fusion on two originals — the immersive, slow-burning Liquid Aura and the darker, bass-driven Bleeding Shadow.",
       "Three remixes widen the frame: Stereo Munk's refined and dynamic reinterpretation, Juani Ramirez's melodic, groove-locked take, and RNDØM's rolling underground version.",
       "Five tracks, nearly forty minutes of music, and the clearest statement yet of what the label stands for: exploration through sound, crafted with intention.",
     ],
@@ -217,7 +217,7 @@ export const NEWS: NewsItem[] = [
     excerpt:
       "Pre-orders open for Liquid Aura, with remixes from Pakistan's Stereo Munk, Argentina's Juani Ramirez and Sri Lanka's RNDØM. Out 3 July.",
     body: [
-      "Pre-orders are open for ER002, the Liquid Aura EP from JUNIOR (SL) & Sound Fusion, ahead of its full release on 3 July 2026.",
+      "Pre-orders are open for ER002, the Liquid Aura EP from JUNIOR & Sound Fusion, ahead of its full release on 3 July 2026.",
       "The remix package reaches across three countries. Islamabad's Stereo Munk — supported by Hernan Cattaneo and Nick Warren — takes the longest version on the EP at nearly nine minutes. Argentina's Juani Ramirez brings melodic depth and groove precision, and Kalutara's RNDØM closes the remixes with a rolling underground cut.",
     ],
     image: IMAGES.overheadSmoke,
@@ -230,9 +230,9 @@ export const NEWS: NewsItem[] = [
     category: "Release",
     title: "Time Machine EP is out now",
     excerpt:
-      "The label's debut: ALPHA21 & JUNIOR (SL) with two originals, and remixes from Rockka and Imal SL.",
+      "The label's debut, from co-founders ALPHA21 & JUNIOR: two originals, and remixes from Rockka and Imal SL.",
     body: [
-      "ER001 is out. The debut release pairs two Weligama producers, ALPHA21 and JUNIOR (SL), on deep, driving progressive house.",
+      "ER001 is out. The debut release comes from the label's two co-founders, Weligama producers ALPHA21 and JUNIOR, on deep, driving progressive house.",
       "The title track unfolds with hypnotic grooves and cinematic tension, while Gate 8 Journey takes a more atmospheric, melodic route. Rockka's remix pushes Time Machine into peak-time territory, and Imal SL strips it back into a rolling underground interpretation.",
     ],
     image: IMAGES.heroBooth,
@@ -249,7 +249,7 @@ export const NEWS: NewsItem[] = [
       "A new home for boundary-pushing progressive house from Sri Lanka opens its catalogue — ER001 is up for pre-order now.",
     body: [
       "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. The label curates only the most unique and specially crafted tracks — music for those who truly seek something deeper.",
-      "The first release, ER001 — ALPHA21 & JUNIOR (SL)'s Time Machine EP — opens for pre-order today, ahead of its release on 21 September 2025.",
+      "The first release, ER001 — ALPHA21 & JUNIOR's Time Machine EP — opens for pre-order today, ahead of its release on 21 September 2025.",
     ],
     image: IMAGES.crowdHands,
     cover: IMAGES.coverER001,
@@ -459,21 +459,26 @@ export const RIDER: RiderSection[] = [
 /* ─────────────────────────  ROSTER  ───────────────────────── */
 
 /**
- * Everyone who has released or remixed on the label, founders first. Bios are
- * the artists' own, from their Proton Radio profiles; the two artists without
- * one (Sound Fusion, Juani Ramirez) have a short factual bio from their
- * catalogue instead.
+ * The label's artists, founders first. Bios are the artists' own.
+ *
+ * `basedIn` and `since` are optional — leave them out rather than guess, and
+ * the cards and artist pages simply skip them.
  *
  * `name` must match the credit in RELEASES exactly — artist pages list their
  * releases on the label by matching it.
  *
- * PHOTOS: each artist's Proton avatar lives in assets/images/artists/ named
- * after the `id`, and is picked up automatically. See that folder's README.
+ * LINKS: Instagram / Facebook are the profiles each artist lists on their own
+ * SoundCloud page — artists who list none have none here. Social links come
+ * first; the artist page shows them on the right of its hero strip.
+ *
+ * PHOTOS: drop a file into assets/images/artists/ named after the `id` and it
+ * is picked up automatically; without one the card shows a monogram tile. See
+ * that folder's README.
  */
 export const ROSTER: RosterArtist[] = [
   {
     id: "junior-sl",
-    name: "JUNIOR (SL)",
+    name: "JUNIOR",
     role: "Co-founder · DJ · Producer",
     basedIn: "Weligama, Sri Lanka",
     since: "2025",
@@ -485,26 +490,30 @@ export const ROSTER: RosterArtist[] = [
       { label: "Proton", href: "https://www.protonradio.com/artists/62896/junior-sl" },
     ],
     bio: [
-      "Junior (SL) is a DJ and producer hailing from Weligama, Sri Lanka. From an early age he developed a deep passion for music and began to experiment with different genres and styles. His love for electronic music led him to pursue a career as a DJ and producer, and he quickly made a name for himself as one of the most promising talents in the scene.",
-      "His sets are known for their energy, creativity and technical proficiency, and he has built a dedicated fanbase both in Sri Lanka and around the world. As a producer he has been signed to respected labels including Electronic Tree, Big Toys Production and Droid9, and his music has been supported by some of the biggest names in the industry.",
-      "What sets Junior apart is his ability to infuse his music with emotion and soul. Whether he's working on a deep, melancholic house track or a more upbeat, dancefloor-friendly number, he strives to make music that connects with people on a deep and emotional level.",
-      "He has remained true to his roots, drawing inspiration from his Sri Lankan heritage and incorporating elements of traditional music into his productions. A passionate advocate for the local scene, he has worked tirelessly to promote and support emerging talent in his home country — work that continues through Exploration Recordings, which he co-founded in 2025.",
+      "JUNIOR is a highly talented DJ and producer hailing from Weligama, Sri Lanka. From an early age, he developed a deep passion for music and began to experiment with different genres and styles. His love for electronic music led him to pursue a career as a DJ and producer, and he quickly made a name for himself as one of the most promising talents in the industry.",
+      "Over the years, JUNIOR has honed his skills as a DJ, blending a range of different sounds and styles to create a unique and captivating sound. His sets are known for their energy, creativity and technical proficiency, and he has built a dedicated fanbase both in Sri Lanka and around the world.",
+      "In addition to his work as a DJ, JUNIOR is also an accomplished producer, with a string of successful releases under his belt. He has been signed to a number of respected labels, including Electronic Tree, Big Toys Production and Droid9, and his music has been supported by some of the biggest names in the industry.",
+      "What sets JUNIOR apart as a producer is his ability to infuse his music with emotion and soul. He is a true artist, always creating music from the heart and pouring his own experiences and emotions into each track. Whether he's working on a deep, melancholic house track or a more upbeat, dancefloor-friendly number, he always strives to make music that connects with people on a deep and emotional level.",
+      "As his career has continued to evolve, JUNIOR has remained true to his roots, drawing inspiration from his Sri Lankan heritage and incorporating elements of traditional music into his productions. He is a passionate advocate for the local music scene and has worked tirelessly to promote and support emerging talent in his home country.",
+      "Looking to the future, JUNIOR shows no signs of slowing down. He is committed to continuing to push the boundaries of his art and to create music that speaks to the heart and soul of his listeners. His dedication, talent and passion make him one of the most exciting and promising artists in the electronic music scene today, and we can't wait to see what he has in store next.",
     ],
     highlights: [
       { label: "On the label", value: "Co-founder · ER001 & ER002" },
-      { label: "Also on", value: "Droid9 · COMET Records · AH Digital" },
-      { label: "Active since", value: "2021 · 47 tracks on Proton" },
+      { label: "Also on", value: "Electronic Tree · Big Toys Production · Droid9" },
+      { label: "Home", value: "Weligama, Sri Lanka" },
     ],
   },
   {
     id: "alpha21",
     name: "ALPHA21",
-    role: "DJ · Producer",
+    role: "Co-founder · DJ · Producer",
     basedIn: "Weligama, Sri Lanka",
     since: "2025",
     blurb:
-      "Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world. Co-wrote the label's debut, Time Machine.",
+      "Label co-founder. Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world; co-wrote the debut, Time Machine.",
+    resident: true,
     links: [
+      { label: "Facebook", href: "https://www.facebook.com/djalpha21official" },
       { label: "SoundCloud", href: "https://soundcloud.com/alpha21official" },
       { label: "Proton", href: "https://www.protonradio.com/artists/53254/alpha21" },
     ],
@@ -512,148 +521,75 @@ export const ROSTER: RosterArtist[] = [
       "In the heart of Sri Lanka's Weligama lies a DJ and producer who goes by the name ALPHA21. His passion for music was sparked at an early age, but it was the serene beauty of nature that inspired him to create something truly unique. His sound is an embodiment of the natural world around him, with lush soundscapes and organic rhythms that transport listeners to another world.",
       "He's signed to some of the most renowned labels in the scene, including The Purr Music, Balkan Connection and Modern Agenda, and has shared the stage with names including Armen Miran, Eli Nissan, DJ Ruby, Emi Galvan, Dmitry Molosh, Ezequiel Arias, Darin Epsilon, Blanka Barbara, Forty Cats, Alar, Aaron Suiss and Matan Caspi.",
       "He spends countless hours in the studio perfecting his sound, always striving to create something that's never been heard before. When he isn't in the studio or playing gigs, he can be found exploring the natural wonders of Sri Lanka — from the jungles to the Indian Ocean — and he's dedicated to using his music to spread awareness about environmental issues.",
+      "In 2025 he co-founded Exploration Recordings with fellow Weligama producer JUNIOR, and the pair's Time Machine EP became the label's first release.",
     ],
     highlights: [
-      { label: "On the label", value: "ER001 — Time Machine EP" },
+      { label: "On the label", value: "Co-founder · ER001 Time Machine" },
       { label: "Also on", value: "BC2 · Another Life Music · AH Digital" },
       { label: "Active since", value: "2019 · 122 tracks on Proton" },
     ],
   },
   {
-    id: "sound-fusion",
-    name: "Sound Fusion",
-    role: "Producer",
-    basedIn: "Poland",
-    since: "2026",
-    blurb:
-      "Polish progressive house project, releasing since 2013. Co-wrote both originals on the Liquid Aura EP.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/sound-fusion-music" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/16435/sound-fusion" },
-    ],
-    bio: [
-      "Sound Fusion is a progressive house project from Poland, releasing since 2013, with more than ninety tracks catalogued on Proton Radio across labels including Electronic Tree, Addictive Sounds, Darkpload Records, AH Digital and Massive Harmony Records.",
-      "Sound Fusion joined Exploration Recordings for ER002, co-writing both originals on the Liquid Aura EP — Liquid Aura and Bleeding Shadow — with label co-founder JUNIOR (SL).",
-    ],
-    highlights: [
-      { label: "On the label", value: "ER002 — Liquid Aura EP" },
-      { label: "Also on", value: "Electronic Tree · Addictive Sounds" },
-      { label: "Active since", value: "2013 · 94 tracks on Proton" },
-    ],
-  },
-  {
-    id: "rockka",
-    name: "Rockka",
-    role: "Producer",
-    basedIn: "Sri Lanka",
-    since: "2025",
-    blurb:
-      "Lakith Adikaram — Sri Lankan progressive house producer behind the peak-time remix of Time Machine.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/rockka01" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/52563/rockka" },
-    ],
-    bio: [
-      "Music is a very interesting form of art that enhances emotions, imagination and physical movement. Progressive house has grown so much over the years and gained the attention of so many people around the world — and with influences like Guy J, Subandrio, Kyotto and John Cosani, it never fails to impress.",
-      "Rockka, a.k.a. Lakith Adikaram, is a producer hailing from Sri Lanka. His music career began in 2018 as he set out to create beautiful moments with his music, with releases on labels such as Balkan Connection, Droid9 and Soundteller Records. Learning the ways of progressive house isn't always easy, but it's always satisfying to see the crowd dance to the music you dreamed of creating.",
-    ],
-    highlights: [
-      { label: "On the label", value: "ER001 — Time Machine (Rockka Remix)" },
-      { label: "Also on", value: "Mango Alley · Droid9 · AH Digital" },
-      { label: "Active since", value: "2019 · 317 tracks on Proton" },
-    ],
-  },
-  {
-    id: "imal-sl",
-    name: "Imal SL",
-    role: "Producer",
-    basedIn: "Sri Lanka",
-    since: "2025",
-    blurb:
-      "Deep house, progressive house and progressive techno. Stripped Time Machine into a rolling underground remix.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/imal-anjana-perera" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/59793/imal-sl" },
-    ],
-    bio: [
-      "Enthralled by the joy music creates in the minds of its listeners, Imal set out to put smiles on the faces of audiences through his music. He took his first steps into the field in 2018, and has since mastered the skill of emoting through music.",
-      "Although commercial music plays a key role in his home ground, Sri Lanka, Imal's interest has always lain in progressive music. Deep house, progressive house and progressive techno are his greatest strengths.",
-    ],
-    highlights: [
-      { label: "On the label", value: "ER001 — Time Machine (Imal SL Remix)" },
-      { label: "Also on", value: "AH Digital · Droid9 South America" },
-      { label: "Active since", value: "2020 · 33 tracks on Proton" },
-    ],
-  },
-  {
-    id: "rndom",
-    name: "RNDØM",
+    id: "esh-sl",
+    photoPosition: "50% 14%",
+    name: "ESH (SL)",
     role: "DJ · Producer",
-    basedIn: "Kalutara, Sri Lanka",
-    since: "2026",
+    basedIn: "Sri Lanka",
     blurb:
-      "Progressive and new progressive house from Kalutara. A rolling underground remix of Liquid Aura on ER002.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/hirusha-akalanka" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/64745/rndom" },
-    ],
+      "Progressive and organic house — hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.",
+    links: [],
     bio: [
-      "RNDØM, born and raised in the vibrant city of Kalutara, Sri Lanka, has been on a musical journey since childhood. His passion for music ignited early on, but it wasn't until 2018 that he officially stepped into the industry. Specialising in progressive house and new progressive house, his sound is a fusion of melodic beats and soulful rhythms.",
-      "His tracks have found homes on labels such as AH Digital, Massive Harmony, Soundteller, BC2, Another Life, La Foresta and Consapevole Recordings, among many more.",
-      "He's also a dynamic DJ, known for electrifying performances, and has shared the stage with Roy Rosenfeld, Redspace, Sister Sweet, Kamilo Sanclemente and Amonita, among others.",
+      "ESH (SL) is a Sri Lanka–based DJ and producer specialising in Progressive and Organic House. His journey began in Sri Lanka in 2018, followed by performances across Dubai from 2019 to 2024, where he developed a strong understanding of crowd energy and immersive DJ sets.",
+      "Since moving into production in 2024, ESH (SL) has shaped a sound built around hypnotic grooves, atmospheric textures, dark ambient elements and melodic depth. His music blends years of dancefloor experience with modern Progressive and Organic House storytelling, creating emotional journeys designed for both clubs and personal listening.",
     ],
     highlights: [
-      { label: "On the label", value: "ER002 — Liquid Aura (RNDØM Remix)" },
-      { label: "Also on", value: "AH Digital · Big Bells Records" },
-      { label: "Active since", value: "2021 · 34 tracks on Proton" },
+      { label: "Sound", value: "Progressive · Organic House" },
+      { label: "DJing", value: "Since 2018 · Dubai 2019–2024" },
+      { label: "Producing", value: "Since 2024" },
     ],
   },
   {
-    id: "stereo-munk",
-    name: "STEREO MUNK",
+    id: "c-groove",
+    photoPosition: "50% 22%",
+    name: "C-Groove",
     role: "DJ · Producer",
-    basedIn: "Islamabad, Pakistan",
-    since: "2026",
-    blurb:
-      "One of Pakistan's premier producers and DJs, supported by Hernan Cattaneo and Nick Warren. Remixed Liquid Aura.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/stermunk" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/43860/stereo-munk" },
-    ],
+    blurb: "Rooted in the electronic scene since 2014 — driven by passion, dedication and a love for underground sound.",
+    links: [],
     bio: [
-      "Muhammad Faisal, better known as Stereo Munk, is one of Pakistan's premier producers and DJs. Since 2000 he has crafted a signature blend of electronic music that defies genre boundaries — an ever-evolving auditory journey that resonates deeply with listeners.",
-      "Hailing from Islamabad, he is known for innovative DJ sets and groundbreaking productions. His music is a narrative, a voyage through emotions and soundscapes rather than a collection of dancefloor hits — an approach that has earned him releases on Soundgarden, PlattenBank, Hoomidaas, Mango Alley, Movement, Balkan Connection and Juicebox, among others.",
-      "His tracks have been supported by Hernan Cattaneo, Nick Warren, Emi Galvan and Armen Miran. With a focus on the underground and a passion for pushing boundaries, he continues to inspire and influence the global scene.",
+      "C-Groove is a DJ and producer who has been deeply rooted in the electronic music scene since 2014. From the very beginning, his journey has been driven by pure passion, dedication and an unwavering love for underground sound. Always present in the scene, always evolving.",
     ],
     highlights: [
-      { label: "On the label", value: "ER002 — Liquid Aura (STEREO MUNK Remix)" },
-      { label: "Also on", value: "Mango Alley · BC2 · Soundteller Records" },
-      { label: "Active since", value: "2017 · 119 tracks on Proton" },
+      { label: "In the scene", value: "Since 2014" },
+      { label: "Sound", value: "Underground electronic" },
+      { label: "Role", value: "DJ · Producer" },
     ],
   },
   {
-    id: "juani-ramirez",
-    name: "Juani Ramirez",
-    role: "Producer",
-    basedIn: "Argentina",
-    since: "2026",
+    id: "dlc",
+    photoPosition: "50% 18%",
+    name: "DLC",
+    role: "Artist",
+    basedIn: "South coast, Sri Lanka",
     blurb:
-      "Argentinian progressive house producer. Brought melodic depth and groove precision to his Liquid Aura remix.",
-    links: [
-      { label: "SoundCloud", href: "https://soundcloud.com/juaniramirez" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/76359/juani-ramirez" },
-    ],
+      "Melodic, driving progressive house built for peak time, from the south coast of Sri Lanka — shaped by a life spent surfing.",
+    links: [],
     bio: [
-      "Juani Ramirez is a progressive house producer from Argentina, releasing since 2022 on labels including SLC-6 Music, Future Avenue, Massive Harmony Records and Mango Alley.",
-      "On ER002 he remixed Liquid Aura, adding his signature melodic depth and groove precision to the EP.",
+      "DLC is a progressive house artist from the south coast of Sri Lanka, who began his musical journey in 2016, shaping melodic, driving soundscapes built for peak-time energy. A passionate surfer, his connection to the ocean influences his sound, blending flow, rhythm and energy into every track.",
+      "With a strong focus on groove, emotion and atmosphere, his music combines powerful drops with immersive breakdowns designed for both club and festival settings.",
+      "Working closely with producers under his creative direction, DLC crafts each release with a clear vision, delivering a consistent, modern sound that connects deeply on the dancefloor.",
     ],
     highlights: [
-      { label: "On the label", value: "ER002 — Liquid Aura (Juani Ramirez Remix)" },
-      { label: "Also on", value: "SLC-6 Music · Future Avenue" },
-      { label: "Active since", value: "2022 · 34 tracks on Proton" },
+      { label: "Sound", value: "Melodic, peak-time progressive" },
+      { label: "Active since", value: "2016" },
+      { label: "Home", value: "South coast, Sri Lanka" },
     ],
   },
 ];
+
+/** "Weligama, Sri Lanka · on the label since 2025" — whichever parts are known. */
+export const artistMeta = (artist: RosterArtist) =>
+  [artist.basedIn, artist.since && `on the label since ${artist.since}`].filter(Boolean).join(" · ");
+
 
 /* ─────────────────────────  SITEWIDE  ───────────────────────── */
 
@@ -722,7 +658,7 @@ export function releasesFor(name: string): Release[] {
   );
 }
 
-/** "JUNIOR (SL) & Sound Fusion" */
+/** "JUNIOR & Sound Fusion" */
 export const billing = (release: Release) => release.artists.join(" & ");
 
 /* ─────────────────────────  FAQ (AEO)  ───────────────────────── */
@@ -740,12 +676,17 @@ const listJoin = (items: string[]) =>
 export const FAQS: { question: string; answer: string }[] = [
   {
     question: "What is Exploration Recordings?",
-    answer: `Exploration Recordings is an independent progressive house record label from Sri Lanka, founded in ${ARTIST.founded} and co-founded by JUNIOR (SL). It releases deep, driving, melodic progressive house from Sri Lankan and international artists, and every release is available on Proton Radio.`,
+    answer: `Exploration Recordings is an independent progressive house record label from Sri Lanka, founded in ${ARTIST.founded} by Weligama producers JUNIOR and ALPHA21. It releases deep, driving, melodic progressive house from Sri Lankan and international artists, and every release is available on Proton Radio.`,
+  },
+  {
+    question: "Who founded Exploration Recordings?",
+    answer:
+      "Exploration Recordings was co-founded in 2025 by JUNIOR and ALPHA21, two progressive house DJs and producers from Weligama, Sri Lanka. Their Time Machine EP was the label's first release.",
   },
   {
     question: "Where is Exploration Recordings based?",
     answer:
-      "The label is based in Sri Lanka. Co-founder JUNIOR (SL) and ALPHA21 are from Weligama and RNDØM is from Kalutara, while the wider roster includes artists from Poland, Pakistan and Argentina.",
+      "The label is based in Sri Lanka. Co-founders JUNIOR and ALPHA21 are from Weligama, DLC is from the south coast, and ESH (SL) is Sri Lanka–based after years performing in Dubai. Releases also feature collaborators and remixers from Poland, Pakistan and Argentina.",
   },
   {
     question: "What has Exploration Recordings released?",
@@ -776,6 +717,6 @@ export const FAQS: { question: string; answer: string }[] = [
   {
     question: "How do I submit a demo to Exploration Recordings?",
     answer:
-      "Send a short message through the Contact page with the topic set to Demo submission, including one private streaming link. Please don't send attachments.",
+      "Use the Demo Submission page on this site. Send finished tracks only, each with a title, in one private SoundCloud link — no downloads or attachments. Every demo gets listened to and answered.",
   },
 ];

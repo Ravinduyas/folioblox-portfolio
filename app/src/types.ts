@@ -88,9 +88,10 @@ export interface RosterArtist {
   name: string;
   /** "DJ · Producer", "Live", "Producer" … */
   role: string;
-  basedIn: string;
-  /** Year they joined the roster. */
-  since: string;
+  /** Leave out when unknown — never guess. */
+  basedIn?: string;
+  /** Year they joined the roster. Leave out when unknown. */
+  since?: string;
   blurb: string;
   /**
    * Stand-in press shot. A file dropped into assets/images/artists/ named

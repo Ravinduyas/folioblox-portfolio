@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "motion/react";
 import { IMAGES } from "../assets/images";
 import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
 import ArtistSlider from "../components/ArtistSlider";
-import Marquee from "../components/Marquee";
 import NewsSlider from "../components/NewsSlider";
 import NewsletterForm from "../components/NewsletterForm";
 import ReleaseCard from "../components/ReleaseCard";
@@ -45,33 +44,6 @@ export default function Home() {
       <section className="px-3 pt-3 pb-0 md:px-5">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem]">
           <NewsSlider items={latestNews(HERO_STORIES)} />
-
-          {/* Roster ticker — every artist on the label, one tap from their page */}
-          <div style={{ background: "#0a0b0d" }}>
-            <div className="flex flex-col gap-5 border-t border-white/[0.06] py-7 sm:flex-row sm:items-center sm:gap-8">
-              <p
-                className="shrink-0 px-8 font-mono uppercase leading-[1.9] tracking-[0.14em] text-white/40 md:px-12 lg:px-16"
-                style={{ fontSize: "10px" }}
-              >
-                Progressive house
-                <br />
-                <span className="font-bold text-white/65">On the label</span>
-              </p>
-
-              <Marquee speed={30} className="min-w-0 flex-1 sm:pr-8">
-                {ROSTER.map((artist) => (
-                  <Link
-                    key={artist.id}
-                    to={`/artists/${artist.id}`}
-                    className="whitespace-nowrap font-display font-semibold text-white/55 transition-colors hover:text-[#f25c27]"
-                    style={{ fontSize: "13px" }}
-                  >
-                    {artist.name}
-                  </Link>
-                ))}
-              </Marquee>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -107,7 +79,7 @@ export default function Home() {
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <GhostLink to="/news">Label news</GhostLink>
-                <GhostLink to="/contact">Send a demo</GhostLink>
+                <GhostLink to="/demo">Send a demo</GhostLink>
               </div>
             </div>
           </Reveal>
@@ -207,15 +179,18 @@ export default function Home() {
                   Everyone else
                 </span>
                 <h3 className="mt-3 font-display text-2xl font-extrabold tracking-tight text-white">
-                  Press, demos, questions.
+                  Got a record for us?
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/50">{SHORT_BIO}</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/50">
+                  Finished progressive house that goes somewhere deeper. Send one private SoundCloud link —
+                  we listen to every demo and always reply.
+                </p>
                 <div className="mt-6">
                   <Link
-                    to="/contact"
+                    to="/demo"
                     className="inline-flex items-center gap-2 rounded-full bg-white/8 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-white/12"
                   >
-                    <Mail size={14} /> Contact us
+                    <Mail size={14} /> Submit a demo
                   </Link>
                 </div>
               </div>

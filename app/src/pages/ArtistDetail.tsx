@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Cloud, ExternalLink, Facebook, Instagram, Mail, Radio } from "lucide-react";
 import { ARTIST, ROSTER, releasesFor } from "../data";
-import { artistPhoto } from "../assets/artists";
+import { artistPhoto, artistPhotos } from "../assets/artists";
+import ArtistPhotoCarousel from "../components/ArtistPhotoCarousel";
 import { initials } from "../components/ArtistCard";
 import PageHero from "../components/PageHero";
 import ReleaseCard from "../components/ReleaseCard";
@@ -9,6 +10,9 @@ import { LogoMark } from "../components/Logo";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
 import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
+
+/** Icon per link label — lucide has no SoundCloud mark, so a cloud stands in (as in the footer). */
+const LINK_ICONS = { Instagram, Facebook, SoundCloud: Cloud, Proton: Radio } as Record<string, typeof Cloud>;
 
 /**
  * Biography page for one roster artist, with their releases on the label.
@@ -19,6 +23,7 @@ export default function ArtistDetail() {
   const artist = ROSTER.find((entry) => entry.id === artistId);
   const others = ROSTER.filter((entry) => entry.id !== artistId);
   const releases = artist ? releasesFor(artist.name) : [];
+  const photos = artist ? artistPhotos(artist.id, artist.photo) : [];
 
   if (!artist) {
     return (
@@ -43,15 +48,22 @@ export default function ArtistDetail() {
         eyebrow={`${artist.role} · ${ARTIST.displayName}`}
         title={artist.name}
         intro={artist.blurb}
-        image={artistPhoto(artist.id, artist.photo)}
+        // Photos sit in the carousel on the right; the band behind stays a
+        // gradient so portrait shots aren't cropped to a sliver.
         watermark={
-          <span className="font-display text-[clamp(6rem,18vw,14rem)] font-black leading-none tracking-tight text-white/[0.05]">
-            {initials(artist.name)}
-          </span>
+          photos.length === 0 && (
+            <span className="font-display text-[clamp(6rem,18vw,14rem)] font-black leading-none tracking-tight text-white/[0.05]">
+              {initials(artist.name)}
+            </span>
+          )
         }
-        objectPosition={artist.photoPosition ?? "50% 25%"}
+        aside={
+          photos.length > 0 && (
+            <ArtistPhotoCarousel photos={photos} name={artist.name} position={artist.photoPosition} />
+          )
+        }
         glow="ellipse 50% 58% at 76% 38%"
-        height={420}
+        height={photos.length > 0 ? 540 : 420}
         actions={
           <>
             <PrimaryLink to={`/booking?artist=${artist.id}`}>Book {artist.name}</PrimaryLink>
@@ -59,13 +71,15 @@ export default function ArtistDetail() {
           </>
         }
         meta={
+          <div className="flex flex-wrap items-end justify-between gap-x-9 gap-y-5">
           <div className="flex flex-wrap items-end gap-x-9 gap-y-4">
             {[
               { label: "Based in", value: artist.basedIn },
-              { label: "On the roster", value: `Since ${artist.since}` },
+              { label: "On the roster", value: artist.since && `Since ${artist.since}` },
               { label: "Role", value: artist.role },
-              ...(artist.resident ? [{ label: "Status", value: "Co-founder" }] : []),
-            ].map((fact) => (
+            ]
+              .filter((fact) => fact.value)
+              .map((fact) => (
               <div key={fact.label} className="flex flex-col gap-[5px]">
                 <span
                   className="font-mono font-bold uppercase leading-none text-[#f25c27]"
@@ -81,6 +95,30 @@ export default function ArtistDetail() {
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* The artist's own channels, on the right of the strip */}
+          <div className="flex flex-wrap gap-2">
+            {artist.links
+              .filter((link) => /^https?:/.test(link.href))
+              .map((link) => {
+                const Icon = LINK_ICONS[link.label] ?? ExternalLink;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="open"
+                    aria-label={`${artist.name} on ${link.label}`}
+                    title={link.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/30 text-white backdrop-blur-md transition-colors hover:border-[#f25c27]/60 hover:text-[#f25c27]"
+                  >
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
+          </div>
           </div>
         }
       />
@@ -239,7 +277,7 @@ export default function ArtistDetail() {
                       {other.name}
                     </span>
                     <span className="mt-0.5 block font-mono text-[9px] uppercase tracking-wider text-white/35">
-                      {other.role} · {other.basedIn}
+                      {[other.role, other.basedIn].filter(Boolean).join(" · ")}
                     </span>
                   </span>
                   <ArrowRight
@@ -255,7 +293,10 @@ export default function ArtistDetail() {
         <div className="mt-8 flex items-center gap-2">
           <LogoMark size={18} />
           <p className="font-mono text-[10px] uppercase tracking-wider text-white/25">
-            Demos: {ARTIST.pressEmail} · one link, no attachments
+            Demos:{" "}
+            <Link to="/demo" className="text-[#f25c27] hover:underline">
+              submit through the demo form
+            </Link>
           </p>
         </div>
       </section>

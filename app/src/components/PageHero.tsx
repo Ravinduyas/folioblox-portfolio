@@ -28,6 +28,8 @@ interface PageHeroProps {
   meta?: ReactNode;
   /** Desktop height. Phones get a shorter hero so content starts sooner. */
   height?: number;
+  /** Sits to the right of the copy on desktop, below it on phones — e.g. a photo carousel. */
+  aside?: ReactNode;
 }
 
 const container = {
@@ -56,6 +58,7 @@ export default function PageHero({
   actions,
   meta,
   height = 420,
+  aside,
 }: PageHeroProps) {
   const reduce = useReducedMotion();
   const finePointer = usePointerFine();
@@ -178,7 +181,8 @@ export default function PageHero({
             }
             className="relative z-10 flex flex-col px-6 py-9 sm:px-8 md:px-12 md:py-12 lg:px-16"
           >
-            <div className="flex flex-1 flex-col justify-center">
+            <div className="flex flex-1 flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col justify-center">
               <motion.p
                 variants={reduce ? undefined : item}
                 className="mb-3 font-mono font-semibold uppercase tracking-[0.20em] text-[#f25c27]"
@@ -211,6 +215,13 @@ export default function PageHero({
                   {actions}
                 </motion.div>
               )}
+            </div>
+
+            {aside && (
+              <motion.div variants={reduce ? undefined : item} className="shrink-0 md:w-[min(34%,340px)]">
+                {aside}
+              </motion.div>
+            )}
             </div>
 
             {meta && (

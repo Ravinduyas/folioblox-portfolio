@@ -6,7 +6,7 @@ import { ARTIST, AUDIENCE_ACCENT, SECTIONS } from "../data";
 import { LogoMark } from "./Logo";
 
 /**
- * News · Releases · Artists · Bookings · About Us · Contact Us — straight from
+ * News · Releases · Artists · Bookings · About Us · Demo Submission — straight from
  * SECTIONS, so the nav and footer cannot diverge.
  */
 const LINKS = SECTIONS.filter((section) => !section.navHidden);

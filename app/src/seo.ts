@@ -47,7 +47,7 @@ export const ROUTES: string[] = [
   ...ROSTER.map((artist) => `/artists/${artist.id}`),
   "/booking",
   "/about",
-  "/contact",
+  "/demo",
 ];
 
 /** Left over from the single-artist site — reachable, but kept out of search. */
@@ -82,7 +82,7 @@ type Json = Record<string, unknown>;
 
 /** The label as an entity — referenced by @id from everything else. */
 function organization(): Json {
-  const founder = ROSTER.find((artist) => artist.resident);
+  const founders = ROSTER.filter((artist) => artist.resident);
   return {
     "@type": "Organization",
     "@id": ORG_ID,
@@ -97,7 +97,7 @@ function organization(): Json {
     foundingLocation: { "@type": "Place", name: ARTIST.basedIn },
     areaServed: "Worldwide",
     knowsAbout: [...ARTIST.genres, "Electronic music", "Record label"],
-    ...(founder ? { founder: { "@id": artistId(founder) } } : {}),
+    ...(founders.length ? { founder: founders.map((artist) => ({ "@id": artistId(artist) })) } : {}),
     sameAs: [ARTIST.profileUrl],
   };
 }
@@ -128,7 +128,7 @@ function artistEntity(artist: RosterArtist, full = false): Json {
     sameAs: external,
     ...(full
       ? {
-          foundingLocation: { "@type": "Place", name: artist.basedIn },
+          ...(artist.basedIn ? { foundingLocation: { "@type": "Place", name: artist.basedIn } } : {}),
           album: releasesFor(artist.name).map((release) => ({ "@id": releaseId(release) })),
         }
       : {}),
@@ -344,7 +344,7 @@ export function pageSeo(rawPath: string): PageSeo {
   }
 
   if (path === "/artists") {
-    const description = `The Exploration Recordings roster: ${ROSTER.map((artist) => artist.name).join(", ")} — producers and DJs from Sri Lanka and beyond.`;
+    const description = `The Exploration Recordings roster: ${ROSTER.map((artist) => artist.name).join(", ")} — progressive and organic house DJs and producers from Sri Lanka.`;
     return {
       ...base,
       title: "Artists — Exploration Recordings Roster",
@@ -373,7 +373,7 @@ export function pageSeo(rawPath: string): PageSeo {
     return {
       ...base,
       title: branded(`${artist.name} — ${artist.role}`, " | "),
-      description: `${artist.name} (${artist.basedIn}): ${artist.blurb}`,
+      description: artist.basedIn ? `${artist.name} (${artist.basedIn}): ${artist.blurb}` : `${artist.name}: ${artist.blurb}`,
       image: photo ? assetUrl(photo) : DEFAULT_IMAGE,
       imageAlt: artist.name,
       type: "profile",
@@ -400,7 +400,7 @@ export function pageSeo(rawPath: string): PageSeo {
   }
 
   if (path === "/about") {
-    const description = `About Exploration Recordings: an independent progressive house label founded in Sri Lanka in ${ARTIST.founded}, co-founded by JUNIOR (SL). Our story, our sound, the catalogue and FAQs.`;
+    const description = `About Exploration Recordings: an independent progressive house label founded in Sri Lanka in ${ARTIST.founded} by JUNIOR and ALPHA21. Our story, our sound, the catalogue and FAQs.`;
     return {
       ...base,
       title: "About Exploration Recordings — Sri Lankan Progressive House Label",
@@ -424,17 +424,17 @@ export function pageSeo(rawPath: string): PageSeo {
     };
   }
 
-  if (path === "/contact") {
+  if (path === "/demo") {
     const description =
-      "Contact Exploration Recordings — general enquiries, press, licensing and demo submissions for the Sri Lankan progressive house label.";
+      "Submit a demo to Exploration Recordings, the Sri Lankan progressive house label. Send finished, titled tracks in one private SoundCloud link — every demo gets a reply.";
     return {
       ...base,
-      title: "Contact Us — Exploration Recordings",
+      title: "Submit a Demo — Exploration Recordings",
       description,
       jsonLd: [
         organization(),
-        webPage("ContactPage", path, "Contact Us", description, { about: { "@id": ORG_ID } }),
-        breadcrumbs([["Contact Us", "/contact"]]),
+        webPage("WebPage", path, "Demo Submission", description, { about: { "@id": ORG_ID } }),
+        breadcrumbs([["Demo Submission", "/demo"]]),
       ],
     };
   }
@@ -547,7 +547,7 @@ export function llmsTxt(): string {
     `- Type: independent record label`,
     `- Based in: ${ARTIST.basedIn}`,
     `- Founded: ${ARTIST.founded}`,
-    `- Co-founder: JUNIOR (SL)`,
+    `- Co-founders: ${ROSTER.filter((artist) => artist.resident).map((artist) => artist.name).join(" and ")}`,
     `- Genre: ${ARTIST.genres.join(", ")}`,
     `- Catalogue: ${RELEASES.length} EPs, ${RELEASES.reduce((n, r) => n + r.tracks.length, 0)} tracks`,
     `- Releases available on: Proton Radio (${ARTIST.profileUrl})`,
@@ -570,7 +570,7 @@ export function llmsTxt(): string {
   }
   lines.push("## Artists", "");
   for (const artist of ROSTER) {
-    lines.push(`- [${artist.name}](${pageUrl(`/artists/${artist.id}`)}): ${artist.role}, ${artist.basedIn}. ${artist.blurb}`);
+    lines.push(`- [${artist.name}](${pageUrl(`/artists/${artist.id}`)}): ${[artist.role, artist.basedIn].filter(Boolean).join(", ")}. ${artist.blurb}`);
   }
   lines.push("", "## Frequently asked questions", "");
   for (const faq of FAQS) lines.push(`### ${faq.question}`, "", faq.answer, "");
@@ -583,7 +583,7 @@ export function llmsTxt(): string {
     `- [Artists](${pageUrl("/artists")}): roster and biographies`,
     `- [Bookings](${pageUrl("/booking")}): book a label artist`,
     `- [About Us](${pageUrl("/about")}): label story and FAQ`,
-    `- [Contact Us](${pageUrl("/contact")}): general, press and demo enquiries`,
+    `- [Demo Submission](${pageUrl("/demo")}): submit a demo — finished tracks, one private SoundCloud link`,
     "",
   );
   return lines.join("\n");

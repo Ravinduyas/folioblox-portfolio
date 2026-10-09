@@ -3,6 +3,7 @@ import { CheckCircle2, SendHorizontal } from "lucide-react";
 import { motion } from "motion/react";
 import { useSearchParams } from "react-router-dom";
 import { ARTIST, ROSTER } from "../data";
+import Select from "./Select";
 
 export interface BookingEnquiry {
   /** Roster id, or "" when the booker hasn't chosen yet. */
@@ -156,18 +157,16 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <Field label="Artist">
-        <select
+        <Select
+          label="Artist"
           value={form.artist}
-          onChange={(e) => set("artist", e.target.value)}
-          className={`${inputClass} bg-[#121318]`}
-        >
-          <option value="">Not sure yet — recommend someone</option>
-          {ROSTER.map((artist) => (
-            <option key={artist.id} value={artist.id}>
-              {artist.name} · {artist.basedIn}
-            </option>
-          ))}
-        </select>
+          onChange={(value) => set("artist", value)}
+          className={inputClass}
+          options={[
+            { value: "", label: "Not sure yet — recommend someone" },
+            ...ROSTER.map((artist) => ({ value: artist.id, label: artist.basedIn ? `${artist.name} · ${artist.basedIn}` : artist.name })),
+          ]}
+        />
       </Field>
 
       <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2"}`}>
@@ -252,31 +251,35 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
 
       <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2 md:grid-cols-3"}`}>
         <Field label="Set type">
-          <select
+          <Select
+            label="Set type"
             value={form.setType}
-            onChange={(e) => set("setType", e.target.value)}
-            className={`${inputClass} bg-[#121318]`}
-          >
-            <option value="dj-set">DJ set</option>
-            <option value="extended">Extended / all-night</option>
-            <option value="opening">Opening set</option>
-            <option value="closing">Closing set</option>
-            <option value="b2b">B2B</option>
-            <option value="radio">Radio / broadcast</option>
-          </select>
+            onChange={(value) => set("setType", value)}
+            className={inputClass}
+            options={[
+              { value: "dj-set", label: "DJ set" },
+              { value: "extended", label: "Extended / all-night" },
+              { value: "opening", label: "Opening set" },
+              { value: "closing", label: "Closing set" },
+              { value: "b2b", label: "B2B" },
+              { value: "radio", label: "Radio / broadcast" },
+            ]}
+          />
         </Field>
         <Field label="Set length">
-          <select
+          <Select
+            label="Set length"
             value={form.setLength}
-            onChange={(e) => set("setLength", e.target.value)}
-            className={`${inputClass} bg-[#121318]`}
-          >
-            <option value="1h">1 hour</option>
-            <option value="2h">2 hours</option>
-            <option value="3h">3 hours</option>
-            <option value="4h+">4 hours +</option>
-            <option value="all-night">All night long</option>
-          </select>
+            onChange={(value) => set("setLength", value)}
+            className={inputClass}
+            options={[
+              { value: "1h", label: "1 hour" },
+              { value: "2h", label: "2 hours" },
+              { value: "3h", label: "3 hours" },
+              { value: "4h+", label: "4 hours +" },
+              { value: "all-night", label: "All night long" },
+            ]}
+          />
         </Field>
         <Field label="Fee / budget" required>
           <input

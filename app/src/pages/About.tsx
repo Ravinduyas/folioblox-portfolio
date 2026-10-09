@@ -40,7 +40,7 @@ export default function About() {
         actions={
           <>
             <PrimaryLink to="/releases">Hear the releases</PrimaryLink>
-            <GhostLink to="/contact">Contact us</GhostLink>
+            <GhostLink to="/demo">Submit a demo</GhostLink>
           </>
         }
         meta={
@@ -185,10 +185,10 @@ export default function About() {
               <Eyebrow>Artists</Eyebrow>
               <h3 className="mt-2 font-display text-xl font-bold text-white">Got a record for us?</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                Send one private streaming link to {ARTIST.pressEmail} — no attachments.
+                Use the demo form — finished, titled tracks in one private SoundCloud link.
               </p>
               <div className="mt-5">
-                <GhostLink to="/contact">Send a demo</GhostLink>
+                <GhostLink to="/demo">Send a demo</GhostLink>
               </div>
             </Card>
           </Reveal>

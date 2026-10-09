@@ -1,35 +1,37 @@
 /**
  * Roster photos, picked up by filename.
  *
- * Drop an image into `images/artists/` named after the artist's id in ROSTER —
- * `halide.jpg`, `low-arc.png` — and it appears on that artist's card and
- * biography page automatically. No import, no code change. Artists with no file
- * keep the monogram tile.
+ * Two ways to add them, no import or code change either way:
+ *   images/artists/<id>.jpg         one photo
+ *   images/artists/<id>/01.jpg …    a set — the artist page hero cycles
+ *                                   through them in filename order, and the
+ *                                   first is the card photo
  *
- * Supported: .jpg .jpeg .png .webp · portrait or landscape (cards crop to 4:3,
- * heroes to a wide band, so keep the subject off the extreme edges).
+ * Supported: .jpg .jpeg .png .webp. Artists with neither keep the monogram tile.
  */
-const files = import.meta.glob("./images/artists/*.{jpg,jpeg,png,webp}", {
+const files = import.meta.glob("./images/artists/**/*.{jpg,jpeg,png,webp}", {
   eager: true,
   import: "default",
 }) as Record<string, string>;
 
-export const ARTIST_PHOTOS: Record<string, string> = Object.fromEntries(
-  Object.entries(files).map(([path, url]) => [
-    path
-      .split("/")
-      .pop()!
-      .replace(/\.[^.]+$/, "")
-      .toLowerCase(),
-    url,
-  ]),
-);
+/** id → photo URLs, in filename order. */
+const PHOTOS: Record<string, string[]> = {};
+for (const path of Object.keys(files).sort()) {
+  const rel = path.replace("./images/artists/", "");
+  // "dlc/01.jpg" → "dlc"; "junior-sl.jpg" → "junior-sl"
+  const id = (rel.includes("/") ? rel.split("/")[0] : rel.replace(/\.[^.]+$/, "")).toLowerCase();
+  (PHOTOS[id] ??= []).push(files[path]);
+}
+
+/** Every photo for an artist — the hero carousel. Falls back to the stand-in. */
+export function artistPhotos(id: string, fallback?: string): string[] {
+  return PHOTOS[id.toLowerCase()] ?? (fallback ? [fallback] : []);
+}
 
 /**
- * A dropped-in file always wins. `fallback` is the stand-in set in ROSTER, so
- * the cards look complete today and are replaced the moment a real photo lands
- * — no code edit, nothing to remember to delete.
+ * The lead photo — cards, thumbnails, social previews. A dropped-in file always
+ * wins over the `fallback` stand-in set in ROSTER.
  */
 export function artistPhoto(id: string, fallback?: string): string | undefined {
-  return ARTIST_PHOTOS[id.toLowerCase()] ?? fallback;
+  return artistPhotos(id, fallback)[0];
 }
