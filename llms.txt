@@ -6,14 +6,14 @@ Exploration Recordings is a platform for visionary artists, a home for boundary-
 
 This isn’t just a label; it’s a movement — a space for those who understand that music is more than sound. It’s an exploration of artistry, emotion and innovation.
 
-Founded in Sri Lanka in 2025 and co-founded by JUNIOR (SL), the label opened its catalogue with ALPHA21 & JUNIOR (SL)'s Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion — deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.
+Founded in Sri Lanka in 2025 by Weligama producers JUNIOR and ALPHA21, the label opened its catalogue with the co-founders' own Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion — deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.
 
 ## Key facts
 
 - Type: independent record label
 - Based in: Sri Lanka
 - Founded: 2025
-- Co-founder: JUNIOR (SL)
+- Co-founders: JUNIOR and ALPHA21
 - Genre: Progressive house, Deep progressive, Melodic
 - Catalogue: 2 EPs, 9 tracks
 - Releases available on: Proton Radio (https://www.protonradio.com/labels/4587/exploration-recordings)
@@ -21,11 +21,11 @@ Founded in Sri Lanka in 2025 and co-founded by JUNIOR (SL), the label opened its
 
 ## Releases
 
-### ER002 — Liquid Aura EP — JUNIOR (SL) & Sound Fusion
+### ER002 — Liquid Aura EP — JUNIOR & Sound Fusion
 
 Released 3 July 2026. Progressive house. Buy / stream: https://www.protonradio.com/releases/293837/liquid-aura
 
-Exploration Recordings continues its journey with ER002, welcoming co-founder JUNIOR (SL) alongside Sound Fusion for a powerful five-track statement. The EP features two originals, “Liquid Aura” and “Bleeding Shadow”, both rooted in deep progressive textures, hypnotic rhythms and emotional storytelling. Liquid Aura flows with subtle tension and immersive atmospheres, while Bleeding Shadow dives darker, driven by pulsating basslines and haunting melodic layers. On remix duties, Stereo Munk delivers a refined and dynamic reinterpretation, Juani Ramirez adds his signature melodic depth and groove precision, and RNDØM crafts a rolling underground version that pushes the energy forward. This release represents what Exploration Recordings stands for: exploration through sound, crafted with intention.
+Exploration Recordings continues its journey with ER002, welcoming co-founder JUNIOR alongside Sound Fusion for a powerful five-track statement. The EP features two originals, “Liquid Aura” and “Bleeding Shadow”, both rooted in deep progressive textures, hypnotic rhythms and emotional storytelling. Liquid Aura flows with subtle tension and immersive atmospheres, while Bleeding Shadow dives darker, driven by pulsating basslines and haunting melodic layers. On remix duties, Stereo Munk delivers a refined and dynamic reinterpretation, Juani Ramirez adds his signature melodic depth and groove precision, and RNDØM crafts a rolling underground version that pushes the energy forward. This release represents what Exploration Recordings stands for: exploration through sound, crafted with intention.
 
 1. Liquid Aura (Original Mix) — 6:51
 2. Liquid Aura (STEREO MUNK Remix) — 8:59
@@ -33,11 +33,11 @@ Exploration Recordings continues its journey with ER002, welcoming co-founder JU
 4. Liquid Aura (RNDØM Remix) — 7:57
 5. Bleeding Shadow (Original Mix) — 7:08
 
-### ER001 — Time Machine EP — ALPHA21 & JUNIOR (SL)
+### ER001 — Time Machine EP — ALPHA21 & JUNIOR
 
 Released 21 September 2025. Progressive house. Buy / stream: https://www.protonradio.com/releases/270063/time-machine
 
-Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR (SL). Time Machine EP showcases their vision of deep, driving progressive house across two originals and two standout remixes. The title track Time Machine unfolds with hypnotic grooves and cinematic tension, while Gate 8 Journey offers a more atmospheric and melodic voyage. On remix duties, Rockka injects peak-time energy with a powerful melodic rework, and Imal SL strips the original into a rolling underground interpretation. A statement first release — setting the tone for the journeys ahead.
+Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR. Time Machine EP showcases their vision of deep, driving progressive house across two originals and two standout remixes. The title track Time Machine unfolds with hypnotic grooves and cinematic tension, while Gate 8 Journey offers a more atmospheric and melodic voyage. On remix duties, Rockka injects peak-time energy with a powerful melodic rework, and Imal SL strips the original into a rolling underground interpretation. A statement first release — setting the tone for the journeys ahead.
 
 1. Time Machine (Original Mix) — 7:40
 2. Time Machine (Rockka Remix) — 7:05
@@ -46,28 +46,29 @@ Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR (
 
 ## Artists
 
-- [JUNIOR (SL)](https://ravinduyas.github.io/folioblox-portfolio/artists/junior-sl/): Co-founder · DJ · Producer, Weligama, Sri Lanka. Label co-founder. Emotional, soulful progressive house from Weligama, on both of the label's releases so far.
-- [ALPHA21](https://ravinduyas.github.io/folioblox-portfolio/artists/alpha21/): DJ · Producer, Weligama, Sri Lanka. Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world. Co-wrote the label's debut, Time Machine.
-- [Sound Fusion](https://ravinduyas.github.io/folioblox-portfolio/artists/sound-fusion/): Producer, Poland. Polish progressive house project, releasing since 2013. Co-wrote both originals on the Liquid Aura EP.
-- [Rockka](https://ravinduyas.github.io/folioblox-portfolio/artists/rockka/): Producer, Sri Lanka. Lakith Adikaram — Sri Lankan progressive house producer behind the peak-time remix of Time Machine.
-- [Imal SL](https://ravinduyas.github.io/folioblox-portfolio/artists/imal-sl/): Producer, Sri Lanka. Deep house, progressive house and progressive techno. Stripped Time Machine into a rolling underground remix.
-- [RNDØM](https://ravinduyas.github.io/folioblox-portfolio/artists/rndom/): DJ · Producer, Kalutara, Sri Lanka. Progressive and new progressive house from Kalutara. A rolling underground remix of Liquid Aura on ER002.
-- [STEREO MUNK](https://ravinduyas.github.io/folioblox-portfolio/artists/stereo-munk/): DJ · Producer, Islamabad, Pakistan. One of Pakistan's premier producers and DJs, supported by Hernan Cattaneo and Nick Warren. Remixed Liquid Aura.
-- [Juani Ramirez](https://ravinduyas.github.io/folioblox-portfolio/artists/juani-ramirez/): Producer, Argentina. Argentinian progressive house producer. Brought melodic depth and groove precision to his Liquid Aura remix.
+- [JUNIOR](https://ravinduyas.github.io/folioblox-portfolio/artists/junior-sl/): Co-founder · DJ · Producer, Weligama, Sri Lanka. Label co-founder. Emotional, soulful progressive house from Weligama, on both of the label's releases so far.
+- [ALPHA21](https://ravinduyas.github.io/folioblox-portfolio/artists/alpha21/): Co-founder · DJ · Producer, Weligama, Sri Lanka. Label co-founder. Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world; co-wrote the debut, Time Machine.
+- [ESH (SL)](https://ravinduyas.github.io/folioblox-portfolio/artists/esh-sl/): DJ · Producer, Sri Lanka. Progressive and organic house — hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.
+- [C-Groove](https://ravinduyas.github.io/folioblox-portfolio/artists/c-groove/): DJ · Producer. Rooted in the electronic scene since 2014 — driven by passion, dedication and a love for underground sound.
+- [DLC](https://ravinduyas.github.io/folioblox-portfolio/artists/dlc/): Artist, South coast, Sri Lanka. Melodic, driving progressive house built for peak time, from the south coast of Sri Lanka — shaped by a life spent surfing.
 
 ## Frequently asked questions
 
 ### What is Exploration Recordings?
 
-Exploration Recordings is an independent progressive house record label from Sri Lanka, founded in 2025 and co-founded by JUNIOR (SL). It releases deep, driving, melodic progressive house from Sri Lankan and international artists, and every release is available on Proton Radio.
+Exploration Recordings is an independent progressive house record label from Sri Lanka, founded in 2025 by Weligama producers JUNIOR and ALPHA21. It releases deep, driving, melodic progressive house from Sri Lankan and international artists, and every release is available on Proton Radio.
+
+### Who founded Exploration Recordings?
+
+Exploration Recordings was co-founded in 2025 by JUNIOR and ALPHA21, two progressive house DJs and producers from Weligama, Sri Lanka. Their Time Machine EP was the label's first release.
 
 ### Where is Exploration Recordings based?
 
-The label is based in Sri Lanka. Co-founder JUNIOR (SL) and ALPHA21 are from Weligama and RNDØM is from Kalutara, while the wider roster includes artists from Poland, Pakistan and Argentina.
+The label is based in Sri Lanka. Co-founders JUNIOR and ALPHA21 are from Weligama, DLC is from the south coast, and ESH (SL) is Sri Lanka–based after years performing in Dubai. Releases also feature collaborators and remixers from Poland, Pakistan and Argentina.
 
 ### What has Exploration Recordings released?
 
-2 EPs so far: ER001 Time Machine by ALPHA21 & JUNIOR (SL) (21 September 2025), with remixes from Rockka and Imal SL; ER002 Liquid Aura by JUNIOR (SL) & Sound Fusion (3 July 2026), with remixes from STEREO MUNK, Juani Ramirez and RNDØM.
+2 EPs so far: ER001 Time Machine by ALPHA21 & JUNIOR (21 September 2025), with remixes from Rockka and Imal SL; ER002 Liquid Aura by JUNIOR & Sound Fusion (3 July 2026), with remixes from STEREO MUNK, Juani Ramirez and RNDØM.
 
 ### What kind of music does the label release?
 
@@ -83,7 +84,7 @@ Use the booking form: choose an artist (or leave it open for a recommendation), 
 
 ### How do I submit a demo to Exploration Recordings?
 
-Send a short message through the Contact page with the topic set to Demo submission, including one private streaming link. Please don't send attachments.
+Use the Demo Submission page on this site. Send finished tracks only, each with a title, in one private SoundCloud link — no downloads or attachments. Every demo gets listened to and answered.
 
 ## Pages
 
@@ -96,4 +97,4 @@ Send a short message through the Contact page with the topic set to Demo submiss
 - [Artists](https://ravinduyas.github.io/folioblox-portfolio/artists/): roster and biographies
 - [Bookings](https://ravinduyas.github.io/folioblox-portfolio/booking/): book a label artist
 - [About Us](https://ravinduyas.github.io/folioblox-portfolio/about/): label story and FAQ
-- [Contact Us](https://ravinduyas.github.io/folioblox-portfolio/contact/): general, press and demo enquiries
+- [Demo Submission](https://ravinduyas.github.io/folioblox-portfolio/demo/): submit a demo — finished tracks, one private SoundCloud link
