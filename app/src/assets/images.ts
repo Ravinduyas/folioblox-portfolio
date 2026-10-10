@@ -2,7 +2,7 @@
  * Central image registry. Importing (rather than hard-coding "/src/assets/…"
  * strings) means Vite fingerprints and rewrites these paths at build time.
  */
-import logo from "./images/logo.jpg";
+import logo from "./images/logo.png";
 
 /* Photography — see images/site/ */
 import heroBooth from "./images/site/hero-booth.jpg";

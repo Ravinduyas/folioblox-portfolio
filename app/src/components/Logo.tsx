@@ -2,13 +2,9 @@ import { IMAGES } from "../assets/images";
 import { ARTIST } from "../data";
 
 /**
- * The mark is a white-on-black JPEG with no alpha channel, so it is composited
- * with `screen`: black pixels drop to nothing against the site's near-black
- * surfaces and only the white linework survives. That also swallows the JPEG's
- * edge artefacts. If a transparent PNG or an SVG of the mark turns up, swap the
- * <img> and delete the blend class — nothing else here changes.
- *
- * Because it relies on a dark backdrop, never place this on a light surface.
+ * The mark: white linework on a transparent PNG (cut from the label's 1400px
+ * logo), so it sits cleanly on any dark surface with no background square.
+ * It is white, so keep it off light surfaces.
  */
 export function LogoMark({ size = 32, className = "" }: { size?: number; className?: string }) {
   return (
@@ -18,7 +14,7 @@ export function LogoMark({ size = 32, className = "" }: { size?: number; classNa
       aria-hidden="true"
       width={size}
       height={size}
-      className={`shrink-0 select-none mix-blend-screen ${className}`}
+      className={`shrink-0 select-none ${className}`}
       style={{ width: size, height: size }}
     />
   );
