@@ -60,7 +60,7 @@ export default function ArtistPhotoCarousel({
   };
 
   return (
-    <div className="mx-auto w-full max-w-[300px] md:max-w-none">
+    <div className="mx-auto w-full max-w-[220px] md:max-w-none">
       <TiltCard intensity={8} lift={16}>
         <div
           className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#0d0e10] shadow-2xl shadow-black/60 ring-1 ring-white/10"

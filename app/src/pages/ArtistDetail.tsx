@@ -63,7 +63,7 @@ export default function ArtistDetail() {
           )
         }
         glow="ellipse 50% 58% at 76% 38%"
-        height={photos.length > 0 ? 540 : 420}
+        height={photos.length > 0 ? 460 : 420}
         actions={
           <>
             <PrimaryLink to={`/booking?artist=${artist.id}`}>Book {artist.name}</PrimaryLink>

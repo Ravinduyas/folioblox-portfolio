@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarCheck, Disc3, Mail } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
 import { IMAGES } from "../assets/images";
 import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
 import ArtistSlider from "../components/ArtistSlider";
 import NewsSlider from "../components/NewsSlider";
-import NewsletterForm from "../components/NewsletterForm";
 import ReleaseCard from "../components/ReleaseCard";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
@@ -31,7 +29,6 @@ function SectionLink({ to, children }: { to: string; children: string }) {
  * label, the artists — and straight out to bookings or contact.
  */
 export default function Home() {
-  const reduce = useReducedMotion();
 
   return (
     <>
@@ -197,39 +194,6 @@ export default function Home() {
             </TiltCard>
           </Reveal>
         </div>
-      </section>
-
-      {/* ─── NEWSLETTER ─── */}
-      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214] px-8 py-12 md:px-14 md:py-16">
-            <motion.div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 55% 120% at 85% 50%, rgba(215,60,15,0.22) 0%, transparent 70%)",
-              }}
-              animate={reduce ? undefined : { opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <div className="relative grid items-center gap-8 md:grid-cols-12">
-              <div className="md:col-span-7">
-                <Eyebrow>Stay close</Eyebrow>
-                <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                  New releases, straight to you.
-                </h2>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/50">
-                  A short email when there's a record out or a pre-order open — no algorithm deciding
-                  whether you see it. Nothing else, and one click to leave.
-                </p>
-              </div>
-              <div className="md:col-span-5">
-                <NewsletterForm />
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </section>
     </>
   );

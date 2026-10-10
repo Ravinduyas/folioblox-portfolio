@@ -218,7 +218,7 @@ export default function PageHero({
             </div>
 
             {aside && (
-              <motion.div variants={reduce ? undefined : item} className="shrink-0 md:w-[min(34%,340px)]">
+              <motion.div variants={reduce ? undefined : item} className="shrink-0 md:w-[min(24%,250px)]">
                 {aside}
               </motion.div>
             )}
