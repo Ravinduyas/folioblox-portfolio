@@ -13,7 +13,7 @@ const CHECKLIST = [
   "Date, city and venue (or the shortlist you're choosing between)",
   "Room capacity and expected attendance",
   "Set length and slot - opening, peak, closing, all-night",
-  "Fee offer including currency, plus who covers travel and hotel",
+  "Who covers travel and hotel",
   "Whether the line-up is already announced",
 ];
 

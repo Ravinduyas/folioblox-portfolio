@@ -18,7 +18,6 @@ export interface BookingEnquiry {
   capacity: string;
   setType: string;
   setLength: string;
-  budget: string;
   message: string;
 }
 
@@ -34,7 +33,6 @@ const EMPTY: BookingEnquiry = {
   capacity: "",
   setType: "dj-set",
   setLength: "2h",
-  budget: "",
   message: "",
 };
 
@@ -249,7 +247,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </Field>
       </div>
 
-      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2 md:grid-cols-3"}`}>
+      <div className={`grid gap-4 ${compact ? "" : "sm:grid-cols-2"}`}>
         <Field label="Set type">
           <Select
             label="Set type"
@@ -279,15 +277,6 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
               { value: "4h+", label: "4 hours +" },
               { value: "all-night", label: "All night long" },
             ]}
-          />
-        </Field>
-        <Field label="Fee / budget" required>
-          <input
-            required
-            value={form.budget}
-            onChange={(e) => set("budget", e.target.value)}
-            placeholder="Incl. currency"
-            className={inputClass}
           />
         </Field>
       </div>
