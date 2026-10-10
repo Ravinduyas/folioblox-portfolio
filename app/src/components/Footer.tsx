@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Cloud, Compass, Disc3, Instagram, Mail, Music2, Radio, Youtube } from "lucide-react";
 import { ARTIST, AUDIENCE_ACCENT, SECTIONS, SOCIALS } from "../data";
 import { LogoMark } from "./Logo";
-import NewsletterForm from "./NewsletterForm";
 
 const ICONS = {
   instagram: Instagram,
@@ -24,24 +23,6 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-white/[0.05] bg-[#0a0b0d] text-white/50">
-      {/* Sitewide email capture */}
-      <div className="border-b border-white/[0.05]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-10">
-          <div className="max-w-md">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#f25c27]">
-              Mailing list
-            </p>
-            <h4 className="mt-2 font-display text-xl font-bold text-white">
-              New releases, first.
-            </h4>
-            <p className="mt-1.5 text-xs leading-relaxed">
-              A few emails a year - new releases and pre-orders. No algorithm in between.
-            </p>
-          </div>
-          <NewsletterForm />
-        </div>
-      </div>
-
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="space-y-4">
