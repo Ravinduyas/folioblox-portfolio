@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ExternalLink, Play } from "lucide-react";
 import { ArtistMix } from "../types";
 import { Card } from "./ui";
@@ -11,6 +11,9 @@ const artworkFiles = import.meta.glob("../assets/images/mixes/*.jpg", {
 /** Mix artwork by file key, e.g. "alpha21-1". */
 const mixArtwork = (key?: string) =>
   key ? Object.entries(artworkFiles).find(([path]) => path.endsWith(`/${key}.jpg`))?.[1] : undefined;
+
+/** Fired when a card starts playing, so the others stop. */
+const PLAY_EVENT = "mixcard:play";
 
 /** SoundCloud's embeddable player for a track URL, in the site's orange. */
 const embedUrl = (url: string) =>
@@ -25,15 +28,30 @@ const formatLength = (minutes: number) =>
 /**
  * A podcast or mix from the artist's SoundCloud. The artwork shows until
  * someone presses play; only then is SoundCloud's player loaded, in the same
- * square — so a page with six mixes doesn't load six players up front.
+ * frame — so a page with six mixes doesn't load six players up front.
  */
 export default function MixCard({ mix, artist }: { mix: ArtistMix; artist: string }) {
   const [playing, setPlaying] = useState(false);
   const artwork = mixArtwork(mix.artwork);
 
+  // One player at a time: starting this one tells every other card to stop.
+  useEffect(() => {
+    const onPlay = (e: Event) => {
+      if ((e as CustomEvent<string>).detail !== mix.url) setPlaying(false);
+    };
+    window.addEventListener(PLAY_EVENT, onPlay);
+    return () => window.removeEventListener(PLAY_EVENT, onPlay);
+  }, [mix.url]);
+
+  const play = () => {
+    window.dispatchEvent(new CustomEvent(PLAY_EVENT, { detail: mix.url }));
+    setPlaying(true);
+  };
+
   return (
     <Card hover tilt={false} className="flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-square overflow-hidden bg-[#0d0e10]">
+      {/* 16:9, like a YouTube thumbnail */}
+      <div className="relative aspect-video overflow-hidden bg-[#0d0e10]">
         {playing ? (
           <iframe
             src={embedUrl(mix.url)}
@@ -43,17 +61,28 @@ export default function MixCard({ mix, artist }: { mix: ArtistMix; artist: strin
           />
         ) : (
           <button
-            onClick={() => setPlaying(true)}
+            onClick={play}
             aria-label={`Play ${mix.title}`}
             className="group absolute inset-0 h-full w-full"
           >
             {artwork ? (
-              <img
-                src={artwork}
-                alt=""
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              <>
+                {/* Square artwork in a wide frame: a blurred copy fills the sides */}
+                <img
+                  src={artwork}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full scale-125 object-cover opacity-60 blur-2xl"
+                />
+                <span className="absolute inset-0 bg-black/30" />
+                <img
+                  src={artwork}
+                  alt=""
+                  loading="lazy"
+                  className="relative mx-auto h-full w-auto object-contain shadow-2xl shadow-black/60 transition-transform duration-700 group-hover:scale-105"
+                />
+              </>
             ) : (
               <span className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#16171d] to-[#0d0e10] font-display text-sm text-white/30">
                 {artist}
