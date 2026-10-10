@@ -506,6 +506,7 @@ export const ROSTER: RosterArtist[] = [
   },
   {
     id: "alpha21",
+    photoPosition: "50% 22%",
     name: "ALPHA21",
     role: "Co-founder · DJ · Producer",
     basedIn: "Weligama, Sri Lanka",

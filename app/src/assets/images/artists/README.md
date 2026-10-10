@@ -3,9 +3,8 @@
 Drop artist photos in this folder. The filename must match the artist's `id` in
 `ROSTER` (see [`app/src/data.ts`](../../../data.ts)) — nothing else to change.
 
-Current photos: real photo sets for JUNIOR, ESH (SL), C-Groove and DLC in
-`<id>/01.jpg …`, and ALPHA21's Proton avatar (`alpha21.jpg`). Originals live in
-`source-photos/artists/` (not tracked).
+Current photos: real photo sets for every artist in `<id>/01.jpg …` — the first
+is the card photo. Originals live in `source-photos/artists/` (not tracked).
 
 Formats: `.jpg`, `.jpeg`, `.png`, `.webp`. Replacing a photo means overwriting
 the file — the extension can change, the name cannot.
