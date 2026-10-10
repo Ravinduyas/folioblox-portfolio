@@ -191,6 +191,20 @@ export default function ArtistDetail() {
         </div>
       </section>
 
+      {/* Releases on the label */}
+      {releases.length > 0 && (
+        <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+          <SectionHeading eyebrow="Discography" title={`On ${ARTIST.displayName}`} />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {releases.map((release, i) => (
+              <Reveal key={release.id} delay={i * 0.1} tilt={8} className="h-full">
+                <ReleaseCard release={release} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Podcasts & mixes from their SoundCloud */}
       {artist.mixes && artist.mixes.length > 0 && (
         <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
@@ -217,20 +231,6 @@ export default function ArtistDetail() {
             {artist.mixes.map((mix, i) => (
               <Reveal key={mix.url} delay={(i % 3) * 0.07} tilt={6} className="h-full">
                 <MixCard mix={mix} artist={artist.name} />
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Releases on the label */}
-      {releases.length > 0 && (
-        <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
-          <SectionHeading eyebrow="Discography" title={`On ${ARTIST.displayName}`} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {releases.map((release, i) => (
-              <Reveal key={release.id} delay={i * 0.1} tilt={8} className="h-full">
-                <ReleaseCard release={release} />
               </Reveal>
             ))}
           </div>
