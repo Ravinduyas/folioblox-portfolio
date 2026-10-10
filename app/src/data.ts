@@ -539,15 +539,18 @@ export const ROSTER: RosterArtist[] = [
     basedIn: "Sri Lanka",
     blurb:
       "Progressive and organic house - hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.",
-    links: [],
+    links: [
+      { label: "SoundCloud", href: "https://soundcloud.com/rajitha-eshan-513361958" },
+      { label: "Proton", href: "https://www.protonradio.com/artists/110939/esh-sl" },
+    ],
     bio: [
       "ESH (SL) is a Sri Lanka-based DJ and producer specialising in Progressive and Organic House. His journey began in Sri Lanka in 2018, followed by performances across Dubai from 2019 to 2024, where he developed a strong understanding of crowd energy and immersive DJ sets.",
       "Since moving into production in 2024, ESH (SL) has shaped a sound built around hypnotic grooves, atmospheric textures, dark ambient elements and melodic depth. His music blends years of dancefloor experience with modern Progressive and Organic House storytelling, creating emotional journeys designed for both clubs and personal listening.",
     ],
     highlights: [
-      { label: "Sound", value: "Progressive · Organic House" },
+      { label: "Also on", value: "Future Avenue · Big Bells Records · Another Life Music" },
       { label: "DJing", value: "Since 2018 · Dubai 2019-2024" },
-      { label: "Producing", value: "Since 2024" },
+      { label: "Producing", value: "Since 2024 · 33 tracks on Proton" },
     ],
   },
   {
@@ -558,16 +561,19 @@ export const ROSTER: RosterArtist[] = [
     basedIn: "South coast, Sri Lanka",
     blurb:
       "Melodic, driving progressive house built for peak time, from the south coast of Sri Lanka - shaped by a life spent surfing.",
-    links: [],
+    links: [
+      { label: "SoundCloud", href: "https://soundcloud.com/dlctheofficial" },
+      { label: "Proton", href: "https://www.protonradio.com/artists/58959/dlc" },
+    ],
     bio: [
       "DLC is a progressive house artist from the south coast of Sri Lanka, who began his musical journey in 2016, shaping melodic, driving soundscapes built for peak-time energy. A passionate surfer, his connection to the ocean influences his sound, blending flow, rhythm and energy into every track.",
       "With a strong focus on groove, emotion and atmosphere, his music combines powerful drops with immersive breakdowns designed for both club and festival settings.",
       "Working closely with producers under his creative direction, DLC crafts each release with a clear vision, delivering a consistent, modern sound that connects deeply on the dancefloor.",
     ],
     highlights: [
+      { label: "Also on", value: "in2U Records · AH Digital Compilations" },
       { label: "Sound", value: "Melodic, peak-time progressive" },
       { label: "Active since", value: "2016" },
-      { label: "Home", value: "South coast, Sri Lanka" },
     ],
   },
   {
