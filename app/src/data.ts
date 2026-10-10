@@ -477,6 +477,33 @@ export const RIDER: RiderSection[] = [
  */
 export const ROSTER: RosterArtist[] = [
   {
+    id: "alpha21",
+    photoPosition: "50% 22%",
+    name: "ALPHA21",
+    role: "Co-founder · DJ · Producer",
+    basedIn: "Weligama, Sri Lanka",
+    since: "2025",
+    blurb:
+      "Label co-founder. Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world; co-wrote the debut, Time Machine.",
+    resident: true,
+    links: [
+      { label: "Facebook", href: "https://www.facebook.com/djalpha21official" },
+      { label: "SoundCloud", href: "https://soundcloud.com/alpha21official" },
+      { label: "Proton", href: "https://www.protonradio.com/artists/53254/alpha21" },
+    ],
+    bio: [
+      "In the heart of Sri Lanka's Weligama lies a DJ and producer who goes by the name ALPHA21. His passion for music was sparked at an early age, but it was the serene beauty of nature that inspired him to create something truly unique. His sound is an embodiment of the natural world around him, with lush soundscapes and organic rhythms that transport listeners to another world.",
+      "He's signed to some of the most renowned labels in the scene, including The Purr Music, Balkan Connection and Modern Agenda, and has shared the stage with names including Armen Miran, Eli Nissan, DJ Ruby, Emi Galvan, Dmitry Molosh, Ezequiel Arias, Darin Epsilon, Blanka Barbara, Forty Cats, Alar, Aaron Suiss and Matan Caspi.",
+      "He spends countless hours in the studio perfecting his sound, always striving to create something that's never been heard before. When he isn't in the studio or playing gigs, he can be found exploring the natural wonders of Sri Lanka - from the jungles to the Indian Ocean - and he's dedicated to using his music to spread awareness about environmental issues.",
+      "In 2025 he co-founded Exploration Recordings with fellow Weligama producer JUNIOR, and the pair's Time Machine EP became the label's first release.",
+    ],
+    highlights: [
+      { label: "On the label", value: "Co-founder · ER001 Time Machine" },
+      { label: "Also on", value: "BC2 · Another Life Music · AH Digital" },
+      { label: "Active since", value: "2019 · 122 tracks on Proton" },
+    ],
+  },
+  {
     id: "junior-sl",
     photoPosition: "50% 16%",
     name: "JUNIOR",
@@ -505,33 +532,6 @@ export const ROSTER: RosterArtist[] = [
     ],
   },
   {
-    id: "alpha21",
-    photoPosition: "50% 22%",
-    name: "ALPHA21",
-    role: "Co-founder · DJ · Producer",
-    basedIn: "Weligama, Sri Lanka",
-    since: "2025",
-    blurb:
-      "Label co-founder. Lush soundscapes and organic rhythms inspired by Sri Lanka's natural world; co-wrote the debut, Time Machine.",
-    resident: true,
-    links: [
-      { label: "Facebook", href: "https://www.facebook.com/djalpha21official" },
-      { label: "SoundCloud", href: "https://soundcloud.com/alpha21official" },
-      { label: "Proton", href: "https://www.protonradio.com/artists/53254/alpha21" },
-    ],
-    bio: [
-      "In the heart of Sri Lanka's Weligama lies a DJ and producer who goes by the name ALPHA21. His passion for music was sparked at an early age, but it was the serene beauty of nature that inspired him to create something truly unique. His sound is an embodiment of the natural world around him, with lush soundscapes and organic rhythms that transport listeners to another world.",
-      "He's signed to some of the most renowned labels in the scene, including The Purr Music, Balkan Connection and Modern Agenda, and has shared the stage with names including Armen Miran, Eli Nissan, DJ Ruby, Emi Galvan, Dmitry Molosh, Ezequiel Arias, Darin Epsilon, Blanka Barbara, Forty Cats, Alar, Aaron Suiss and Matan Caspi.",
-      "He spends countless hours in the studio perfecting his sound, always striving to create something that's never been heard before. When he isn't in the studio or playing gigs, he can be found exploring the natural wonders of Sri Lanka - from the jungles to the Indian Ocean - and he's dedicated to using his music to spread awareness about environmental issues.",
-      "In 2025 he co-founded Exploration Recordings with fellow Weligama producer JUNIOR, and the pair's Time Machine EP became the label's first release.",
-    ],
-    highlights: [
-      { label: "On the label", value: "Co-founder · ER001 Time Machine" },
-      { label: "Also on", value: "BC2 · Another Life Music · AH Digital" },
-      { label: "Active since", value: "2019 · 122 tracks on Proton" },
-    ],
-  },
-  {
     id: "esh-sl",
     photoPosition: "50% 14%",
     name: "ESH (SL)",
@@ -548,22 +548,6 @@ export const ROSTER: RosterArtist[] = [
       { label: "Sound", value: "Progressive · Organic House" },
       { label: "DJing", value: "Since 2018 · Dubai 2019–2024" },
       { label: "Producing", value: "Since 2024" },
-    ],
-  },
-  {
-    id: "c-groove",
-    photoPosition: "50% 22%",
-    name: "C-Groove",
-    role: "DJ · Producer",
-    blurb: "Rooted in the electronic scene since 2014 - driven by passion, dedication and a love for underground sound.",
-    links: [],
-    bio: [
-      "C-Groove is a DJ and producer who has been deeply rooted in the electronic music scene since 2014. From the very beginning, his journey has been driven by pure passion, dedication and an unwavering love for underground sound. Always present in the scene, always evolving.",
-    ],
-    highlights: [
-      { label: "In the scene", value: "Since 2014" },
-      { label: "Sound", value: "Underground electronic" },
-      { label: "Role", value: "DJ · Producer" },
     ],
   },
   {
@@ -584,6 +568,22 @@ export const ROSTER: RosterArtist[] = [
       { label: "Sound", value: "Melodic, peak-time progressive" },
       { label: "Active since", value: "2016" },
       { label: "Home", value: "South coast, Sri Lanka" },
+    ],
+  },
+  {
+    id: "c-groove",
+    photoPosition: "50% 22%",
+    name: "C-Groove",
+    role: "DJ · Producer",
+    blurb: "Rooted in the electronic scene since 2014 - driven by passion, dedication and a love for underground sound.",
+    links: [],
+    bio: [
+      "C-Groove is a DJ and producer who has been deeply rooted in the electronic music scene since 2014. From the very beginning, his journey has been driven by pure passion, dedication and an unwavering love for underground sound. Always present in the scene, always evolving.",
+    ],
+    highlights: [
+      { label: "In the scene", value: "Since 2014" },
+      { label: "Sound", value: "Underground electronic" },
+      { label: "Role", value: "DJ · Producer" },
     ],
   },
 ];
