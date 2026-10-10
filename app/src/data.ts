@@ -541,12 +541,12 @@ export const ROSTER: RosterArtist[] = [
       "Progressive and organic house - hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.",
     links: [],
     bio: [
-      "ESH (SL) is a Sri Lanka–based DJ and producer specialising in Progressive and Organic House. His journey began in Sri Lanka in 2018, followed by performances across Dubai from 2019 to 2024, where he developed a strong understanding of crowd energy and immersive DJ sets.",
+      "ESH (SL) is a Sri Lanka-based DJ and producer specialising in Progressive and Organic House. His journey began in Sri Lanka in 2018, followed by performances across Dubai from 2019 to 2024, where he developed a strong understanding of crowd energy and immersive DJ sets.",
       "Since moving into production in 2024, ESH (SL) has shaped a sound built around hypnotic grooves, atmospheric textures, dark ambient elements and melodic depth. His music blends years of dancefloor experience with modern Progressive and Organic House storytelling, creating emotional journeys designed for both clubs and personal listening.",
     ],
     highlights: [
       { label: "Sound", value: "Progressive · Organic House" },
-      { label: "DJing", value: "Since 2018 · Dubai 2019–2024" },
+      { label: "DJing", value: "Since 2018 · Dubai 2019-2024" },
       { label: "Producing", value: "Since 2024" },
     ],
   },
@@ -688,7 +688,7 @@ export const FAQS: { question: string; answer: string }[] = [
   {
     question: "Where is Exploration Recordings based?",
     answer:
-      "The label is based in Sri Lanka. Co-founders JUNIOR and ALPHA21 are from Weligama, DLC is from the south coast, and ESH (SL) is Sri Lanka–based after years performing in Dubai. Releases also feature collaborators and remixers from Poland, Pakistan and Argentina.",
+      "The label is based in Sri Lanka. Co-founders JUNIOR and ALPHA21 are from Weligama, DLC is from the south coast, and ESH (SL) is Sri Lanka-based after years performing in Dubai. Releases also feature collaborators and remixers from Poland, Pakistan and Argentina.",
   },
   {
     question: "What has Exploration Recordings released?",

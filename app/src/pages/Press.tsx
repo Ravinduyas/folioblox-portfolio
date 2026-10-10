@@ -166,7 +166,7 @@ export default function Press() {
               <dl className="mt-5 space-y-2.5 border-t border-white/[0.06] pt-5">
                 {[
                   { k: "Genres", v: ARTIST.genres.join(", ") },
-                  { k: "Set length", v: "2–6 hours" },
+                  { k: "Set length", v: "2-6 hours" },
                   { k: "Format", v: "Vinyl + USB / hybrid" },
                 ].map((row) => (
                   <div key={row.k} className="flex gap-3 text-xs">
