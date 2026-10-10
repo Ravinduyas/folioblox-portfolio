@@ -471,6 +471,10 @@ export const RIDER: RiderSection[] = [
  * SoundCloud page — artists who list none have none here. Social links come
  * first; the artist page shows them on the right of its hero strip.
  *
+ * MIXES: the latest podcasts and DJ mixes from each artist's SoundCloud (long
+ * uploads and anything titled podcast / mix / live / set), newest first. Artwork
+ * lives in assets/images/mixes/.
+ *
  * PHOTOS: drop a file into assets/images/artists/ named after the `id` and it
  * is picked up automatically; without one the card shows a monogram tile. See
  * that folder's README.
@@ -490,6 +494,14 @@ export const ROSTER: RosterArtist[] = [
       { label: "Facebook", href: "https://www.facebook.com/djalpha21official" },
       { label: "SoundCloud", href: "https://soundcloud.com/alpha21official" },
       { label: "Proton", href: "https://www.protonradio.com/artists/53254/alpha21" },
+    ],
+    mixes: [
+      { title: "EXPLORATION PODCAST 011 - 2026.09.28", url: "https://soundcloud.com/alpha21official/exploration-podcast-11", date: "2026-09-09", minutes: 77, artwork: "alpha21-1" },
+      { title: "EXPLORATION PODCAST 010 - Juani Ramirez Guest Mix", url: "https://soundcloud.com/alpha21official/exploration-podcast-010-juani", date: "2026-07-22", minutes: 58, artwork: "alpha21-2" },
+      { title: "ALPHA21 B2B Rockka Live @ I Love Brunch,Unawatuna [2026.04.26]", url: "https://soundcloud.com/alpha21official/alpha21-b2b-rockka-live-i-love", date: "2026-06-25", minutes: 118, artwork: "alpha21-3" },
+      { title: "EXPLORATION PODCAST 009 Live @ Deep Jungle Festival,Sigiriya [2026.02.15]", url: "https://soundcloud.com/alpha21official/exploration-podcast-009-live", date: "2026-02-18", minutes: 80, artwork: "alpha21-4" },
+      { title: "ALPHA21 Live @ Yaga Festival Day 2 (2026.01.26)", url: "https://soundcloud.com/alpha21official/alpha21-live-yaga-festival-day-2-20260126", date: "2026-01-28", minutes: 61, artwork: "alpha21-5" },
+      { title: "EXPLORATION PODCAST 008 (2026.01.16)", url: "https://soundcloud.com/alpha21official/exploration-podcast-008-20251212", date: "2025-12-04", minutes: 66, artwork: "alpha21-6" },
     ],
     bio: [
       "In the heart of Sri Lanka's Weligama lies a DJ and producer who goes by the name ALPHA21. His passion for music was sparked at an early age, but it was the serene beauty of nature that inspired him to create something truly unique. His sound is an embodiment of the natural world around him, with lush soundscapes and organic rhythms that transport listeners to another world.",
@@ -516,6 +528,9 @@ export const ROSTER: RosterArtist[] = [
     links: [
       { label: "SoundCloud", href: "https://soundcloud.com/juniorlkofficial" },
       { label: "Proton", href: "https://www.protonradio.com/artists/62896/junior-sl" },
+    ],
+    mixes: [
+      { title: "Pleasing A Storm!", url: "https://soundcloud.com/juniorlkofficial/pleasing-a-storm", date: "2021-05-11", minutes: 63, artwork: "junior-sl-7" },
     ],
     bio: [
       "JUNIOR is a highly talented DJ and producer hailing from Weligama, Sri Lanka. From an early age, he developed a deep passion for music and began to experiment with different genres and styles. His love for electronic music led him to pursue a career as a DJ and producer, and he quickly made a name for himself as one of the most promising talents in the industry.",
@@ -564,6 +579,14 @@ export const ROSTER: RosterArtist[] = [
     links: [
       { label: "SoundCloud", href: "https://soundcloud.com/dlctheofficial" },
       { label: "Proton", href: "https://www.protonradio.com/artists/58959/dlc" },
+    ],
+    mixes: [
+      { title: "DLC Live Mix - Miriss 2026", url: "https://soundcloud.com/dlctheofficial/dlc-live-mix-miriss-2026", date: "2026-07-29", minutes: 89, artwork: "dlc-8" },
+      { title: "DLC - Arugahang May 2026 Live Set at The Hangout Arugambay", url: "https://soundcloud.com/dlctheofficial/dlc-arugahang-may-2026-live", date: "2026-05-27", minutes: 67, artwork: "dlc-9" },
+      { title: "Progressions Ep 11", url: "https://soundcloud.com/dlctheofficial/progressions-ep-11", date: "2026-03-31", minutes: 56, artwork: "dlc-10" },
+      { title: "Progressions Ep 10", url: "https://soundcloud.com/dlctheofficial/progressions-ep-10", date: "2026-03-31", minutes: 51, artwork: "dlc-10" },
+      { title: "Progressions Ep 09", url: "https://soundcloud.com/dlctheofficial/progressions-ep-09", date: "2026-03-31", minutes: 57, artwork: "dlc-10" },
+      { title: "Progressions Ep 08", url: "https://soundcloud.com/dlctheofficial/progressions-ep-08", date: "2026-03-31", minutes: 51, artwork: "dlc-10" },
     ],
     bio: [
       "DLC is a progressive house artist from the south coast of Sri Lanka, who began his musical journey in 2016, shaping melodic, driving soundscapes built for peak-time energy. A passionate surfer, his connection to the ocean influences his sound, blending flow, rhythm and energy into every track.",

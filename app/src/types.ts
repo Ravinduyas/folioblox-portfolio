@@ -82,6 +82,18 @@ export interface PressPhoto {
   orientation: "portrait" | "landscape";
 }
 
+/** A podcast episode or DJ mix on the artist's SoundCloud. */
+export interface ArtistMix {
+  title: string;
+  /** The track on SoundCloud — also what the in-page player loads. */
+  url: string;
+  /** ISO upload date. */
+  date: string;
+  minutes: number;
+  /** Artwork file in assets/images/mixes/, without extension. */
+  artwork?: string;
+}
+
 /** An artist listed on the About page roster. */
 export interface RosterArtist {
   id: string;
@@ -106,6 +118,8 @@ export interface RosterArtist {
   links: { label: string; href: string }[];
   /** Long-form biography, one string per paragraph — their own page. */
   bio: string[];
+  /** Latest podcasts and mixes from their SoundCloud, newest first. */
+  mixes?: ArtistMix[];
   /** Career markers shown as a strip on the biography page. */
   highlights: { label: string; value: string }[];
 }

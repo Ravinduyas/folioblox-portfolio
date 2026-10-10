@@ -6,6 +6,7 @@ import ArtistPhotoCarousel from "../components/ArtistPhotoCarousel";
 import { initials } from "../components/ArtistCard";
 import PageHero from "../components/PageHero";
 import ReleaseCard from "../components/ReleaseCard";
+import MixCard from "../components/MixCard";
 import { LogoMark } from "../components/Logo";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
@@ -24,6 +25,7 @@ export default function ArtistDetail() {
   const others = ROSTER.filter((entry) => entry.id !== artistId);
   const releases = artist ? releasesFor(artist.name) : [];
   const photos = artist ? artistPhotos(artist.id, artist.photo) : [];
+  const soundcloud = artist?.links.find((link) => link.label === "SoundCloud")?.href;
 
   if (!artist) {
     return (
@@ -188,6 +190,38 @@ export default function ArtistDetail() {
           ))}
         </div>
       </section>
+
+      {/* Podcasts & mixes from their SoundCloud */}
+      {artist.mixes && artist.mixes.length > 0 && (
+        <section className="mx-auto max-w-7xl border-b border-white/[0.05] px-6 py-16 md:px-10">
+          <SectionHeading
+            eyebrow="Listen"
+            title="Podcasts & mixes"
+            intro={`${artist.name}'s latest podcasts, live sets and DJ mixes. Press play to listen here.`}
+            action={
+              soundcloud && (
+                <a
+                  href={soundcloud}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="open"
+                  className="group inline-flex items-center gap-1.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white/45 transition-colors hover:text-[#f25c27]"
+                >
+                  All on SoundCloud
+                  <ExternalLink size={12} />
+                </a>
+              )
+            }
+          />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {artist.mixes.map((mix, i) => (
+              <Reveal key={mix.url} delay={(i % 3) * 0.07} tilt={6} className="h-full">
+                <MixCard mix={mix} artist={artist.name} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Releases on the label */}
       {releases.length > 0 && (
