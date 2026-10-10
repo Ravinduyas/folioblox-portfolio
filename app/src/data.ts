@@ -478,6 +478,7 @@ export const RIDER: RiderSection[] = [
 export const ROSTER: RosterArtist[] = [
   {
     id: "junior-sl",
+    photoPosition: "50% 16%",
     name: "JUNIOR",
     role: "Co-founder · DJ · Producer",
     basedIn: "Weligama, Sri Lanka",
