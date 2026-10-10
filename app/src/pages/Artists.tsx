@@ -19,15 +19,15 @@ const heroPhoto = (id: string) =>
   Object.entries(HERO_FILES).find(([path]) => path.endsWith(`/${id}.jpg`))?.[1];
 
 /**
- * Vertical crop of each shot in the wide hero band. Portrait shots show only a
- * thin horizontal slice there, so this keeps faces inside it.
+ * Vertical crop of each shot in the hero photo panel (the right half on
+ * desktop), framing head and shoulders.
  */
 const HERO_CROP: Record<string, string> = {
-  "junior-sl": "50% 9%",
-  alpha21: "50% 24%",
-  "esh-sl": "50% 8%",
-  "c-groove": "50% 12%",
-  dlc: "50% 16%",
+  "junior-sl": "50% 14%",
+  alpha21: "50% 30%",
+  "esh-sl": "50% 12%",
+  "c-groove": "50% 18%",
+  dlc: "50% 22%",
 };
 
 /** One full-width slide per artist: their lead photo, linking to their page. */

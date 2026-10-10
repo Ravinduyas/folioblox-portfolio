@@ -33,8 +33,8 @@ export default function About() {
         eyebrow="About us"
         title={ARTIST.displayName}
         intro={SHORT_BIO}
-        image={IMAGES.handsBw}
-        objectPosition="52% 40%"
+        image={IMAGES.realStageWide}
+        objectPosition="50% 45%"
         glow="ellipse 52% 58% at 74% 36%"
         height={460}
         actions={

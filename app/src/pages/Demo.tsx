@@ -443,7 +443,7 @@ export default function Demo() {
           </>
         }
         intro="Finished progressive house that goes somewhere deeper. We listen to every demo and always reply, even when we pass."
-        image={IMAGES.studioDark}
+        image={IMAGES.realDlcDecks}
         objectPosition="50% 45%"
         glow="ellipse 46% 56% at 80% 44%"
         height={380}

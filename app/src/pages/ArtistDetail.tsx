@@ -27,6 +27,23 @@ export default function ArtistDetail() {
   const photos = artist ? artistPhotos(artist.id, artist.photo) : [];
   const soundcloud = artist?.links.find((link) => link.label === "SoundCloud")?.href;
 
+  // Always three facts in the hero strip: location, roster year and role where
+  // known, topped up from the artist's highlights (short ones only, so the row
+  // never breaks) when some are unknown.
+  const heroFacts = artist
+    ? (() => {
+        const known = [
+          { label: "Based in", value: artist.basedIn },
+          { label: "On the roster", value: artist.since && `Since ${artist.since}` },
+          { label: "Role", value: artist.role },
+        ].filter((fact): fact is { label: string; value: string } => Boolean(fact.value));
+        const extra = artist.highlights.filter(
+          (h) => h.value.length <= 40 && !known.some((k) => k.label === h.label || k.value === h.value),
+        );
+        return [...known, ...extra].slice(0, Math.max(3, known.length));
+      })()
+    : [];
+
   if (!artist) {
     return (
       <div className="mx-auto flex min-h-[60vh] max-w-7xl flex-col items-center justify-center px-6 text-center md:px-10">
@@ -75,13 +92,7 @@ export default function ArtistDetail() {
         meta={
           <div className="flex flex-wrap items-end justify-between gap-x-9 gap-y-5">
           <div className="flex flex-wrap items-end gap-x-9 gap-y-4">
-            {[
-              { label: "Based in", value: artist.basedIn },
-              { label: "On the roster", value: artist.since && `Since ${artist.since}` },
-              { label: "Role", value: artist.role },
-            ]
-              .filter((fact) => fact.value)
-              .map((fact) => (
+            {heroFacts.map((fact) => (
               <div key={fact.label} className="flex flex-col gap-[5px]">
                 <span
                   className="font-mono font-bold uppercase leading-none text-[#f25c27]"

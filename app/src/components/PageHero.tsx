@@ -149,18 +149,37 @@ export default function PageHero({
         >
           {current ? (
             <AnimatePresence initial={false}>
-              <motion.img
+              {/*
+                Portrait photos stretched across a wide band zoom in to a slice
+                of face. On desktop the sharp photo fills the right half at full
+                height (head and shoulders), fading in from the left, over a
+                blurred copy that fills the band. On phones the band is tall, so
+                the photo simply covers it.
+              */}
+              <motion.div
                 key={current.src}
-                src={current.src}
-                alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
-                style={{ objectPosition: current.position ?? objectPosition }}
-                initial={{ opacity: 0, scale: reduce ? 1 : 1.08 }}
-                animate={{ opacity: 1, scale: 1.02 }}
+                className="pointer-events-none absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ opacity: { duration: 0.9 }, scale: { duration: SLIDE_MS / 1000 + 0.9, ease: "linear" } }}
-              />
+                transition={{ duration: 0.9 }}
+              >
+                <img
+                  src={current.src}
+                  alt=""
+                  className="absolute inset-0 hidden h-full w-full scale-110 select-none object-cover opacity-40 blur-2xl md:block"
+                />
+                <motion.img
+                  src={current.src}
+                  alt=""
+                  className="absolute inset-y-0 right-0 h-full w-full select-none object-cover md:w-[55%] md:[mask-image:linear-gradient(to_right,transparent,black_38%)] lg:w-1/2"
+                  style={{ objectPosition: current.position ?? objectPosition }}
+                  initial={{ scale: reduce ? 1 : 1.06 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: SLIDE_MS / 1000 + 0.9, ease: "linear" }}
+                />
+              </motion.div>
             </AnimatePresence>
           ) : image ? (
             <motion.img

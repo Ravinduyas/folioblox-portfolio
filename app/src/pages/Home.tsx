@@ -89,11 +89,11 @@ export default function Home() {
           <Reveal direction="right" className="md:col-span-5">
             <TiltCard intensity={9} lift={20}>
               <img
-                src={IMAGES.artistDecks}
+                src={IMAGES.realGoldenSet}
                 alt=""
                 aria-hidden="true"
                 className="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl shadow-black/50"
-                style={{ objectPosition: "38% 28%" }}
+                style={{ objectPosition: "50% 35%" }}
               />
             </TiltCard>
           </Reveal>

@@ -29,6 +29,18 @@ import crowdBooth from "./images/site/crowd-booth.jpg";
 import crowdHands from "./images/site/crowd-hands.jpg";
 import crowdDance from "./images/site/crowd-dance.jpg";
 
+/* Real event photography — see images/real/ (cropped 16:9 for headers) */
+import realBrunchSet from "./images/real/brunch-set.jpg";
+import realRedDecks from "./images/real/red-decks.jpg";
+import realDjCrowd from "./images/real/dj-crowd.jpg";
+import realDlcDecks from "./images/real/dlc-decks.jpg";
+import realStageWide from "./images/real/stage-wide.jpg";
+import realSystemStage from "./images/real/system-stage.jpg";
+import realDlcPortrait from "./images/real/dlc-portrait.jpg";
+import realWhiteTee from "./images/real/white-tee.jpg";
+import realSouthCoast from "./images/real/south-coast.jpg";
+import realGoldenSet from "./images/real/golden-set.jpg";
+
 /* Release artwork — see images/releases/ (from the label's Proton Radio catalogue) */
 import coverER001 from "./images/releases/er001-time-machine.jpg";
 import coverER002 from "./images/releases/er002-liquid-aura.jpg";
@@ -64,6 +76,18 @@ export const IMAGES = {
   crowdBooth,
   crowdHands,
   crowdDance,
+
+  /* Real event photography */
+  realBrunchSet,
+  realRedDecks,
+  realDjCrowd,
+  realDlcDecks,
+  realStageWide,
+  realSystemStage,
+  realDlcPortrait,
+  realWhiteTee,
+  realSouthCoast,
+  realGoldenSet,
 
   /* Release artwork */
   coverER001,

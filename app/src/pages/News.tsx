@@ -21,8 +21,8 @@ export default function News() {
           </>
         }
         intro="Release announcements, pre-orders and label news - newest first."
-        image={IMAGES.festival}
-        objectPosition="55% 45%"
+        image={IMAGES.realBrunchSet}
+        objectPosition="60% 35%"
         glow="ellipse 50% 60% at 78% 34%"
         height={380}
         meta={
