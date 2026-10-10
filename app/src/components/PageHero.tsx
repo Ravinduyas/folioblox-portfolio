@@ -1,5 +1,7 @@
-import { PointerEvent, ReactNode, useRef } from "react";
+import { PointerEvent, ReactNode, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
+  AnimatePresence,
   motion,
   useMotionTemplate,
   useMotionValue,
@@ -10,6 +12,20 @@ import {
 } from "motion/react";
 import { EASE } from "./motion/Reveal";
 import { usePointerFine } from "../lib/usePointerFine";
+
+/** One full-width backdrop in a hero slideshow. */
+export interface HeroSlide {
+  src: string;
+  /** object-position for the crop. */
+  position?: string;
+  /** Caption shown bottom-right, e.g. the artist's name. */
+  label?: string;
+  /** Where the caption links. */
+  to?: string;
+}
+
+/** How long each backdrop holds in a slideshow. */
+const SLIDE_MS = 3500;
 
 interface PageHeroProps {
   eyebrow: string;
@@ -30,6 +46,11 @@ interface PageHeroProps {
   height?: number;
   /** Sits to the right of the copy on desktop, below it on phones — e.g. a photo carousel. */
   aside?: ReactNode;
+  /**
+   * Full-width backdrops that cross-fade in turn, in place of `image`. Holds
+   * while the tab is hidden; no auto-advance under reduced motion.
+   */
+  slides?: HeroSlide[];
 }
 
 const container = {
@@ -59,10 +80,32 @@ export default function PageHero({
   meta,
   height = 420,
   aside,
+  slides,
 }: PageHeroProps) {
   const reduce = useReducedMotion();
   const finePointer = usePointerFine();
   const ref = useRef<HTMLDivElement>(null);
+
+  const slideCount = slides?.length ?? 0;
+  const [slide, setSlide] = useState(0);
+  const [tabHidden, setTabHidden] = useState(false);
+  useEffect(() => {
+    if (slideCount < 2) return;
+    const onVisibility = () => setTabHidden(document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, [slideCount]);
+  // Restarts on every change, so a tapped dot gets a full hold.
+  useEffect(() => {
+    if (reduce || tabHidden || slideCount < 2) return;
+    const timer = setTimeout(() => setSlide((i) => (i + 1) % slideCount), SLIDE_MS);
+    return () => clearTimeout(timer);
+  }, [slide, reduce, tabHidden, slideCount]);
+  useEffect(() => {
+    if (slideCount < 2 || !slides) return;
+    new Image().src = slides[(slide + 1) % slideCount].src; // warm the next one
+  }, [slide, slides, slideCount]);
+  const current = slides?.[slide];
 
   /**
    * Scale the hero down on small screens rather than holding a desktop height:
@@ -104,7 +147,22 @@ export default function PageHero({
           className="relative overflow-hidden"
           style={{ minHeight: heroHeight }}
         >
-          {image ? (
+          {current ? (
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={current.src}
+                src={current.src}
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover"
+                style={{ objectPosition: current.position ?? objectPosition }}
+                initial={{ opacity: 0, scale: reduce ? 1 : 1.08 }}
+                animate={{ opacity: 1, scale: 1.02 }}
+                exit={{ opacity: 0 }}
+                transition={{ opacity: { duration: 0.9 }, scale: { duration: SLIDE_MS / 1000 + 0.9, ease: "linear" } }}
+              />
+            </AnimatePresence>
+          ) : image ? (
             <motion.img
               src={image}
               alt=""
@@ -230,6 +288,41 @@ export default function PageHero({
               </motion.div>
             )}
           </motion.div>
+
+          {current && slideCount > 1 && (
+            <div className="absolute bottom-6 right-6 z-20 flex items-center gap-3 sm:right-8 md:bottom-9 md:right-12 lg:right-16">
+              {current.label &&
+                (current.to ? (
+                  <Link
+                    to={current.to}
+                    className="rounded-full bg-black/45 px-3 py-1.5 font-display text-xs font-bold text-white backdrop-blur-md transition-colors hover:text-[#f25c27]"
+                  >
+                    {current.label}
+                  </Link>
+                ) : (
+                  <span className="rounded-full bg-black/45 px-3 py-1.5 font-display text-xs font-bold text-white backdrop-blur-md">
+                    {current.label}
+                  </span>
+                ))}
+              <div className="flex gap-1.5" role="group" aria-label="Choose a photo">
+                {slides!.map((item, i) => (
+                  <button
+                    key={item.src}
+                    onClick={() => setSlide(i)}
+                    aria-label={item.label ? `Show ${item.label}` : `Show photo ${i + 1}`}
+                    aria-current={i === slide}
+                    className="flex h-6 items-center"
+                  >
+                    <span
+                      className={`block h-1.5 rounded-full transition-all duration-300 ${
+                        i === slide ? "w-5 bg-[#f25c27]" : "w-1.5 bg-white/45 hover:bg-white/80"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

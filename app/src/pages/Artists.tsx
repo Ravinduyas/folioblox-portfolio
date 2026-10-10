@@ -1,10 +1,42 @@
 import { Link } from "react-router-dom";
-import { IMAGES } from "../assets/images";
+import { artistPhoto } from "../assets/artists";
 import { ARTIST, ROSTER } from "../data";
 import ArtistCard from "../components/ArtistCard";
-import PageHero from "../components/PageHero";
+import PageHero, { HeroSlide } from "../components/PageHero";
 import Reveal from "../components/motion/Reveal";
 import { GhostLink, PrimaryLink, SectionHeading } from "../components/ui";
+
+/**
+ * Full-width hero shots, one per artist (1600px, from the originals — the
+ * 1100px gallery photos go soft stretched across the band). Falls back to the
+ * artist's lead photo.
+ */
+const HERO_FILES = import.meta.glob("../assets/images/artist-heroes/*.jpg", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+const heroPhoto = (id: string) =>
+  Object.entries(HERO_FILES).find(([path]) => path.endsWith(`/${id}.jpg`))?.[1];
+
+/**
+ * Vertical crop of each shot in the wide hero band. Portrait shots show only a
+ * thin horizontal slice there, so this keeps faces inside it.
+ */
+const HERO_CROP: Record<string, string> = {
+  "junior-sl": "50% 9%",
+  alpha21: "50% 24%",
+  "esh-sl": "50% 8%",
+  "c-groove": "50% 12%",
+  dlc: "50% 16%",
+};
+
+/** One full-width slide per artist: their lead photo, linking to their page. */
+const SLIDES: HeroSlide[] = ROSTER.flatMap((artist) => {
+  const src = heroPhoto(artist.id) ?? artistPhoto(artist.id, artist.photo);
+  return src
+    ? [{ src, label: artist.name, to: `/artists/${artist.id}`, position: HERO_CROP[artist.id] ?? "50% 15%" }]
+    : [];
+});
 
 export default function Artists() {
 
@@ -20,10 +52,9 @@ export default function Artists() {
           </>
         }
         intro="The DJs and producers of Exploration Recordings - progressive and organic house from Sri Lanka."
-        image={IMAGES.portraitShades}
-        objectPosition="52% 30%"
+        slides={SLIDES}
         glow="ellipse 52% 58% at 74% 36%"
-        height={400}
+        height={440}
         actions={
           <>
             <PrimaryLink to="/booking">Book an artist</PrimaryLink>
