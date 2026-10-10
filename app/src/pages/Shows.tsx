@@ -26,7 +26,7 @@ export default function Shows() {
             catch a set.
           </>
         }
-        intro={`${upcoming.length} confirmed dates. Tickets go through the promoter or RA — this page always links to the official source.`}
+        intro={`${upcoming.length} confirmed dates. Tickets go through the promoter or RA - this page always links to the official source.`}
         image={IMAGES.festival}
         objectPosition="55% 40%"
         glow="ellipse 55% 62% at 70% 42%"
@@ -59,7 +59,7 @@ export default function Shows() {
                     className="whitespace-nowrap font-medium leading-none text-white/80"
                     style={{ fontSize: "11px" }}
                   >
-                    {show.city} — {show.venue}
+                    {show.city} - {show.venue}
                   </span>
                 </div>
               );
@@ -93,7 +93,7 @@ export default function Shows() {
         ) : (
           <div className="rounded-2xl border border-white/[0.06] bg-[#111214] p-10 text-center">
             <p className="text-sm text-white/50">
-              No dates announced right now — the next run is being confirmed.
+              No dates announced right now - the next run is being confirmed.
             </p>
             <div className="mt-5 flex justify-center">
               <PrimaryLink to="/booking">Enquire about a booking</PrimaryLink>
@@ -107,7 +107,7 @@ export default function Shows() {
         <SectionHeading
           eyebrow="Archive"
           title="Past shows"
-          intro="A working record of where the sets have landed — useful for promoters checking routing and draw."
+          intro="A working record of where the sets have landed - useful for promoters checking routing and draw."
         />
 
         <motion.div layout className="space-y-3">

@@ -192,7 +192,7 @@ export default function Press() {
                       {formatShowDate(show.date).month} {formatShowDate(show.date).year}
                     </span>
                     <span className="text-white/65">
-                      <span className="text-white/85">{show.venue}</span>, {show.city} —{" "}
+                      <span className="text-white/85">{show.venue}</span>, {show.city} - {" "}
                       {show.event}
                     </span>
                   </li>
@@ -223,13 +223,13 @@ export default function Press() {
                     {topQuote.quote}
                   </blockquote>
                   <cite className="mt-4 block font-mono text-[10px] uppercase not-italic tracking-wider text-white/35">
-                    — {topQuote.source}
+                    - {topQuote.source}
                   </cite>
                 </>
               )}
               <div className="mt-5 border-t border-white/[0.06] pt-5">
                 <p className="font-mono text-[10px] uppercase tracking-wider text-white/30">
-                  Booking runs direct — no agency in the way
+                  Booking runs direct - no agency in the way
                 </p>
                 <a
                   href={`mailto:${ARTIST.bookingEmail}`}
@@ -350,7 +350,7 @@ export default function Press() {
         <SectionHeading
           eyebrow="Technical"
           title="Rider, in full"
-          intro="Published openly so there are no surprises on the night. Most of it is negotiable — raise anything you can't meet before the contract is signed."
+          intro="Published openly so there are no surprises on the night. Most of it is negotiable - raise anything you can't meet before the contract is signed."
           action={
             <button
               onClick={downloadRider}
@@ -401,7 +401,7 @@ export default function Press() {
                   "{quote.quote}"
                 </p>
                 <p className="mt-5 font-mono text-[10px] uppercase tracking-widest text-white/35">
-                  — {quote.source}
+                  - {quote.source}
                 </p>
               </Card>
             </Reveal>
@@ -429,10 +429,10 @@ export default function Press() {
 
             <div className="rounded-xl border border-white/[0.06] bg-[#0d0e10] p-5">
               <p className="font-mono text-xs leading-relaxed text-white/60">
-                {ARTIST.name} — {SHORT_BIO}
+                {ARTIST.name} - {SHORT_BIO}
               </p>
               <div className="mt-4 border-t border-white/5 pt-4">
-                <CopyButton value={`${ARTIST.name} — ${SHORT_BIO}`} label="Copy short bio" />
+                <CopyButton value={`${ARTIST.name} - ${SHORT_BIO}`} label="Copy short bio" />
               </div>
             </div>
           </div>

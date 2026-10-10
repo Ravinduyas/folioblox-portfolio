@@ -64,7 +64,7 @@ const assetUrl = (src: string) => (/^https?:/.test(src) ? src : `${ORIGIN}${src}
 const LOGO_URL = `${SITE_URL}/logo.jpg`;
 
 /** Adds the brand to a title, unless that pushes it past what results pages show. */
-const branded = (title: string, sep = " — ") =>
+const branded = (title: string, sep = " - ") =>
   `${title}${sep}${SITE_NAME}`.length <= 60 ? `${title}${sep}${SITE_NAME}` : title;
 
 /** "7:40" → "PT7M40S" */
@@ -241,7 +241,7 @@ export interface PageSeo {
 
 const latestRelease = RELEASES[0];
 const DEFAULT_IMAGE = assetUrl(latestRelease.artwork);
-const DEFAULT_IMAGE_ALT = `${latestRelease.title} EP artwork — ${latestRelease.artists.join(" & ")}`;
+const DEFAULT_IMAGE_ALT = `${latestRelease.title} EP artwork - ${latestRelease.artists.join(" & ")}`;
 
 /** Title, description, social card and structured data for a route. */
 export function pageSeo(rawPath: string): PageSeo {
@@ -253,7 +253,7 @@ export function pageSeo(rawPath: string): PageSeo {
       "Exploration Recordings is an independent progressive house label from Sri Lanka. New releases, label news and the artists behind deep, melodic, boundary-pushing sound.";
     return {
       ...base,
-      title: "Exploration Recordings — Progressive House Label, Sri Lanka",
+      title: "Exploration Recordings - Progressive House Label, Sri Lanka",
       description,
       jsonLd: [
         organization(),
@@ -272,7 +272,7 @@ export function pageSeo(rawPath: string): PageSeo {
       "Label news from Exploration Recordings: release announcements, pre-orders and updates from the Sri Lankan progressive house label, newest first.";
     return {
       ...base,
-      title: "News — Exploration Recordings",
+      title: "News - Exploration Recordings",
       description,
       jsonLd: [
         organization(),
@@ -319,10 +319,10 @@ export function pageSeo(rawPath: string): PageSeo {
   if (path === "/releases") {
     const description = `The Exploration Recordings catalogue: ${RELEASES.map(
       (release) => `${release.catalogue} ${release.title} EP (${release.artists.join(" & ")})`,
-    ).join(", ")} — tracklists, liner notes and where to buy.`;
+    ).join(", ")} - tracklists, liner notes and where to buy.`;
     return {
       ...base,
-      title: "Releases — Progressive House EPs | Exploration Recordings",
+      title: "Releases - Progressive House EPs | Exploration Recordings",
       description,
       type: "music.album",
       jsonLd: [
@@ -344,10 +344,10 @@ export function pageSeo(rawPath: string): PageSeo {
   }
 
   if (path === "/artists") {
-    const description = `The Exploration Recordings roster: ${ROSTER.map((artist) => artist.name).join(", ")} — progressive and organic house DJs and producers from Sri Lanka.`;
+    const description = `The Exploration Recordings roster: ${ROSTER.map((artist) => artist.name).join(", ")} - progressive and organic house DJs and producers from Sri Lanka.`;
     return {
       ...base,
-      title: "Artists — Exploration Recordings Roster",
+      title: "Artists - Exploration Recordings Roster",
       description,
       jsonLd: [
         organization(),
@@ -372,7 +372,7 @@ export function pageSeo(rawPath: string): PageSeo {
     const photo = artistPhoto(artist.id, artist.photo);
     return {
       ...base,
-      title: branded(`${artist.name} — ${artist.role}`, " | "),
+      title: branded(`${artist.name} - ${artist.role}`, " | "),
       description: artist.basedIn ? `${artist.name} (${artist.basedIn}): ${artist.blurb}` : `${artist.name}: ${artist.blurb}`,
       image: photo ? assetUrl(photo) : DEFAULT_IMAGE,
       imageAlt: artist.name,
@@ -390,10 +390,10 @@ export function pageSeo(rawPath: string): PageSeo {
   }
 
   if (path === "/booking") {
-    const description = `Book an Exploration Recordings artist for your event — ${ROSTER.length} progressive house DJs and producers. Send an enquiry and get availability and a fee back ${ARTIST.responseTime}.`;
+    const description = `Book an Exploration Recordings artist for your event - ${ROSTER.length} progressive house DJs and producers. Send an enquiry and get availability and a fee back ${ARTIST.responseTime}.`;
     return {
       ...base,
-      title: "Book an Artist — Exploration Recordings",
+      title: "Book an Artist - Exploration Recordings",
       description,
       jsonLd: [organization(), webPage("WebPage", path, "Bookings", description), breadcrumbs([["Bookings", "/booking"]])],
     };
@@ -403,7 +403,7 @@ export function pageSeo(rawPath: string): PageSeo {
     const description = `About Exploration Recordings: an independent progressive house label founded in Sri Lanka in ${ARTIST.founded} by JUNIOR and ALPHA21. Our story, our sound, the catalogue and FAQs.`;
     return {
       ...base,
-      title: "About Exploration Recordings — Sri Lankan Progressive House Label",
+      title: "About Exploration Recordings - Sri Lankan Progressive House Label",
       description,
       image: LOGO_URL,
       imageAlt: `${SITE_NAME} logo`,
@@ -426,10 +426,10 @@ export function pageSeo(rawPath: string): PageSeo {
 
   if (path === "/demo") {
     const description =
-      "Submit a demo to Exploration Recordings, the Sri Lankan progressive house label. Send finished, titled tracks in one private SoundCloud link — every demo gets a reply.";
+      "Submit a demo to Exploration Recordings, the Sri Lankan progressive house label. Send finished, titled tracks in one private SoundCloud link - every demo gets a reply.";
     return {
       ...base,
-      title: "Submit a Demo — Exploration Recordings",
+      title: "Submit a Demo - Exploration Recordings",
       description,
       jsonLd: [
         organization(),
@@ -558,13 +558,13 @@ export function llmsTxt(): string {
   ];
   for (const release of RELEASES) {
     lines.push(
-      `### ${release.catalogue} — ${release.title} EP — ${release.artists.join(" & ")}`,
+      `### ${release.catalogue} - ${release.title} EP - ${release.artists.join(" & ")}`,
       "",
       `Released ${formatShowDate(release.date).full}. ${release.genre}. Buy / stream: ${release.url}`,
       "",
       release.description.join(" "),
       "",
-      ...release.tracks.map((track, i) => `${i + 1}. ${track.title} (${track.version}) — ${track.duration}`),
+      ...release.tracks.map((track, i) => `${i + 1}. ${track.title} (${track.version}) - ${track.duration}`),
       "",
     );
   }
@@ -583,7 +583,7 @@ export function llmsTxt(): string {
     `- [Artists](${pageUrl("/artists")}): roster and biographies`,
     `- [Bookings](${pageUrl("/booking")}): book a label artist`,
     `- [About Us](${pageUrl("/about")}): label story and FAQ`,
-    `- [Demo Submission](${pageUrl("/demo")}): submit a demo — finished tracks, one private SoundCloud link`,
+    `- [Demo Submission](${pageUrl("/demo")}): submit a demo - finished tracks, one private SoundCloud link`,
     "",
   );
   return lines.join("\n");

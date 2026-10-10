@@ -35,7 +35,7 @@ export default function Footer() {
               New releases, first.
             </h4>
             <p className="mt-1.5 text-xs leading-relaxed">
-              A few emails a year — new releases and pre-orders. No algorithm in between.
+              A few emails a year - new releases and pre-orders. No algorithm in between.
             </p>
           </div>
           <NewsletterForm />

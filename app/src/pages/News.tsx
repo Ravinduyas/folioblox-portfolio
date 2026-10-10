@@ -20,7 +20,7 @@ export default function News() {
             label.
           </>
         }
-        intro="Release announcements, pre-orders and label news — newest first."
+        intro="Release announcements, pre-orders and label news - newest first."
         image={IMAGES.festival}
         objectPosition="55% 45%"
         glow="ellipse 50% 60% at 78% 34%"

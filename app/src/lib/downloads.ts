@@ -16,7 +16,7 @@ const rule = (title: string) => `${title}\n${"─".repeat(title.length)}\n`;
 
 export function downloadBio() {
   const body = [
-    `${ARTIST.name} — ARTIST BIOGRAPHY`,
+    `${ARTIST.name} - ARTIST BIOGRAPHY`,
     `${ARTIST.role} · ${ARTIST.basedIn}`,
     "",
     rule("SHORT BIO (1 paragraph)"),
@@ -40,7 +40,7 @@ export function downloadBio() {
 
 export function downloadRider() {
   const body = [
-    `${ARTIST.name} — TECHNICAL & HOSPITALITY RIDER`,
+    `${ARTIST.name} - TECHNICAL & HOSPITALITY RIDER`,
     `Version ${new Date().getFullYear()} · supersedes all previous versions`,
     "",
     ...RIDER.flatMap((section) => [
@@ -59,10 +59,10 @@ export function downloadRider() {
 
 export function downloadDateSheet() {
   const line = (s: ReturnType<typeof upcomingShows>[number]) =>
-    `  ${formatShowDate(s.date).full.padEnd(22)} ${s.city}, ${s.country} — ${s.venue} (${s.event})`;
+    `  ${formatShowDate(s.date).full.padEnd(22)} ${s.city}, ${s.country} - ${s.venue} (${s.event})`;
 
   const body = [
-    `${ARTIST.name} — DATE SHEET`,
+    `${ARTIST.name} - DATE SHEET`,
     `Generated ${new Date().toLocaleDateString("en-GB")}`,
     "",
     rule("UPCOMING"),

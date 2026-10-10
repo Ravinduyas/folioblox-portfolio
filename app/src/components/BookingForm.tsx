@@ -110,7 +110,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
         </motion.div>
         <h3 className="font-display text-2xl font-bold tracking-tight text-white">Enquiry received.</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-white/50">
-          Thanks {form.name || "—"}. You'll get a reply at{" "}
+          Thanks {form.name || "-"}. You'll get a reply at{" "}
           <span className="text-white">{form.email}</span> {ARTIST.responseTime}, including
           availability and a fee for {form.city || "your city"}.
         </p>
@@ -126,10 +126,10 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
               </span>
             </p>
             <p>
-              • Event: <span className="font-medium text-white">{form.event || "—"}</span>
+              • Event: <span className="font-medium text-white">{form.event || "-"}</span>
             </p>
             <p>
-              • Date: <span className="font-medium text-white">{form.date || "—"}</span>
+              • Date: <span className="font-medium text-white">{form.date || "-"}</span>
             </p>
             <p>
               • Set: <span className="font-medium text-white">{form.setType} · {form.setLength}</span>
@@ -163,7 +163,7 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           onChange={(value) => set("artist", value)}
           className={inputClass}
           options={[
-            { value: "", label: "Not sure yet — recommend someone" },
+            { value: "", label: "Not sure yet - recommend someone" },
             ...ROSTER.map((artist) => ({ value: artist.id, label: artist.basedIn ? `${artist.name} · ${artist.basedIn}` : artist.name })),
           ]}
         />

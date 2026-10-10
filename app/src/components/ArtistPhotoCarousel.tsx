@@ -74,7 +74,7 @@ export default function ArtistPhotoCarousel({
             <motion.img
               key={photos[index]}
               src={photos[index]}
-              alt={`${name} — photo ${index + 1} of ${count}`}
+              alt={`${name} - photo ${index + 1} of ${count}`}
               className="absolute inset-0 h-full w-full object-cover"
               style={{ objectPosition: position }}
               initial={{ opacity: 0, scale: reduce ? 1 : 1.06 }}

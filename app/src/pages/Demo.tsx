@@ -74,7 +74,7 @@ async function sendDemo(demo: DemoSubmission) {
 
 /** From the demo guide — what every submission is checked for. */
 const GUIDE = [
-  "Every track needs a title — not “ID”.",
+  "Every track needs a title - not “ID”.",
   "Finished, final tracks only. No works in progress.",
   "One private SoundCloud link. EPs: 2 or more tracks in one private playlist.",
   "Open your link in a private browsing window first and check it plays.",
@@ -162,10 +162,10 @@ function validate(demo: DemoSubmission): Partial<Record<keyof DemoSubmission, st
   const errors: Partial<Record<keyof DemoSubmission, string>> = {};
   const artist = demo.artistName.trim().toLowerCase();
   if (artist && demo.title.toLowerCase().includes(artist)) {
-    errors.title = "Only the track or EP title — leave your artist name out.";
+    errors.title = "Only the track or EP title - leave your artist name out.";
   }
   if (/drive\.google|dropbox|wetransfer|mega\.nz/i.test(demo.soundcloud)) {
-    errors.soundcloud = "We can't accept Google Drive, Dropbox or download links — use a private SoundCloud link.";
+    errors.soundcloud = "We can't accept Google Drive, Dropbox or download links - use a private SoundCloud link.";
   } else if (demo.soundcloud && !/^https?:\/\/(www\.|m\.|on\.)?soundcloud\.com\//i.test(demo.soundcloud.trim())) {
     errors.soundcloud = "This needs to be a private SoundCloud link.";
   }
@@ -211,7 +211,7 @@ function DemoForm() {
         </motion.div>
         <h2 className="font-display text-2xl font-bold tracking-tight text-white">Demo received.</h2>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-white/50">
-          Thanks {demo.firstName}. We listen to every demo and always reply — the answer goes to{" "}
+          Thanks {demo.firstName}. We listen to every demo and always reply - the answer goes to{" "}
           <span className="text-white">{demo.email}</span>.
         </p>
         <div className="mx-auto mt-6 max-w-sm space-y-1 rounded-xl border border-white/5 bg-white/[0.02] p-4 text-left text-[12px] text-white/50">
@@ -266,7 +266,7 @@ function DemoForm() {
         help={
           <>
             Track title or EP name.{" "}
-            <strong className="text-white/70">Only the title</strong> — don't include your artist name or
+            <strong className="text-white/70">Only the title</strong> - don't include your artist name or
             add anything else (no “unreleased”, labels or symbols).
           </>
         }
@@ -287,7 +287,7 @@ function DemoForm() {
           <>
             Submitting more than one track? Group them in a single{" "}
             <strong className="text-white/70">private SoundCloud playlist</strong>. No Google Drive, Dropbox or
-            other file-sharing links — and please double-check your link.
+            other file-sharing links - and please double-check your link.
           </>
         }
         error={errors.soundcloud}

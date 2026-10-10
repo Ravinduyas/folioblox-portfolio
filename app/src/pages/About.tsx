@@ -10,7 +10,7 @@ import { Card, Eyebrow, GhostLink, PrimaryLink, SectionHeading } from "../compon
 const PILLARS = [
   {
     title: "Boundary-pushing",
-    text: "A platform for visionary artists — tracks that transcend the ordinary rather than follow the formula.",
+    text: "A platform for visionary artists - tracks that transcend the ordinary rather than follow the formula.",
   },
   {
     title: "Deep & driving",
@@ -18,7 +18,7 @@ const PILLARS = [
   },
   {
     title: "Crafted with intention",
-    text: "Only the most unique, specially crafted records — exploration through sound, never filler.",
+    text: "Only the most unique, specially crafted records - exploration through sound, never filler.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function About() {
           <div className="md:col-span-4 md:sticky md:top-28 md:self-start">
             <Eyebrow>Our story</Eyebrow>
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-white">
-              Not just a label — a movement.
+              Not just a label - a movement.
             </h2>
             <p className="mt-4 font-mono text-[10px] uppercase leading-relaxed tracking-wider text-white/30">
               {ARTIST.basedIn} · since {ARTIST.founded}
@@ -92,7 +92,7 @@ export default function About() {
         <SectionHeading
           eyebrow="The sound"
           title="What we release"
-          intro={`${ARTIST.genres.join(" · ")} — for those who truly seek something deeper.`}
+          intro={`${ARTIST.genres.join(" · ")} - for those who truly seek something deeper.`}
         />
         <div className="grid gap-4 md:grid-cols-3">
           {PILLARS.map((pillar, i) => (
@@ -135,7 +135,7 @@ export default function About() {
                   />
                   <span className="min-w-0">
                     <span className="block font-display text-lg font-bold text-white transition-colors group-hover:text-[#f25c27]">
-                      {release.catalogue} — {release.title} EP
+                      {release.catalogue} - {release.title} EP
                     </span>
                     <span className="block text-sm text-white/50">
                       {billing(release)} · {release.tracks.length} tracks
@@ -185,7 +185,7 @@ export default function About() {
               <Eyebrow>Artists</Eyebrow>
               <h3 className="mt-2 font-display text-xl font-bold text-white">Got a record for us?</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                Use the demo form — finished, titled tracks in one private SoundCloud link.
+                Use the demo form - finished, titled tracks in one private SoundCloud link.
               </p>
               <div className="mt-5">
                 <GhostLink to="/demo">Send a demo</GhostLink>

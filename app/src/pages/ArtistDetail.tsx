@@ -213,7 +213,7 @@ export default function ArtistDetail() {
                 Book {artist.name}.
               </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/50">
-                {`Send the enquiry through the label and it goes straight to ${artist.name} — availability and a fee back ${ARTIST.responseTime}.`}
+                {`Send the enquiry through the label and it goes straight to ${artist.name} - availability and a fee back ${ARTIST.responseTime}.`}
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">

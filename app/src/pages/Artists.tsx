@@ -19,7 +19,7 @@ export default function Artists() {
             artists.
           </>
         }
-        intro="The DJs and producers of Exploration Recordings — progressive and organic house from Sri Lanka."
+        intro="The DJs and producers of Exploration Recordings - progressive and organic house from Sri Lanka."
         image={IMAGES.portraitShades}
         objectPosition="52% 30%"
         glow="ellipse 52% 58% at 74% 36%"

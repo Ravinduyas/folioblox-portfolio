@@ -46,13 +46,13 @@ export const ARTIST = {
 
 /** Two-line bio used on the homepage and as the short EPK bio. */
 export const SHORT_BIO =
-  "Exploration Recordings is an independent progressive house label from Sri Lanka — a home for visionary artists and boundary-pushing sound, curating only tracks that transcend the ordinary.";
+  "Exploration Recordings is an independent progressive house label from Sri Lanka - a home for visionary artists and boundary-pushing sound, curating only tracks that transcend the ordinary.";
 
 /** The label's own statement, from its Proton Radio profile. */
 export const LONG_BIO = [
   "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. We curate only the most unique and specially crafted tracks that transcend the ordinary and speak to those who truly seek something deeper.",
-  "This isn’t just a label; it’s a movement — a space for those who understand that music is more than sound. It’s an exploration of artistry, emotion and innovation.",
-  "Founded in Sri Lanka in 2025 by Weligama producers JUNIOR and ALPHA21, the label opened its catalogue with the co-founders' own Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion — deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.",
+  "This isn’t just a label; it’s a movement - a space for those who understand that music is more than sound. It’s an exploration of artistry, emotion and innovation.",
+  "Founded in Sri Lanka in 2025 by Weligama producers JUNIOR and ALPHA21, the label opened its catalogue with the co-founders' own Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion - deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.",
 ];
 
 /* ────────────────────  SITE STRUCTURE  ──────────────────── */
@@ -164,7 +164,7 @@ export const RELEASES: Release[] = [
       "Exploration Recordings opens its story with the debut EP from ALPHA21 & JUNIOR.",
       "Time Machine EP showcases their vision of deep, driving progressive house across two originals and two standout remixes.",
       "The title track Time Machine unfolds with hypnotic grooves and cinematic tension, while Gate 8 Journey offers a more atmospheric and melodic voyage. On remix duties, Rockka injects peak-time energy with a powerful melodic rework, and Imal SL strips the original into a rolling underground interpretation.",
-      "A statement first release — setting the tone for the journeys ahead.",
+      "A statement first release - setting the tone for the journeys ahead.",
     ],
     url: "https://www.protonradio.com/releases/270063/time-machine",
     tracks: [
@@ -200,7 +200,7 @@ export const NEWS: NewsItem[] = [
     excerpt:
       "ER002 lands: JUNIOR & Sound Fusion with two deep progressive originals, plus remixes from Stereo Munk, Juani Ramirez and RNDØM.",
     body: [
-      "The label's second release is out now. ER002 pairs co-founder JUNIOR with Poland's Sound Fusion on two originals — the immersive, slow-burning Liquid Aura and the darker, bass-driven Bleeding Shadow.",
+      "The label's second release is out now. ER002 pairs co-founder JUNIOR with Poland's Sound Fusion on two originals - the immersive, slow-burning Liquid Aura and the darker, bass-driven Bleeding Shadow.",
       "Three remixes widen the frame: Stereo Munk's refined and dynamic reinterpretation, Juani Ramirez's melodic, groove-locked take, and RNDØM's rolling underground version.",
       "Five tracks, nearly forty minutes of music, and the clearest statement yet of what the label stands for: exploration through sound, crafted with intention.",
     ],
@@ -218,7 +218,7 @@ export const NEWS: NewsItem[] = [
       "Pre-orders open for Liquid Aura, with remixes from Pakistan's Stereo Munk, Argentina's Juani Ramirez and Sri Lanka's RNDØM. Out 3 July.",
     body: [
       "Pre-orders are open for ER002, the Liquid Aura EP from JUNIOR & Sound Fusion, ahead of its full release on 3 July 2026.",
-      "The remix package reaches across three countries. Islamabad's Stereo Munk — supported by Hernan Cattaneo and Nick Warren — takes the longest version on the EP at nearly nine minutes. Argentina's Juani Ramirez brings melodic depth and groove precision, and Kalutara's RNDØM closes the remixes with a rolling underground cut.",
+      "The remix package reaches across three countries. Islamabad's Stereo Munk - supported by Hernan Cattaneo and Nick Warren - takes the longest version on the EP at nearly nine minutes. Argentina's Juani Ramirez brings melodic depth and groove precision, and Kalutara's RNDØM closes the remixes with a rolling underground cut.",
     ],
     image: IMAGES.overheadSmoke,
     cover: IMAGES.coverER002,
@@ -246,10 +246,10 @@ export const NEWS: NewsItem[] = [
     category: "Label",
     title: "Exploration Recordings launches",
     excerpt:
-      "A new home for boundary-pushing progressive house from Sri Lanka opens its catalogue — ER001 is up for pre-order now.",
+      "A new home for boundary-pushing progressive house from Sri Lanka opens its catalogue - ER001 is up for pre-order now.",
     body: [
-      "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. The label curates only the most unique and specially crafted tracks — music for those who truly seek something deeper.",
-      "The first release, ER001 — ALPHA21 & JUNIOR's Time Machine EP — opens for pre-order today, ahead of its release on 21 September 2025.",
+      "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. The label curates only the most unique and specially crafted tracks - music for those who truly seek something deeper.",
+      "The first release, ER001 - ALPHA21 & JUNIOR's Time Machine EP - opens for pre-order today, ahead of its release on 21 September 2025.",
     ],
     image: IMAGES.crowdHands,
     cover: IMAGES.coverER001,
@@ -294,7 +294,7 @@ export const SHOWS: Show[] = [
     country: "FR",
     status: "sold-out",
     ticketUrl: "https://ra.co/events/3",
-    setType: "Closing set — 4h",
+    setType: "Closing set - 4h",
   },
   {
     id: "sub-club-glasgow",
@@ -305,7 +305,7 @@ export const SHOWS: Show[] = [
     country: "UK",
     status: "on-sale",
     ticketUrl: "https://ra.co/events/4",
-    setType: "Extended set — 5h",
+    setType: "Extended set - 5h",
   },
   {
     id: "warehouse-melbourne",
@@ -326,7 +326,7 @@ export const SHOWS: Show[] = [
     city: "Berlin",
     country: "DE",
     status: "on-sale",
-    setType: "Opening set — 3h",
+    setType: "Opening set - 3h",
   },
   {
     id: "fold-london",
@@ -365,28 +365,28 @@ export const SHOWS: Show[] = [
 export const PRESS_PHOTOS: PressPhoto[] = [
   {
     id: "press-01",
-    caption: "Press shot 01 — booth portrait",
+    caption: "Press shot 01 - booth portrait",
     credit: "Photo: Lena Vogt",
     src: IMAGES.pressPortrait,
     orientation: "portrait",
   },
   {
     id: "press-02",
-    caption: "Press shot 02 — live, green room lighting",
+    caption: "Press shot 02 - live, green room lighting",
     credit: "Photo: Lena Vogt",
     src: IMAGES.pressGreen,
     orientation: "portrait",
   },
   {
     id: "press-03",
-    caption: "Press shot 03 — main room, closing set",
+    caption: "Press shot 03 - main room, closing set",
     credit: "Photo: Ilya Renko",
     src: IMAGES.crowdHands,
     orientation: "landscape",
   },
   {
     id: "press-04",
-    caption: "Press shot 04 — floor, La Station",
+    caption: "Press shot 04 - floor, La Station",
     credit: "Photo: Ilya Renko",
     src: IMAGES.crowdDance,
     orientation: "landscape",
@@ -396,13 +396,13 @@ export const PRESS_PHOTOS: PressPhoto[] = [
 export const PRESS_QUOTES: PressQuote[] = [
   {
     quote:
-      "Four hours that never once reached for the obvious — the rare closing set people talk about for weeks afterwards.",
+      "Four hours that never once reached for the obvious - the rare closing set people talk about for weeks afterwards.",
     source: "Crack Magazine",
   },
   {
     quote:
       "Sub-Orbital is dub techno with the lights off: patient, physical, and completely uninterested in impressing you quickly.",
-    source: "Resident Advisor — RA Recommends",
+    source: "Resident Advisor - RA Recommends",
   },
   {
     quote: "One of the most convincing new voices coming out of Berlin's smaller rooms.",
@@ -412,17 +412,17 @@ export const PRESS_QUOTES: PressQuote[] = [
 
 export const RIDER: RiderSection[] = [
   {
-    title: "DJ booth — required",
+    title: "DJ booth - required",
     items: [
       "2 × Pioneer CDJ-3000 (linked, latest firmware)",
       "1 × Pioneer DJM-900NXS2 or A9",
       "2 × Technics SL-1200 with working pitch + fresh Ortofon Concorde styli",
       "Booth monitor at head height, independently controllable",
-      "Isolated, earthed power — no shared circuit with lighting",
+      "Isolated, earthed power - no shared circuit with lighting",
     ],
   },
   {
-    title: "Booth — preferred",
+    title: "Booth - preferred",
     items: [
       "Rotary mixer (Alpha Recording System / Model 1) where available",
       "Table space of at least 60 cm for a record bag",
@@ -520,7 +520,7 @@ export const ROSTER: RosterArtist[] = [
     bio: [
       "In the heart of Sri Lanka's Weligama lies a DJ and producer who goes by the name ALPHA21. His passion for music was sparked at an early age, but it was the serene beauty of nature that inspired him to create something truly unique. His sound is an embodiment of the natural world around him, with lush soundscapes and organic rhythms that transport listeners to another world.",
       "He's signed to some of the most renowned labels in the scene, including The Purr Music, Balkan Connection and Modern Agenda, and has shared the stage with names including Armen Miran, Eli Nissan, DJ Ruby, Emi Galvan, Dmitry Molosh, Ezequiel Arias, Darin Epsilon, Blanka Barbara, Forty Cats, Alar, Aaron Suiss and Matan Caspi.",
-      "He spends countless hours in the studio perfecting his sound, always striving to create something that's never been heard before. When he isn't in the studio or playing gigs, he can be found exploring the natural wonders of Sri Lanka — from the jungles to the Indian Ocean — and he's dedicated to using his music to spread awareness about environmental issues.",
+      "He spends countless hours in the studio perfecting his sound, always striving to create something that's never been heard before. When he isn't in the studio or playing gigs, he can be found exploring the natural wonders of Sri Lanka - from the jungles to the Indian Ocean - and he's dedicated to using his music to spread awareness about environmental issues.",
       "In 2025 he co-founded Exploration Recordings with fellow Weligama producer JUNIOR, and the pair's Time Machine EP became the label's first release.",
     ],
     highlights: [
@@ -536,7 +536,7 @@ export const ROSTER: RosterArtist[] = [
     role: "DJ · Producer",
     basedIn: "Sri Lanka",
     blurb:
-      "Progressive and organic house — hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.",
+      "Progressive and organic house - hypnotic grooves, atmospheric textures and melodic depth, shaped by years of DJing in Dubai.",
     links: [],
     bio: [
       "ESH (SL) is a Sri Lanka–based DJ and producer specialising in Progressive and Organic House. His journey began in Sri Lanka in 2018, followed by performances across Dubai from 2019 to 2024, where he developed a strong understanding of crowd energy and immersive DJ sets.",
@@ -553,7 +553,7 @@ export const ROSTER: RosterArtist[] = [
     photoPosition: "50% 22%",
     name: "C-Groove",
     role: "DJ · Producer",
-    blurb: "Rooted in the electronic scene since 2014 — driven by passion, dedication and a love for underground sound.",
+    blurb: "Rooted in the electronic scene since 2014 - driven by passion, dedication and a love for underground sound.",
     links: [],
     bio: [
       "C-Groove is a DJ and producer who has been deeply rooted in the electronic music scene since 2014. From the very beginning, his journey has been driven by pure passion, dedication and an unwavering love for underground sound. Always present in the scene, always evolving.",
@@ -571,7 +571,7 @@ export const ROSTER: RosterArtist[] = [
     role: "Artist",
     basedIn: "South coast, Sri Lanka",
     blurb:
-      "Melodic, driving progressive house built for peak time, from the south coast of Sri Lanka — shaped by a life spent surfing.",
+      "Melodic, driving progressive house built for peak time, from the south coast of Sri Lanka - shaped by a life spent surfing.",
     links: [],
     bio: [
       "DLC is a progressive house artist from the south coast of Sri Lanka, who began his musical journey in 2016, shaping melodic, driving soundscapes built for peak-time energy. A passionate surfer, his connection to the ocean influences his sound, blending flow, rhythm and energy into every track.",
@@ -703,7 +703,7 @@ export const FAQS: { question: string; answer: string }[] = [
   {
     question: "What kind of music does the label release?",
     answer:
-      "Progressive house — deep textures, hypnotic rhythms and emotional, melodic storytelling, from slow-burning atmospheric originals to rolling underground and peak-time remixes. The label curates only unique, specially crafted tracks.",
+      "Progressive house - deep textures, hypnotic rhythms and emotional, melodic storytelling, from slow-burning atmospheric originals to rolling underground and peak-time remixes. The label curates only unique, specially crafted tracks.",
   },
   {
     question: "Where can I buy or stream Exploration Recordings releases?",
@@ -717,6 +717,6 @@ export const FAQS: { question: string; answer: string }[] = [
   {
     question: "How do I submit a demo to Exploration Recordings?",
     answer:
-      "Use the Demo Submission page on this site. Send finished tracks only, each with a title, in one private SoundCloud link — no downloads or attachments. Every demo gets listened to and answered.",
+      "Use the Demo Submission page on this site. Send finished tracks only, each with a title, in one private SoundCloud link - no downloads or attachments. Every demo gets listened to and answered.",
   },
 ];

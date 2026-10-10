@@ -9,10 +9,10 @@ import Reveal, { EASE } from "../components/motion/Reveal";
 import { Card } from "../components/ui";
 
 const CHECKLIST = [
-  "Which artist — or the kind of set you need, and we'll recommend",
+  "Which artist - or the kind of set you need, and we'll recommend",
   "Date, city and venue (or the shortlist you're choosing between)",
   "Room capacity and expected attendance",
-  "Set length and slot — opening, peak, closing, all-night",
+  "Set length and slot - opening, peak, closing, all-night",
   "Fee offer including currency, plus who covers travel and hotel",
   "Whether the line-up is already announced",
 ];
@@ -182,7 +182,7 @@ export default function Booking() {
                 Not sure who to book?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                Every artist page has a full biography and their releases on the label — or leave
+                Every artist page has a full biography and their releases on the label - or leave
                 the artist blank and we'll recommend someone for the room.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5">

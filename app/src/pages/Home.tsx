@@ -34,7 +34,7 @@ export default function Home() {
     <>
       {/* The page's h1 names the label — the slider's story titles are h2s. */}
       <h1 className="sr-only">
-        {ARTIST.displayName} — independent progressive house record label from {ARTIST.basedIn}
+        {ARTIST.displayName} - independent progressive house record label from {ARTIST.basedIn}
       </h1>
 
       {/* ─── HERO: auto-sliding news ─── */}
@@ -71,7 +71,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/50">
                   Deep, driving progressive house from Sri Lanka and beyond. Every release is on
-                  Proton Radio — and the next one lands here first.
+                  Proton Radio - and the next one lands here first.
                 </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
@@ -154,7 +154,7 @@ export default function Home() {
                   Book a label artist.
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/50">
-                  Bring Exploration Recordings to your floor — pick an artist, tell us the date, and
+                  Bring Exploration Recordings to your floor - pick an artist, tell us the date, and
                   get availability and a fee back fast.
                 </p>
                 <div className="mt-6">
@@ -179,7 +179,7 @@ export default function Home() {
                   Got a record for us?
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/50">
-                  Finished progressive house that goes somewhere deeper. Send one private SoundCloud link —
+                  Finished progressive house that goes somewhere deeper. Send one private SoundCloud link - 
                   we listen to every demo and always reply.
                 </p>
                 <div className="mt-6">
