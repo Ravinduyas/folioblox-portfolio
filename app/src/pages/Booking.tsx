@@ -29,7 +29,7 @@ export default function Booking() {
         title="Book an artist."
         intro={`Bring an ${ARTIST.displayName} artist to your event. Enquiries come straight to the label, and answers come back ${ARTIST.responseTime} with availability and a fee.`}
         image={IMAGES.realDjCrowd}
-        objectPosition="50% 35%"
+        objectPosition="50% 55%"
         glow="ellipse 46% 56% at 82% 46%"
         height={360}
         meta={

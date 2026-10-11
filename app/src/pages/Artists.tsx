@@ -54,7 +54,7 @@ export default function Artists() {
         intro="The DJs and producers of Exploration Recordings - progressive and organic house from Sri Lanka."
         slides={SLIDES}
         glow="ellipse 52% 58% at 74% 36%"
-        height={440}
+        height={520}
         actions={
           <>
             <PrimaryLink to="/booking">Book an artist</PrimaryLink>

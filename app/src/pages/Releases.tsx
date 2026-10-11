@@ -23,7 +23,7 @@ export default function Releases() {
         }
         intro="The full Exploration Recordings catalogue - liner notes, tracklists, and a link to buy or stream every record on Proton Radio."
         image={IMAGES.realRedDecks}
-        objectPosition="60% 30%"
+        objectPosition="60% 48%"
         glow="ellipse 50% 60% at 78% 32%"
         height={400}
         actions={<GhostLink href={ARTIST.profileUrl}>Label on Proton Radio</GhostLink>}

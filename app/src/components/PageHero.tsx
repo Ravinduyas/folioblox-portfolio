@@ -151,9 +151,9 @@ export default function PageHero({
             <AnimatePresence initial={false}>
               {/*
                 Portrait photos stretched across a wide band zoom in to a slice
-                of face. On desktop the sharp photo fills the right half at full
-                height (head and shoulders), fading in from the left, over a
-                blurred copy that fills the band. On phones the band is tall, so
+                of face. On desktop the whole photo shows on the right at full
+                height, fading in from the left, over a blurred copy that
+                fills the band. On phones the band is tall, so
                 the photo simply covers it.
               */}
               <motion.div
@@ -173,7 +173,7 @@ export default function PageHero({
                 <motion.img
                   src={current.src}
                   alt=""
-                  className="absolute inset-y-0 right-0 h-full w-full select-none object-cover md:w-[55%] md:[mask-image:linear-gradient(to_right,transparent,black_38%)] lg:w-1/2"
+                  className="absolute inset-y-0 right-0 h-full w-full select-none object-cover md:w-auto md:max-w-[62%] md:[mask-image:linear-gradient(to_right,transparent,black_22%)]"
                   style={{ objectPosition: current.position ?? objectPosition }}
                   initial={{ scale: reduce ? 1 : 1.06 }}
                   animate={{ scale: 1 }}

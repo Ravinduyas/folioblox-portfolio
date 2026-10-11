@@ -34,7 +34,7 @@ export default function About() {
         title={ARTIST.displayName}
         intro={SHORT_BIO}
         image={IMAGES.realStageWide}
-        objectPosition="50% 45%"
+        objectPosition="50% 88%"
         glow="ellipse 52% 58% at 74% 36%"
         height={460}
         actions={
