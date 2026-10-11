@@ -104,6 +104,13 @@ export const SECTIONS: SiteSection[] = [
     contents: ["Submit a demo", "Demo guide"],
     purpose: "Send the label your finished tracks.",
   },
+  {
+    label: "Contact Us",
+    to: "/contact",
+    audience: "neutral",
+    contents: ["Message", "Press", "Email"],
+    purpose: "General enquiries, press and licensing.",
+  },
 ];
 
 /**
@@ -219,7 +226,7 @@ export const NEWS: NewsItem[] = [
       "Pre-orders are open for ER002, the Liquid Aura EP from JUNIOR & Sound Fusion, ahead of its full release on 3 July 2026.",
       "The remix package reaches across three countries. Islamabad's Stereo Munk - supported by Hernan Cattaneo and Nick Warren - takes the longest version on the EP at nearly nine minutes. Argentina's Juani Ramirez brings melodic depth and groove precision, and Kalutara's RNDØM closes the remixes with a rolling underground cut.",
     ],
-    image: IMAGES.realDlcPortrait,
+    image: IMAGES.realSouthCoast,
     cover: IMAGES.coverER002,
     releaseId: "er002",
   },
@@ -249,7 +256,7 @@ export const NEWS: NewsItem[] = [
       "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. The label curates only the most unique and specially crafted tracks - music for those who truly seek something deeper.",
       "The first release, ER001 - ALPHA21 & JUNIOR's Time Machine EP - opens for pre-order today, ahead of its release on 21 September 2025.",
     ],
-    image: IMAGES.realSouthCoast,
+    image: IMAGES.realDlcPortrait,
     cover: IMAGES.coverER001,
     releaseId: "er001",
   },

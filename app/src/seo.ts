@@ -48,6 +48,7 @@ export const ROUTES: string[] = [
   "/booking",
   "/about",
   "/demo",
+  "/contact",
 ];
 
 /** Left over from the single-artist site — reachable, but kept out of search. */
@@ -439,6 +440,21 @@ export function pageSeo(rawPath: string): PageSeo {
     };
   }
 
+  if (path === "/contact") {
+    const description =
+      "Contact Exploration Recordings - general enquiries, press and licensing for the Sri Lankan progressive house label. Demos go through the demo submission form.";
+    return {
+      ...base,
+      title: "Contact Us - Exploration Recordings",
+      description,
+      jsonLd: [
+        organization(),
+        webPage("ContactPage", path, "Contact Us", description, { about: { "@id": ORG_ID } }),
+        breadcrumbs([["Contact Us", "/contact"]]),
+      ],
+    };
+  }
+
   // Unknown or legacy route: still titled, never indexed.
   return {
     ...base,
@@ -584,6 +600,7 @@ export function llmsTxt(): string {
     `- [Bookings](${pageUrl("/booking")}): book a label artist`,
     `- [About Us](${pageUrl("/about")}): label story and FAQ`,
     `- [Demo Submission](${pageUrl("/demo")}): submit a demo - finished tracks, one private SoundCloud link`,
+    `- [Contact Us](${pageUrl("/contact")}): general, press and licensing enquiries`,
     "",
   );
   return lines.join("\n");

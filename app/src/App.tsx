@@ -21,6 +21,7 @@ import ArtistDetail from "./pages/ArtistDetail";
 import Booking from "./pages/Booking";
 import About from "./pages/About";
 import Demo from "./pages/Demo";
+import Contact from "./pages/Contact";
 import Shows from "./pages/Shows";
 import Press from "./pages/Press";
 import { headTags, jsonLdGraph, pageSeo } from "./seo";
@@ -62,8 +63,7 @@ function AnimatedRoutes() {
     ["/booking", <Booking />],
     ["/about", <About />],
     ["/demo", <Demo />],
-    // The Contact page became Demo Submission.
-    ["/contact", <Navigate to="/demo" replace />],
+    ["/contact", <Contact />],
     // Not in the nav — left over from the single-artist site.
     ["/shows", <Shows />],
     ["/press", <Press />],
