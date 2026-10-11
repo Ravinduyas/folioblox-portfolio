@@ -98,3 +98,4 @@ Use the Demo Submission page on this site. Send finished tracks only, each with 
 - [Bookings](https://ravinduyas.github.io/folioblox-portfolio/booking/): book a label artist
 - [About Us](https://ravinduyas.github.io/folioblox-portfolio/about/): label story and FAQ
 - [Demo Submission](https://ravinduyas.github.io/folioblox-portfolio/demo/): submit a demo - finished tracks, one private SoundCloud link
+- [Contact Us](https://ravinduyas.github.io/folioblox-portfolio/contact/): general, press and licensing enquiries
