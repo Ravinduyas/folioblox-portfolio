@@ -125,7 +125,7 @@ function Seo() {
   return null;
 }
 
-/** Vite's base is "/" locally and "/folioblox-portfolio/" on GitHub Pages. */
+/** Vite's base: "/" locally and at explorationrecordings.com, "/folioblox-portfolio/" on GitHub Pages. */
 export const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 /** Everything inside the router — shared by the browser app and the prerender. */

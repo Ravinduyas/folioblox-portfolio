@@ -26,7 +26,7 @@ if (!entry) {
   console.error('No server build in dist-ssr/ — run `vite build --ssr src/entry-server.tsx` first.');
   process.exit(1);
 }
-const {render, headHtml, ROUTES, sitemapXml, llmsTxt} = await import(pathToFileURL(path.join(SSR_DIR, entry)).href);
+const {render, headHtml, ROUTES, sitemapXml, llmsTxt, robotsTxt, BASE_PATH} = await import(pathToFileURL(path.join(SSR_DIR, entry)).href);
 
 const template = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
 const SEO_BLOCK = /<!--seo-->[\s\S]*?<!--\/seo-->/;
@@ -56,6 +56,8 @@ fs.writeFileSync(path.join(DIST, '404.html'), page(notFoundHead, ''));
 
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemapXml());
 fs.writeFileSync(path.join(DIST, 'llms.txt'), llmsTxt());
+// Crawlers only read robots.txt from a domain root.
+if (!BASE_PATH) fs.writeFileSync(path.join(DIST, 'robots.txt'), robotsTxt());
 fs.rmSync(SSR_DIR, {recursive: true, force: true});
 
 console.log(`\n${ROUTES.length} pages + 404.html, sitemap.xml, llms.txt written to dist/`);

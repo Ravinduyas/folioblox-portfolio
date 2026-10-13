@@ -27,10 +27,12 @@ import {
 } from "./data";
 import { NewsItem, Release, RosterArtist } from "./types";
 
-/** Host the site is published on — no trailing slash. */
-export const ORIGIN = "https://ravinduyas.github.io";
-/** The app's base path, matching Vite's `base`. */
-export const BASE_PATH = "/folioblox-portfolio";
+/** Where the build is published — set by SITE_URL in vite.config.ts. */
+const PUBLISHED = new URL(import.meta.env.VITE_SITE_URL || "https://explorationrecordings.com/");
+/** Host the site is published on, e.g. https://explorationrecordings.com */
+export const ORIGIN = PUBLISHED.origin;
+/** The app's base path without a trailing slash: "" at a domain root. */
+export const BASE_PATH = PUBLISHED.pathname.replace(/\/$/, "");
 export const SITE_URL = `${ORIGIN}${BASE_PATH}`;
 
 const SITE_NAME = ARTIST.displayName;
@@ -537,6 +539,15 @@ function lastModified(path: string): string {
     return dates.pop() ?? SITE_UPDATED;
   }
   return SITE_UPDATED;
+}
+
+/** robots.txt — only meaningful at a domain root, where crawlers look for it. */
+export function robotsTxt(): string {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
 }
 
 export function sitemapXml(): string {

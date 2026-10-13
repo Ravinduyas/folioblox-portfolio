@@ -7,7 +7,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { AppShell, basename } from "./App";
 
-export { ROUTES, headHtml, llmsTxt, sitemapXml } from "./seo";
+export { BASE_PATH, ROUTES, headHtml, llmsTxt, robotsTxt, sitemapXml } from "./seo";
 
 /** `path` is the route without the base, e.g. "/news". */
 export function render(path: string): string {

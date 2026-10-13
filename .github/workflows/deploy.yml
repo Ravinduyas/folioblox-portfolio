@@ -28,9 +28,11 @@ jobs:
 
       - run: npm ci
 
-      # vite.config.ts sets base to the repo subpath for every build,
-      # so no environment variable is needed here.
+      # The default build targets https://explorationrecordings.com/ at the
+      # domain root; Pages serves this repo under a subpath, so build for that.
       - run: npm run build
+        env:
+          SITE_URL: https://ravinduyas.github.io/folioblox-portfolio/
 
       - uses: actions/configure-pages@v5
 

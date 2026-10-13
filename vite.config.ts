@@ -12,7 +12,15 @@ import {defineConfig} from 'vite';
  * Assets go to static/ rather than assets/, to stay clear of the existing
  * (unbuilt) assets/ folder at the root.
  */
-const REPO_BASE = '/folioblox-portfolio/';
+/**
+ * Where the site is published. The live site is the root of
+ * https://explorationrecordings.com (AWS S3 + CloudFront). Set SITE_URL to
+ * build for somewhere else — the GitHub Pages workflow passes
+ * https://ravinduyas.github.io/folioblox-portfolio/ — and every asset path,
+ * the router basename, canonicals, sitemap and llms.txt follow it.
+ */
+const SITE_URL = (process.env.SITE_URL || 'https://explorationrecordings.com/').replace(/\/?$/, '/');
+const SITE_BASE = new URL(SITE_URL).pathname; // "/" at a domain root, "/repo/" on Pages
 
 /**
  * Pages has no server-side rewrite. scripts/prerender.mjs writes a real
@@ -23,16 +31,19 @@ const REPO_BASE = '/folioblox-portfolio/';
 export default defineConfig(({command, isPreview, isSsrBuild}) => {
   // The SSR build (entry-server.tsx) only feeds the prerender — kept apart from dist/.
   const outDir = path.resolve(__dirname, isSsrBuild ? 'dist-ssr' : 'dist');
-  // Only the dev server runs at the root; build and preview both use the
-  // deployed subpath, so `npm run preview` reproduces Pages exactly.
+  // The dev server always runs at the root; build and preview use SITE_BASE,
+  // so `npm run preview` reproduces the deployed paths exactly.
   const isDevServer = command === 'serve' && !isPreview;
 
   return {
     // Root is app/ so that the built index.html can own the repo root.
     root: path.resolve(__dirname, 'app'),
     publicDir: path.resolve(__dirname, 'public'),
-    // Dev serves from /, the deployed copy lives under the repo subpath.
-    base: isDevServer ? '/' : REPO_BASE,
+    base: isDevServer ? '/' : SITE_BASE,
+    // seo.ts reads this for canonicals, social cards, sitemap and llms.txt.
+    define: {
+      'import.meta.env.VITE_SITE_URL': JSON.stringify(SITE_URL),
+    },
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
