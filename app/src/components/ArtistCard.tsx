@@ -78,11 +78,8 @@ export default function ArtistCard({ artist }: { artist: RosterArtist }) {
           <p className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-white/30">
             {artistMeta(artist)}
           </p>
-          <p className="mt-2.5 line-clamp-3 flex-1 text-xs leading-relaxed text-white/50">
-            {artist.blurb}
-          </p>
 
-          <div className="mt-3.5 flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
+          <div className="mt-auto flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3.5">
             <Link
               to={`/artists/${artist.id}`}
               className="relative z-10 rounded-full border border-[#f25c27]/40 bg-[#f25c27]/10 px-3 py-2 font-mono text-[9px] uppercase tracking-wider text-[#f25c27] transition-all hover:bg-[#f25c27]/20 sm:px-2.5 sm:py-1"

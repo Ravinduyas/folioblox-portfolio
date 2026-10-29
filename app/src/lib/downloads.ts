@@ -31,8 +31,9 @@ export function downloadBio() {
     `Proton Radio: ${ARTIST.profileUrl}`,
     "",
     rule("CONTACT"),
-    `Bookings: ${ARTIST.bookingEmail}`,
-    `Press: ${ARTIST.pressEmail}`,
+    ARTIST.bookingEmail === ARTIST.pressEmail
+      ? `Email: ${ARTIST.bookingEmail}`
+      : `Bookings: ${ARTIST.bookingEmail}\nPress: ${ARTIST.pressEmail}`,
   ].join("\n");
 
   downloadText(`${ARTIST.displayName}-bio.txt`, body);

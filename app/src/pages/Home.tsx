@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarCheck, Disc3, Mail } from "lucide-react";
 import { IMAGES } from "../assets/images";
-import { ARTIST, FACTS, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
+import { ARTIST, FACTS, LABEL_STATEMENT, LONG_BIO, RELEASES, ROSTER, SHORT_BIO, latestNews } from "../data";
 import ArtistSlider from "../components/ArtistSlider";
 import NewsSlider from "../components/NewsSlider";
 import ReleaseCard from "../components/ReleaseCard";
 import Reveal from "../components/motion/Reveal";
 import TiltCard from "../components/motion/TiltCard";
 import { Eyebrow, GhostLink, SectionHeading } from "../components/ui";
+import { LogoMark } from "../components/Logo";
 
 /** How many stories the hero slider cycles through. */
 const HERO_STORIES = 4;
@@ -99,13 +100,16 @@ export default function Home() {
           </Reveal>
 
           <Reveal direction="left" delay={0.1} className="md:col-span-7">
+            <LogoMark size={44} className="mb-5" />
             <Eyebrow>The label</Eyebrow>
             <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
               A home for boundary-pushing sound.
             </h2>
-            <p data-speakable className="mt-5 text-sm leading-relaxed text-white/55 md:text-base">
-              {SHORT_BIO} {LONG_BIO[0]}
-            </p>
+            <div data-speakable className="mt-5 space-y-3 text-sm leading-relaxed text-white/55 md:text-base">
+              {LABEL_STATEMENT.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
 
             <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/[0.06] pt-7 sm:grid-cols-4">
               {FACTS.map((fact) => (

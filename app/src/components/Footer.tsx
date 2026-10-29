@@ -112,13 +112,15 @@ export default function Footer() {
               <Mail size={12} />
               {ARTIST.bookingEmail}
             </a>
-            <a
-              href={`mailto:${ARTIST.pressEmail}`}
-              className="inline-flex items-center gap-2 font-mono text-xs text-white/60 transition-colors hover:text-[#f25c27]"
-            >
-              <Mail size={12} />
-              {ARTIST.pressEmail}
-            </a>
+            {ARTIST.pressEmail !== ARTIST.bookingEmail && (
+              <a
+                href={`mailto:${ARTIST.pressEmail}`}
+                className="inline-flex items-center gap-2 font-mono text-xs text-white/60 transition-colors hover:text-[#f25c27]"
+              >
+                <Mail size={12} />
+                {ARTIST.pressEmail}
+              </a>
+            )}
           </div>
         </div>
 

@@ -16,8 +16,7 @@ import {
  * Single place to rebrand the site. Everything user-facing reads from here.
  *
  * Label facts, releases, tracklists and artist bios below come from the label's
- * Proton Radio catalogue (protonradio.com/labels/4587). Email addresses are
- * still placeholders.
+ * Proton Radio catalogue (protonradio.com/labels/4587).
  */
 export const ARTIST = {
   name: "EXPLORATION RECORDINGS",
@@ -26,8 +25,9 @@ export const ARTIST = {
   basedIn: "Sri Lanka",
   founded: "2025",
   genres: ["Progressive house", "Deep progressive", "Melodic"],
-  bookingEmail: "bookings@explorationrecordings.com",
-  pressEmail: "press@explorationrecordings.com",
+  email: "info@explorationrecordings.com",
+  bookingEmail: "info@explorationrecordings.com",
+  pressEmail: "info@explorationrecordings.com",
   /** Empty string = independent, no agency. Fill in to show a booking agent. */
   agent: {
     name: "",
@@ -48,10 +48,16 @@ export const ARTIST = {
 export const SHORT_BIO =
   "Exploration Recordings is an independent progressive house label from Sri Lanka - a home for visionary artists and boundary-pushing sound, curating only tracks that transcend the ordinary.";
 
+/** Statement featured in the homepage "The label" section. */
+export const LABEL_STATEMENT = [
+  "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. We curate only the most unique and specially crafted tracks that transcend the ordinary and speak to those who truly seek something deeper. This isn’t just a label; it’s a movement, a space for those who understand that music is more than sound",
+  "it’s an exploration of artistry, emotion, and innovation.",
+];
+
 /** The label's own statement, from its Proton Radio profile. */
 export const LONG_BIO = [
   "Exploration Recordings is a platform for visionary artists, a home for boundary-pushing sound. We curate only the most unique and specially crafted tracks that transcend the ordinary and speak to those who truly seek something deeper.",
-  "This isn’t just a label; it’s a movement - a space for those who understand that music is more than sound. It’s an exploration of artistry, emotion and innovation.",
+  "This isn’t just a label; it’s a movement, a space for those who understand that music is more than sound - it’s an exploration of artistry, emotion, and innovation.",
   "Founded in Sri Lanka in 2025 by Weligama producers JUNIOR and ALPHA21, the label opened its catalogue with the co-founders' own Time Machine EP, and followed it with the Liquid Aura EP alongside Poland's Sound Fusion - deep, driving progressive house, with remixes from Sri Lanka, Pakistan and Argentina.",
 ];
 

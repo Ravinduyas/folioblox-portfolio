@@ -161,8 +161,8 @@ export default function BookingForm({ compact = false }: { compact?: boolean }) 
           onChange={(value) => set("artist", value)}
           className={inputClass}
           options={[
-            { value: "", label: "Not sure yet - recommend someone" },
-            ...ROSTER.map((artist) => ({ value: artist.id, label: artist.basedIn ? `${artist.name} · ${artist.basedIn}` : artist.name })),
+            { value: "", label: "Not sure yet" },
+            ...ROSTER.map((artist) => ({ value: artist.id, label: artist.name })),
           ]}
         />
       </Field>
