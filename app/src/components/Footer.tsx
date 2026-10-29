@@ -124,10 +124,22 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/[0.05] pt-8 font-mono text-[11px] text-white/40 md:flex-row">
-          <p>
-            &copy; {new Date().getFullYear()} {ARTIST.displayName}. All rights reserved.
-          </p>
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/[0.05] pt-8 font-mono text-[11px] text-white/40 md:flex-row">
+          <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-center md:justify-start md:text-left">
+            <span>&copy; {new Date().getFullYear()} {ARTIST.displayName}. All rights reserved.</span>
+            <span className="text-white/20">|</span>
+            <span>
+              Developed and managed by{" "}
+              <a
+                href="https://grobern.com"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-white/70 transition-colors hover:text-[#f25c27]"
+              >
+                Grobern
+              </a>
+            </span>
+          </div>
           <div className="flex gap-4">
             <a
               href={ARTIST.profileUrl}
