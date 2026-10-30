@@ -15,20 +15,22 @@ export default function NewsCard({ item }: { item: NewsItem }) {
         className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214] transition-colors hover:border-[#f25c27]/25"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-[#0d0e10]">
+          {/* Cover art leads when the story has one; the event photo becomes the corner thumb. */}
           <img
-            src={item.image}
+            src={item.cover ?? item.image}
             alt=""
             aria-hidden="true"
             className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-            style={{ objectPosition: item.imagePosition ?? "50% 40%" }}
+            style={{ objectPosition: item.cover ? "50% 50%" : item.imagePosition ?? "50% 40%" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#111214] via-[#111214]/30 to-transparent" />
           {item.cover && (
             <img
-              src={item.cover}
+              src={item.image}
               alt=""
               aria-hidden="true"
-              className="absolute bottom-3 right-3 h-16 w-16 rounded-lg shadow-xl shadow-black/50 ring-1 ring-white/10"
+              className="absolute bottom-3 right-3 h-16 w-16 rounded-lg object-cover shadow-xl shadow-black/50 ring-1 ring-white/10"
+              style={{ objectPosition: item.imagePosition ?? "50% 40%" }}
             />
           )}
           <span className="absolute left-3 top-3 rounded-full bg-black/65 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-[#f25c27] backdrop-blur-md">
